@@ -1,5 +1,6 @@
 import firebase from 'firebase'
 
+
 const config = {
   apiKey: "AIzaSyB0KgyPSy9XMqwGCJ-_0fM4I72HbAE1i_E",
   authDomain: "kenko-university.firebaseapp.com",
