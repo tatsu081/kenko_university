@@ -14,7 +14,7 @@ export default {
     const { data } = await axios.get(
       `https://kenko-university.microcms.io/api/v1/blog/${params.slug}`,
       {
-        headers: { 'X-API-KEY': 'b683b6b8-99a7-4f01-974c-aab6ccc316f1' }
+        headers: { 'X-API-KEY': process.env.API_KEY }
       }
     )
     return data
