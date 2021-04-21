@@ -13,7 +13,6 @@
 import axios from 'axios'
 export default {
   async asyncData() {
-    console.log(process.env.API_KEY)
     const { data } = await axios.get(
       // your-service-id部分は自分のサービスidに置き換えてください
       'https://kenko-university.microcms.io/api/v1/blog',
