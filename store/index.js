@@ -51,6 +51,7 @@ export const actions = {
     firebase.auth().signOut()
       .then(()=> {
         dispatch('deleteLogin')
+        alert('ログアウトに成功しました！')
       })
   }
 }
