@@ -18,7 +18,7 @@ export default {
       'https://kenko-university.microcms.io/api/v1/blog',
       {
         // your-api-key部分は自分のapi-keyに置き換えてください
-        headers: { 'X-API-KEY': 'b683b6b8-99a7-4f01-974c-aab6ccc316f1' }
+        headers: { 'X-API-KEY': process.env.API_KEY }
       }
   )
     console.log(data)

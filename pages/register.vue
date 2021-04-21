@@ -1,42 +1,56 @@
 <template>
-  <v-form>
-    <v-container>
-      <v-row>
-        <v-col
-          cols="12"
-          sm="6"
-          md="3"
+  <div class="register">
+    <h1 class="register__title">
+      新規登録
+    </h1>
+    <form
+      class="form"
+      @submit.prevent
+    >
+      <label class="label">
+       <span class="label">
+         email
+       </span>
+        <input
+          class="input"
+          type="text"
+          v-model="email"
         >
-          <v-text-field
-            label="メールアドレス（必須）"
-            type="email"
-          ></v-text-field>
-        </v-col>
-        <br>
-
-        <v-col
-          cols="12"
-          sm="6"
-          md="3"
+      </label>
+      <label class="label">
+       <span class="label">
+         password
+       </span>
+        <input
+          class="input"
+          type="password"
+          v-model="password"
         >
-          <v-text-field
-            label="パスワード（必須）"
-            type="password"
-          ></v-text-field>
-        </v-col>
-
-      </v-row>
-    </v-container>
-  </v-form>
-
+      </label>
+      <button
+        class="button"
+        type="submit"
+        @click="register"
+      >
+        Register
+      </button>
+    </form>
+  </div>
 </template>
 
 <script>
 export default {
-
+  data () {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    register () {
+      if (this.$store.dispatch('register', {email: this.email, password: this.password}))
+        this.$router.push('/')
+    }
+  }
 }
 </script>
-
-<style scoped>
-
-</style>

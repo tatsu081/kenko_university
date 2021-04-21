@@ -1,42 +1,53 @@
 <template>
-  <v-form>
-    <v-container>
-      <v-row>
-        <v-col
-          cols="12"
-          sm="6"
-          md="3"
-        >
-          <v-text-field
-            label="メールアドレス（必須）"
-            type="email"
-          ></v-text-field>
-        </v-col>
-        <br>
-
-        <v-col
-          cols="12"
-          sm="6"
-          md="3"
-        >
-          <v-text-field
-            label="パスワード（必須）"
+    <div>
+      <h1>ログイン</h1>
+      <form
+        @submit.prevent>
+        <label class="label">
+       <span class="label">
+         email
+       </span>
+          <input
+            class="input"
+            type="text"
+            v-model="email"
+          >
+        </label>
+        <label class="label">
+       <span class="label">
+         password
+       </span>
+          <input
+            class="input"
             type="password"
-          ></v-text-field>
-        </v-col>
-
-      </v-row>
-    </v-container>
-  </v-form>
+            v-model="password"
+          >
+        </label>
+        <button
+          class="button"
+          type="submit"
+          @click="login"
+        >
+          Login
+        </button>
+      </form>
+    </div>
 
 </template>
 
 <script>
 export default {
-
+  data () {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    login () {
+      if (this.$store.dispatch('login', {email: this.email, password: this.password}))
+        this.$router.push('/')
+    }
+  }
 }
 </script>
-
-<style scoped>
-
-</style>
