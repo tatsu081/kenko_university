@@ -48,6 +48,10 @@ export default {
 
   env: {
     API_KEY
-  }
+  },
+
+  // router: {
+  //   middleware: ['auth']
+  // }
 
 }
