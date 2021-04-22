@@ -6,14 +6,11 @@
         max-width="640"
       >
         <v-card-title class="text-center pa-8">
-          <h4 class="fill-width">会員情報入力</h4>
+          <h4 class="fill-width">ログイン</h4>
         </v-card-title>
         <v-divider> </v-divider>
         <div class="px-6 py-8">
           <div style="max-width:344px" class="mx-auto">
-            <div class="separator separator_login_page">
-              <div class="middle_separator">または</div>
-            </div>
             <div class="pt-6">
               <div>
                 <v-text-field

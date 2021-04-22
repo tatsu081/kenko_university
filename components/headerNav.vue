@@ -21,6 +21,9 @@ export default {
   },
   methods: {
     ...mapActions(['logout','checkLogin']),
+  },
+  created() {
+    this.$store.dispatch('checkLogin')
   }
 }
 </script>

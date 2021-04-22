@@ -9,11 +9,10 @@
 
 <script>
 import Header from "../components/header";
-import firebase from "../plugins/firebase"
 export default {
   components: {
   Header
-  },
+  }
 }
 </script>
 
