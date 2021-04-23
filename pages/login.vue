@@ -5,6 +5,7 @@
         flat
         max-width="640"
       >
+
         <v-card-title class="text-center pa-8">
           <h4 class="fill-width">ログイン</h4>
         </v-card-title>

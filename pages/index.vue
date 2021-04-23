@@ -1,12 +1,24 @@
 <template>
-  <ul>
-    <li v-for="content in contents" :key="content.id">
-      <nuxt-link :to="`/${content.id}`">
-        <img :src="content.image.url" alt="">
-        {{ content.title }}
-      </nuxt-link>
-    </li>
-  </ul>
+  <div>
+    <section>
+      <swiper>
+        <swiper-slide v-for="content in contents" :key="content.id">
+          <div>
+            <img :src="content.image.url" alt="">
+            <h2>{{ content.title }}</h2>
+          </div>
+        </swiper-slide>
+      </swiper>
+    </section>
+    <ul>
+      <li v-for="content in contents" :key="content.id">
+        <nuxt-link :to="`/${content.id}`">
+          <img :src="content.image.url" alt="">
+          {{ content.title }}
+        </nuxt-link>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -23,7 +35,19 @@ export default {
   )
     console.log(data)
     return data
-  }
+  },
+  data() {
+    return {
+      swiperOption: {
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        slidesPerView: 1,
+        loop: true,
+      },
+    }
+  },
 }
 </script>
 
