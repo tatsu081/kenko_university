@@ -19,6 +19,7 @@
               autofocus
               dense
               outlined
+              validate-on-blur
               height="48px"
               placeholder="メールアドレス"
             ></v-text-field>
@@ -33,6 +34,7 @@
               height="48px"
               name="input-password"
               placeholder="パスワード"
+              validate-on-blur
               @click:append="passwordShow = !passwordShow"
             ></v-text-field>
           </div>
@@ -54,6 +56,39 @@
   </v-card>
 
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      email: '',
+      emailRules: {
+        required: (value) =>
+          !!value || 'メールアドレスは必須です',
+        regex: (value) =>
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            value
+          ) || 'メールアドレスの形式が違います'
+      },
+      password: '',
+      passwordShow: false,
+      passwordRules: {
+        required: (value) =>
+          !!value || 'パスワードは必須です',
+        regex: (value) =>
+          /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,128}$/.test(value) ||
+          '半角英数字の6文字以上で入力してください'
+      }
+    }
+  },
+  methods: {
+    register () {
+      if (this.$store.dispatch('register', {email: this.email, password: this.password}))
+        this.$router.push('/')
+    }
+  }
+}
+</script>
 
 <style>
 .fill-width {
@@ -95,36 +130,3 @@
   text-align: -webkit-center;
 }
 </style>
-
-<script>
-export default {
-  data () {
-    return {
-      email: '',
-      emailRules: {
-        required: (value) =>
-          !!value || 'メールアドレスは必須です',
-        regex: (value) =>
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-            value
-          ) || 'メールアドレスの形式が違います'
-      },
-      password: '',
-      passwordShow: false,
-      passwordRules: {
-        required: (value) =>
-          !!value || 'パスワードは必須です',
-        regex: (value) =>
-          /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,128}$/.test(value) ||
-          '半角英数字の6文字以上で入力してください'
-      }
-    }
-  },
-  methods: {
-    register () {
-      if (this.$store.dispatch('register', {email: this.email, password: this.password}))
-        this.$router.push('/')
-    }
-  }
-}
-</script>

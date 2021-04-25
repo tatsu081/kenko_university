@@ -20,6 +20,7 @@
                   autofocus
                   dense
                   outlined
+                  validate-on-blur
                   height="48px"
                   placeholder="メールアドレス"
                 ></v-text-field>
@@ -31,6 +32,7 @@
                   :type="passwordShow ? 'text' : 'password'"
                   dense
                   outlined
+                  validate-on-blur
                   height="48px"
                   name="input-password"
                   placeholder="パスワード"
@@ -101,8 +103,7 @@
 export default {
   methods: {
     login () {
-      if (this.$store.dispatch('login', {email: this.email, password: this.password}))
-        this.$router.push('/')
+      this.$store.dispatch('login', {email: this.email, password: this.password})
     }
   },
   data () {
@@ -122,7 +123,7 @@ export default {
         required: (value) =>
           !!value || 'パスワードは必須です',
         regex: (value) =>
-          /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,128}$/.test(value) ||
+          /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{6,128}$/.test(value) ||
           '半角英数字の6文字以上で入力してください'
       }
     }
