@@ -32,6 +32,7 @@ export const actions = {
     firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(user => {
         dispatch('checkLogin')
+        this.$router.push('/')
       })
   },
   checkLogin ({ commit }) {
@@ -53,8 +54,8 @@ export const actions = {
   logout ({  dispatch }) {
     firebase.auth().signOut()
       .then(()=> {
-        this.$router.replace('/login')
         alert('ログアウトに成功しました！')
+        this.$router.replace('/login')
       })
   }
 }

@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return{
-      detail: '　{{ content.detail }}　'
+      detail: '{{ content.detail }}'
     }
   }
 }

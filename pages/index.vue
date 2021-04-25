@@ -1,19 +1,18 @@
 <template>
   <div>
-    <section>
-      <swiper :options="swiperOption">
-        <swiper-slide v-for="content in contents" :key="content.id">
-          <div class="swiper__container">
-            <nuxt-link :to="`/${content.id}`">
-              <img :src="content.image.url" alt="">
-<!--              <h2>{{ content.title }}</h2>-->
-            </nuxt-link>
-          </div>
-        </swiper-slide>
-        <div slot="button-prev" class="swiper-button-prev"></div>
-        <div slot="button-next" class="swiper-button-next"></div>
-      </swiper>
-    </section>
+    <div>
+      <v-carousel
+        cycle
+        :show-arrows="false"
+      >
+        <v-carousel-item
+          v-for="content in contents"
+          :key="content.id"
+          :src="content.image.url"
+          :href="`/${content.id}`"
+        ></v-carousel-item>
+      </v-carousel>
+    </div>
     <ul class="blog__main__container">
       <li v-for="content in contents" :key="content.id">
         <nuxt-link :to="`/${content.id}`">
@@ -27,7 +26,13 @@
 
 <script>
 import axios from 'axios'
+import carousels from "@/components/carousels";
+// import middleware from "@/.nuxt/middleware";
 export default {
+  components:{
+    carousels
+  },
+  // middleware: "auth",
   async asyncData() {
     // const page = params.p || '1'
     // const limit = 10
@@ -39,43 +44,8 @@ export default {
         headers: { 'X-API-KEY': process.env.API_KEY }
       }
   )
-    console.log(data)
     return data
-  },
-  data() {
-    return {
-      parentRefs: null,      // ←追加
-      swiperOption: {
-        loop: true,
-        slidesPerView: 3,
-        spaceBetween: 30,
-        autoplay: {
-          delay: 5000
-        },
-        pagenation: {
-          el: '.swiper-pagination',
-          clickable: true
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        },
-        breakpoints: {
-          1430: {
-            slidesPerView: 2,
-            spaceBetween: 10
-          },
-          950: {
-            slidesPerView: 1
-          }
-        }
-      }
-    }
-  },
-  // mounted() {
-  //   // ---- ↓追加 ----
-  //   this.parentRefs = this.$refs.mySwiper.swiper
-  // },
+  }
 }
 </script>
 
