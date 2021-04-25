@@ -99,6 +99,12 @@
 
 <script>
 export default {
+  methods: {
+    login () {
+      if (this.$store.dispatch('login', {email: this.email, password: this.password}))
+        this.$router.push('/')
+    }
+  },
   data () {
     return {
       email: '',
@@ -121,11 +127,6 @@ export default {
       }
     }
   },
-  methods: {
-    login () {
-      if (this.$store.dispatch('login', {email: this.email, password: this.password}))
-        this.$router.push('/')
-    }
-  }
+
 }
 </script>

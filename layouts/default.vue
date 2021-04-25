@@ -15,11 +15,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-main{
-  width: 90%;
-  margin: 0 auto;
-}
-
-</style>
