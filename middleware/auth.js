@@ -1,10 +1,6 @@
-import firebase from '../plugins/firebase'
-
-const middleware = ({ route, store, redirect }) => {
-  firebase.auth().onAuthStateChanged((user) => {
-    // ログインしていなければ、 /login へリダイレクトする
-    if (!user && route.name !== 'login') redirect('/login')
-  })
+export default function ({ store, redirect }) {
+  // ユーザーが認証されていない場合
+  if (!store.state.user.login) {
+    return redirect('/login')
+  }
 }
-
-export default middleware
