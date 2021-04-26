@@ -18,6 +18,7 @@
         <nuxt-link :to="`/${content.id}`">
           <img :src="content.image.url" alt="">
           <p>{{ content.title }}</p>
+          <p>{{ content.category && content.category.name }}</p>
         </nuxt-link>
       </li>
     </ul>
@@ -33,17 +34,19 @@ export default {
     carousels
   },
   // middleware: "auth",
-  async asyncData() {
-    // const page = params.p || '1'
-    // const limit = 10
+  async asyncData({ params }) {
+    const page = params.p || '1'
+    const categoryId = params.categoryId
+    const limit = 12
     const { data } = await axios.get(
       // your-service-id部分は自分のサービスidに置き換えてください
-      'https://kenko-university.microcms.io/api/v1/blog?limit=100',
+      `https://kenko-university.microcms.io/api/v1/blog?limit=${limit}${categoryId === undefined ? '' : `&filters=category[equals]${categoryId}`}&offset=${(page - 1) * limit}`,
       {
         // your-api-key部分は自分のapi-keyに置き換えてください
         headers: { 'X-API-KEY': process.env.API_KEY }
       }
   )
+    console.log(data)
     return data
   }
 }
