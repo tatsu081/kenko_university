@@ -18,34 +18,60 @@
         <nuxt-link :to="`/${content.id}`">
           <img :src="content.image.url" alt="">
           <p>{{ content.title }}</p>
+          <p>{{ content.category && content.category.name }}</p>
         </nuxt-link>
       </li>
     </ul>
+<!--    <v-pagination-->
+<!--      v-model="page"-->
+<!--      :length="length"-->
+<!--      @input = "pageChange"-->
+<!--    />-->
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import carousels from "@/components/carousels";
 // import middleware from "@/.nuxt/middleware";
 export default {
-  components:{
-    carousels
+  data() {
+    return{
+      page: 1,
+      length: 0,
+      contents: [],
+      content: [],
+      pageSize: 12,
+    }
   },
+
   // middleware: "auth",
-  async asyncData() {
-    // const page = params.p || '1'
-    // const limit = 10
+  async asyncData({ params }) {
+    const page = params.p || '1'
+    const categoryId = params.categoryId
+    const limit = 12
     const { data } = await axios.get(
       // your-service-id部分は自分のサービスidに置き換えてください
-      'https://kenko-university.microcms.io/api/v1/blog?limit=100',
+      `https://kenko-university.microcms.io/api/v1/blog?limit=${limit}${categoryId === undefined ? '' : `&filters=category[equals]${categoryId}`}&offset=${(page - 1) * limit}`,
       {
         // your-api-key部分は自分のapi-keyに置き換えてください
         headers: { 'X-API-KEY': process.env.API_KEY }
       }
   )
+    console.log(data)
     return data
-  }
+  },
+  // mounted: function (){
+  //   // 1ページで見れる数(12) からページ数を決める
+  //   this.length = Math.ceil(this.totalCount/this.pageSize);
+  //   //受け取ったすべてのデータが格納されているlistsから、0からthis.pageSize(12)までをcontentsに格納する どこからどこまでを表示するか決める
+  //   this.content = this.contents.slice(0,this.pageSize)
+  // },
+  // methods: {
+  //   pageChange(pageNum){
+  //     this.contents = this.content.slice(this.pageSize * (pageNum - 1),this.pageSize * (pageNum))
+  //   }
+  // },
+
 }
 </script>
 
