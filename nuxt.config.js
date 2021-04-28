@@ -27,7 +27,6 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/swiper', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -55,7 +54,7 @@ export default {
   router: {
     extendRoutes(routes, resolve) {
       routes.push({
-        path: '/page/:p',
+        path: 'page/:p',
         component: resolve(__dirname, 'pages/index.vue'),
         name: 'page',
       });
@@ -69,7 +68,7 @@ export default {
 
   generate: {
     async routes() {
-      const limit = 10
+      const limit = 12
       const range = (start, end) =>
         [...Array(end - start + 1)].map((_, i) => start + i)
 
@@ -100,7 +99,7 @@ export default {
             { headers: { 'X-API-KEY': process.env.API_KEY }},
           )
             .then((res) =>
-              range(1, Math.ceil(res.data.totalCount / 10)).map((p) => ({
+              range(1, Math.ceil(res.data.totalCount / 12)).map((p) => ({
                 route: `/category/${category}/page/${p}`,
               })))
         )

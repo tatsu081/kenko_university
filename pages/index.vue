@@ -22,17 +22,28 @@
         </nuxt-link>
       </li>
     </ul>
+<!--    <v-pagination-->
+<!--      v-model="page"-->
+<!--      :length="length"-->
+<!--      @input = "pageChange"-->
+<!--    />-->
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import carousels from "@/components/carousels";
 // import middleware from "@/.nuxt/middleware";
 export default {
-  components:{
-    carousels
+  data() {
+    return{
+      page: 1,
+      length: 0,
+      contents: [],
+      content: [],
+      pageSize: 12,
+    }
   },
+
   // middleware: "auth",
   async asyncData({ params }) {
     const page = params.p || '1'
@@ -48,7 +59,19 @@ export default {
   )
     console.log(data)
     return data
-  }
+  },
+  // mounted: function (){
+  //   // 1ページで見れる数(12) からページ数を決める
+  //   this.length = Math.ceil(this.totalCount/this.pageSize);
+  //   //受け取ったすべてのデータが格納されているlistsから、0からthis.pageSize(12)までをcontentsに格納する どこからどこまでを表示するか決める
+  //   this.content = this.contents.slice(0,this.pageSize)
+  // },
+  // methods: {
+  //   pageChange(pageNum){
+  //     this.contents = this.content.slice(this.pageSize * (pageNum - 1),this.pageSize * (pageNum))
+  //   }
+  // },
+
 }
 </script>
 
