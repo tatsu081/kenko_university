@@ -54,15 +54,20 @@ export default {
   router: {
     extendRoutes(routes, resolve) {
       routes.push({
-        path: 'page/:p',
-        component: resolve(__dirname, 'pages/index.vue'),
-        name: 'page',
+        path: '/blog/:p',
+        component: resolve(__dirname, 'pages/blog.vue'),
+        name: 'blog',
       });
       routes.push({
-        path: '/category/:categoryId/page/:p',
-        component: resolve(__dirname, 'pages/index.vue'),
+        path: '/category/:categoryId/:p',
+        component: resolve(__dirname, 'pages/blog.vue'),
         name: 'category',
-      })
+      });
+      // routes.push({
+      //   path: '/search/:searchValue',
+      //   component: resolve(__dirname, 'pages/index.vue'),
+      //   name: 'search',
+      // })
     },
   },
 
@@ -79,7 +84,7 @@ export default {
         })
         .then((res) =>
           range(1, Math.ceil(res.data.totalCount / limit)).map((p) => ({
-            route: `/page/${p}`,
+            route: `/blog/${p}`,
           }))
         )
 
@@ -100,10 +105,18 @@ export default {
           )
             .then((res) =>
               range(1, Math.ceil(res.data.totalCount / 12)).map((p) => ({
-                route: `/category/${category}/page/${p}`,
+                route: `/category/${category}/${p}`,
               })))
         )
       )
+
+      // const search = await axios
+      //   .get(`https://kenko-university.microcms.io/api/v1/blog?q=`, {
+      //     headers: { 'X-API-KEY': process.env.API_KEY },
+      //   })
+      //   .then(({ data }) => {
+      //     return data.contents.map((content) => content.id)
+      //   });
 
       // 2次元配列になってるのでフラットにする
       const flattenCategoryPages = [].concat.apply([], categoryPages)

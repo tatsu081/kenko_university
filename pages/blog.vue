@@ -22,11 +22,9 @@
         </nuxt-link>
       </li>
     </ul>
-
     <pagination
-      query="blog"
       :length="Math.ceil(totalCount/limit)"
-      :now="Number($route.query[query] || 1)"
+      :now="Number($route.params.p || 1)"
       class="nav"
     />
   </div>
@@ -35,12 +33,16 @@
 <script>
 import axios from 'axios'
 // import middleware from "@/.nuxt/middleware";
+import pagination from "@/components/pagination";
 export default {
   data() {
     return{
-      page: 1,
-      query: ''
+      now: 1,
+      length: 0,
     }
+  },
+  components: {
+    pagination
   },
 
   // middleware: "auth",
@@ -56,34 +58,10 @@ export default {
         // your-api-key部分は自分のapi-keyに置き換えてください
         headers: { 'X-API-KEY': process.env.API_KEY }
       }
-  )
+    )
     console.log(data)
     return data
   },
-
-  async mounted() {
-    /**
-     ページ数をセット
-     */
-    await this.setPage()
-  },
-
-  methods: {
-    setPage() {
-      this.page = Number(this.$route.query.page) || 1
-    }
-  }
-  // mounted: function (){
-  //   // 1ページで見れる数(12) からページ数を決める
-  //   this.length = Math.ceil(this.totalCount/this.pageSize);
-  //   //受け取ったすべてのデータが格納されているlistsから、0からthis.pageSize(12)までをcontentsに格納する どこからどこまでを表示するか決める
-  //   this.content = this.contents.slice(0,this.pageSize)
-  // },
-  // methods: {
-  //   pageChange(pageNum){
-  //     this.contents = this.content.slice(this.pageSize * (pageNum - 1),this.pageSize * (pageNum))
-  //   }
-  // },
 
 }
 </script>
