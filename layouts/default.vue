@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <v-app>
     <Header />
     <main>
       <Nuxt />
     </main>
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -12,6 +12,6 @@ import Header from "../components/header";
 export default {
   components: {
     Header,
-  }
-}
+  },
+};
 </script>
