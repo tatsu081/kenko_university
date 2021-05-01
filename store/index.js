@@ -32,7 +32,7 @@ export const actions = {
     firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(user => {
         dispatch('checkLogin')
-        this.$router.push('/')
+        this.$router.push('/blog/1')
       })
   },
   checkLogin ({ commit }) {
@@ -42,6 +42,7 @@ export const actions = {
         commit('switchLogin')
       } else {
         commit('deleteLogin')
+        this.$router.push('/blog/1')
       }
     })
   },

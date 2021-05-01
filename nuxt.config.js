@@ -1,3 +1,4 @@
+import axios from "axios";
 require('dotenv').config();
 const { API_KEY } = process.env;
 export default {
@@ -78,8 +79,7 @@ export default {
         [...Array(end - start + 1)].map((_, i) => start + i)
 
       // 一覧のページング
-      const pages = await axios
-        .get(`https://kenko-university.microcms.io/api/v1/blog?limit=0`, {
+      const pages = await axios.get(`https://kenko-university.microcms.io/api/v1/blog?limit=0`, {
           headers: { 'X-API-KEY': process.env.API_KEY },
         })
         .then((res) =>
@@ -88,8 +88,7 @@ export default {
           }))
         )
 
-      const categories = await axios
-        .get(`https://kenko-university.microcms.io/api/v1/category?fields=id`, {
+      const categories = await axios.get(`https://kenko-university.microcms.io/api/v1/category?fields=id`, {
           headers: { 'X-API-KEY': process.env.API_KEY },
         })
         .then(({ data }) => {
@@ -111,7 +110,7 @@ export default {
       )
 
       // const search = await axios
-      //   .get(`https://kenko-university.microcms.io/api/v1/blog?q=`, {
+      //   .get(`https://kenko-university.microcms.io/api/v1/blog?q`, {
       //     headers: { 'X-API-KEY': process.env.API_KEY },
       //   })
       //   .then(({ data }) => {
