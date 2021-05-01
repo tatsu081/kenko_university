@@ -33,7 +33,9 @@ export const actions = {
       .then(user => {
         dispatch('checkLogin')
         this.$router.push('/blog/1')
-      })
+      }).catch(function (error){
+        alert('メールアドレスもしくはパスワードが違う可能性があります')
+    })
   },
   checkLogin ({ commit }) {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -57,6 +59,14 @@ export const actions = {
         alert('ログアウトに成功しました！')
         this.$router.replace('/login')
       })
+  },
+  passReset (context, payload){
+
+    firebase.auth().sendPasswordResetEmail(payload.email).then(function() {
+      alert('メールを送信しました')
+    }).catch(function(error) {
+      alert(('メールの送信に失敗しました。もし送られていない場合は運営にお問い合わせください。'))
+    });
   }
 }
 
