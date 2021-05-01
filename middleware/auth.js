@@ -5,7 +5,7 @@ export default function ({ store, redirect, route }) {
   } else {
     window.location.href = '/'
     return new Promise((resolve) => {
-      // 完全にレンダリングされたらリダイレクトされる
+      // 完全にレンダリングされたらリダイレクト
     })
   }
 }
