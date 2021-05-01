@@ -19,9 +19,10 @@
 
 <script>
 import axios from 'axios'
-// import middleware from "@/.nuxt/middleware";
+import middleware from "@/.nuxt/middleware";
 import pagination from "@/components/pagination";
 export default {
+  middleware: "auth",
   data() {
     return{
       now: 1,
@@ -31,8 +32,6 @@ export default {
   components: {
     pagination
   },
-
-  // middleware: "auth",
   async asyncData({ params }) {
     const page = params.p || '1'
     const categoryId = params.categoryId

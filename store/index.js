@@ -42,7 +42,6 @@ export const actions = {
         commit('switchLogin')
       } else {
         commit('deleteLogin')
-        this.$router.push('/blog/1')
       }
     })
   },
