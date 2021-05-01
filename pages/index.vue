@@ -31,7 +31,7 @@
 
 <script>
 import axios from 'axios'
-// import middleware from "@/.nuxt/middleware";
+
 export default {
   data() {
     return{
