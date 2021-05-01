@@ -51,6 +51,7 @@
                   ログイン
                 </v-btn>
               </div>
+              <router-link to="/passReset">パスワードを忘れたはこちら</router-link>
             </div>
           </div>
         </div>
