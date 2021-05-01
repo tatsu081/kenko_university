@@ -1,18 +1,5 @@
 <template>
   <div>
-    <div>
-      <v-carousel
-        cycle
-        :show-arrows="false"
-      >
-        <v-carousel-item
-          v-for="content in contents"
-          :key="content.id"
-          :src="content.image.url"
-          :href="`/${content.id}`"
-        ></v-carousel-item>
-      </v-carousel>
-    </div>
     <ul class="blog__main__container">
       <li v-for="content in contents" :key="content.id">
         <nuxt-link :to="`/${content.id}`">
@@ -59,7 +46,7 @@ export default {
         headers: { 'X-API-KEY': process.env.API_KEY }
       }
     )
-    console.log(data)
+    // console.log(data)
     return data
   },
 
