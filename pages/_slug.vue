@@ -2,7 +2,7 @@
   <main class="main">
     <h1 class="title">{{ title }}</h1>
     <div v-html="detail"></div>
-    <router-link to="/">記事一覧に戻る</router-link>
+    <button onclick="window.history.back(); return false;">直前のページに戻る</button>
   </main>
 </template>
 
@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return{
-      detail: '　{{ content.detail }}　'
+      detail: '{{ content.detail }}'
     }
   }
 }

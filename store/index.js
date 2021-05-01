@@ -25,10 +25,14 @@ export const actions = {
   deleteLogin ({ commit }){
     commit('deleteLogin')
   },
+  switchLogin(state, login) {
+    commit('switchLogin')
+  },
   login({ dispatch }, payload) {
     firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(user => {
         dispatch('checkLogin')
+        this.$router.push('/blog/1')
       })
   },
   checkLogin ({ commit }) {
@@ -47,10 +51,11 @@ export const actions = {
         dispatch('checkLogin')
       })
   },
-  logout ({ context, dispatch }) {
+  logout ({  dispatch }) {
     firebase.auth().signOut()
       .then(()=> {
-        dispatch('deleteLogin')
+        alert('ログアウトに成功しました！')
+        this.$router.replace('/login')
       })
   }
 }
