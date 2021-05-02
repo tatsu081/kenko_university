@@ -32,7 +32,7 @@ export const actions = {
     firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(user => {
         dispatch('checkLogin')
-        this.$router.push('/blog/1')
+        this.$router.push('/blog')
       }).catch(function (error){
         alert('メールアドレスもしくはパスワードが違う可能性があります')
     })
@@ -51,6 +51,7 @@ export const actions = {
     firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
       .then(user => {
         dispatch('checkLogin')
+        this.$router.push('/blog')
       })
   },
   logout ({  dispatch }) {
