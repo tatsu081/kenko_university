@@ -2,12 +2,8 @@
   <div>
     <template v-if="$store.state.user.login">
       <button @click="logout">ログアウト</button>
-      <router-link to="/blog/1">記事一覧</router-link>
-      <router-link to="/category/3-ejsy668/1">食事</router-link>
-      <router-link to="/category/yj09sw28go8/1">運動</router-link>
-      <router-link to="/category/hb_whb4x0/1">睡眠</router-link>
-      <router-link to="/category/qwtnich0nmkv/1">おな禁</router-link>
-      <router-link to="/category/0auj7e89u/1">その他</router-link>
+      <router-link to="/blog">記事一覧</router-link>
+      <router-link to="/category">カテゴリー</router-link>
     </template>
     <template v-else>
       <router-link to="/login">ログイン</router-link>
