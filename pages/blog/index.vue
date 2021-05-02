@@ -9,46 +9,41 @@
         </nuxt-link>
       </li>
     </ul>
-    <pagination
-      :length="Math.ceil(totalCount/limit)"
-      :now="Number($route.params.p || 1)"
-      class="nav"
-    />
+    <v-layout v-if="length > 12" row wrap justify-end class="ma-7">
+      <v-btn
+        :to="'/blog/page/2'"
+        color="secondary"
+        large
+        outlined
+      >次ページ ＞</v-btn>
+    </v-layout>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import middleware from "@/.nuxt/middleware";
+// import middleware from "@/.nuxt/middleware";
 import pagination from "@/components/pagination";
 export default {
-  middleware: "auth",
+  // middleware: "auth",
   data() {
-    return{
-      now: 1,
-      length: 0,
-    }
   },
-  components: {
-    pagination
-  },
-  async asyncData({ params }) {
-    const page = params.p || '1'
-    const categoryId = params.categoryId
+  async asyncData() {
     const limit = 12
     const { data } = await axios.get(
       // your-service-id部分は自分のサービスidに置き換えてください
-      `https://kenko-university.microcms.io/api/v1/blog?limit=${limit}${categoryId === undefined ? '' :
-        `&filters=category[equals]${categoryId}`}&offset=${(page - 1) * limit}`,
+      `https://kenko-university.microcms.io/api/v1/blog?limit=${limit}`,
       {
         // your-api-key部分は自分のapi-keyに置き換えてください
         headers: { 'X-API-KEY': process.env.API_KEY }
       }
     )
-    // console.log(data)
+    console.log(data)
     return data
   },
-
+  created() {
+    this.length = this.totalCount
+  }
 }
 </script>
 
@@ -94,4 +89,12 @@ export default {
   font-size: 50px;
   color: black;
 }
+.pagination__conteiner{
+  text-align: center;
+}
+.pagination__conteiner ul{
+  display: flex;
+  justify-content: center;
+}
+
 </style>
