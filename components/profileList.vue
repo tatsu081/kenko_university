@@ -94,4 +94,7 @@ export default {
 .node-profile span {
   font-size: 9pt;
 }
+.v-list{
+  padding: 0 0 8px;
+}
 </style>
