@@ -14,7 +14,6 @@
 <script>
 import axios from 'axios'
 // import middleware from "@/.nuxt/middleware";
-import pagination from "@/components/pagination";
 export default {
   // middleware: "auth",
   data() {

@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-list>
-      <v-list-item link to="/category/">
+      <v-list-item to="/category/">
         <v-list-item-content>
           <v-list-item-title class="title categoryList" style="text-align: center">
             <p>Category</p>
@@ -79,7 +79,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .categoryList p {
   position: relative;
   display: inline-block;
