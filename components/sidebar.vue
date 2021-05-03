@@ -1,12 +1,18 @@
 <template>
-  <article>
-
-  </article>
+  <div>
+    <category-list/>
+    <profile-list/>
+  </div>
 </template>
 
 <script>
+import categoryList from "@/components/categoryList";
+import profileList from "@/components/profileList";
 export default {
-name: "sidebar"
+  components:{
+    categoryList,
+    profileList
+  }
 }
 </script>
 

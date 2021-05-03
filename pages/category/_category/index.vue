@@ -1,14 +1,18 @@
 <template>
   <div>
-    <ul class="blog__main__container">
-      <li v-for="content in contents" :key="content.id">
-        <nuxt-link :to="`/${content.id}`">
-          <img :src="content.image.url" alt="">
-          <p>{{ content.title }}</p>
-          <p>{{ content.category && content.category.name }}</p>
-        </nuxt-link>
-      </li>
-    </ul>
+    <div class="twoColumn__container">
+      <ul class="blog__main__container">
+        <li v-for="content in contents" :key="content.id">
+          <nuxt-link :to="`/${content.id}`">
+            <img :src="content.image.url" alt="">
+            <p>{{ content.title }}</p>
+            <p>{{ content.category && content.category.name }}</p>
+          </nuxt-link>
+        </li>
+      </ul>
+      <sidebar/>
+    </div>
+
     <v-layout v-if="length > 12" row wrap justify-end class="ma-7">
       <v-btn
         :to="'/category/' + this.$route.params.category + '/page/2'"
@@ -22,7 +26,7 @@
 
 <script>
 import axios from "axios";
-
+import sidebar from "@/components/sidebar";
 export default {
   // カテゴリーページ情報取得
   async asyncData({ params }) {
@@ -43,6 +47,9 @@ export default {
   },
   created() {
     this.length = this.totalCount
+  },
+  components:{
+    sidebar
   }
 }
 </script>
