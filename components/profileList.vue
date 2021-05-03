@@ -13,9 +13,9 @@
     </v-list>
     <v-card-text>
       <p style="margin: 0 15px 20px 15px">
-        超健康オタクの僕が皆さんに、超健康になって欲しいとの思いで作成しました。
-        自分の知識や今までの健康に対しての行動がみなさまの今後のハッピーに繋がれば幸いです
-        <br />一見共通点のない2人が、それぞれの考え方や活動のことを投稿します。
+        健康オタクの僕が皆さんに、超健康情報になって欲しいとの思いで作成しました。
+        自分の知識や今までの健康に対しての行動がみなさまの今後のハッピーに繋がれば幸いです。
+        <br />
       </p>
     </v-card-text>
     <v-divider />
@@ -23,7 +23,7 @@
       <v-col cols="4">
         <v-img :src="profile_img" aspect-ratio="1"></v-img>
       </v-col>
-      <v-col cols="8" class="node-profile">
+      <v-col cols="8" class="profile">
         <div style="margin: 10px 10px 0 15px">
           <p>ふってぃ</p>
           <span>Webエンジニア<br>理学療法士</span>
@@ -79,7 +79,7 @@ export default {
   background-color: #54AD81;
   border-radius: 2px;
 }
-.node-profile p {
+.profile p {
   color: #54AD81;
   position: relative;
   margin: 5px 0 0 0;
@@ -87,7 +87,7 @@ export default {
   position: relative;
 }
 
-.node-profile p:after {
+.profile p:after {
   position: absolute;
   content: " ";
   display: block;
@@ -96,7 +96,7 @@ export default {
   width: 20%;
 }
 
-.node-profile span {
+.profile span {
   font-size: 9pt;
 }
 .v-list{
