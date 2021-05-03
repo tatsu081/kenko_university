@@ -33,7 +33,6 @@
 import axios from 'axios'
 
 export default {
-
   async asyncData( ) {
     const limit = 6
     const { data } = await axios.get(

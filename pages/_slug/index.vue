@@ -24,11 +24,11 @@ export default {
     )
     return data
   },
-  data() {
-    return{
-      detail: '{{ content.detail }}'
-    }
-  }
+  // data() {
+  //   return{
+  //     detail: '{{ content.detail }}'
+  //   }
+  // }
 }
 </script>
 

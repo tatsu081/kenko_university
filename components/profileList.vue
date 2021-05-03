@@ -21,16 +21,16 @@
     <v-divider />
     <v-row no-gutters>
       <v-col cols="4">
-<!--        <v-img :src="node" aspect-ratio="1"></v-img>-->
+        <v-img :src="profile_img" aspect-ratio="1"></v-img>
       </v-col>
       <v-col cols="8" class="node-profile">
         <div style="margin: 10px 10px 0 15px">
           <p>ふってぃ</p>
-          <span>Webエンジニア　理学療法士</span>
+          <span>Webエンジニア<br>理学療法士</span>
           <br />
           <v-btn
             color="#00acee"
-            href="https://twitter.com/node_mental"
+            href="https://twitter.com/futty_0123"
             target="_blank"
             rel="noopener noreferrer"
             icon
@@ -50,8 +50,13 @@
 </template>
 
 <script>
-
+import profile_img from "@/static/profile_img.jpg";
 export default {
+  data () {
+    return{
+      profile_img
+    }
+  }
 };
 </script>
 
