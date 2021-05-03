@@ -98,4 +98,16 @@ export default {
   background-color: #54AD81;
   border-radius: 2px;
 }
+hr{
+  margin: 0 !important;
+}
+.v-list--nav .v-list-item{
+  padding: 0 20px !important;
+}
+.v-list{
+  padding: 0;
+}
+.v-list--nav{
+  padding: 0;
+}
 </style>
