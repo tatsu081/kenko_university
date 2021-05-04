@@ -18,7 +18,7 @@
             </div>
           </nuxt-link>
         </li>
-        <v-layout v-if="length > 12" row wrap justify-end>
+        <v-layout v-if="length > 12" row wrap justify-end style="margin: 0">
           <v-btn
             :to="'/blog/page/2'"
             color="secondary"

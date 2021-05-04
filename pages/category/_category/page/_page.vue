@@ -26,8 +26,9 @@
             large
             outlined
           >＜ 前ページ</v-btn>
-          <v-btn
-            :to="'/category/' + this.$route.params.category + '/page/2'"
+          <v-btn justyfy-flex-end
+            v-if=" length > 12 && page < length/12"
+            :to="`${page*1 + 1}`"
             color="secondary"
             large
             outlined
