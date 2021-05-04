@@ -18,7 +18,7 @@
             </div>
           </nuxt-link>
         </li>
-        <v-layout v-if="length > 12" row wrap justify-end>
+        <v-layout v-if="length > 12" row wrap justify-end style="margin: 0">
           <v-btn
             :to="'/category/' + this.$route.params.category + '/page/2'"
             color="secondary"

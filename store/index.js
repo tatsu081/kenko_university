@@ -66,7 +66,7 @@ export const actions = {
     firebase.auth().sendPasswordResetEmail(payload.email).then(function() {
       alert('メールを送信しました')
     }).catch(function(error) {
-      alert(('メールの送信に失敗しました。もし送られていない場合は運営にお問い合わせください。'))
+      alert(('メールの送信に失敗しました。もう一度ご確認ください。'))
     });
   }
 }

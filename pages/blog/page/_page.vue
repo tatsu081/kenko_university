@@ -72,7 +72,14 @@ export default {
       const dd = new String(date.getDate()).padStart(2, "0");
       return `${yyyy}-${mm}-${dd}`;
     }
-  }
+  },
+  mounted() {
+    console.log({ post: this.posts });
+    console.log({ pageNum: this.page * 1 });
+    if (this.page * 1 === 1) {
+      this.$router.push("/blog/");
+    }
+  },
 }
 </script>
 
