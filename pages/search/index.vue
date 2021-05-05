@@ -40,7 +40,7 @@ export default {
   data() {
     return {
       query: '',
-      contents:[],
+      // contents:[],
     }
   },
   // 追加
