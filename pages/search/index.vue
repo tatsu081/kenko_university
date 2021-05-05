@@ -40,7 +40,7 @@ export default {
   data() {
     return {
       query: '',
-      // contents:[],
+      contents:[],
     }
   },
   // 追加
@@ -56,14 +56,21 @@ export default {
       const limit = 12
       const { data } = await axios.get(
           // your-service-id部分は自分のサービスidに置き換えてください
-          `https://kenko-university.microcms.io/api/v1/blog?q=${this.query}&limit=12`,
+          `https://kenko-university.microcms.io/api/v1/blog?q=${this.query}&limit=${limit}`,
           {
             // your-api-key部分は自分のapi-keyに置き換えてください
             headers: { 'X-API-KEY': process.env.API_KEY }
       })
         console.log(data)
-        return data
+        this.contents = data.contents
       }
+    },
+    formatDate(iso) {
+      const date = new Date(iso);
+      const yyyy = new String(date.getFullYear());
+      const mm = new String(date.getMonth() + 1).padStart(2, "0");
+      const dd = new String(date.getDate()).padStart(2, "0");
+      return `${yyyy}-${mm}-${dd}`;
     }
   },
   watch: {
