@@ -50,8 +50,7 @@ export default {
       {
         // your-api-key部分は自分のapi-keyに置き換えてください
         headers: { 'X-API-KEY': process.env.API_KEY }
-      }
-    )
+      })
     console.log(data)
     // console.log(categoryId)
     return data
@@ -70,10 +69,6 @@ export default {
       const dd = new String(date.getDate()).padStart(2, "0");
       return `${yyyy}-${mm}-${dd}`;
     }
-  }
+  },
 }
 </script>
-
-<style lang="scss">
-
-</style>

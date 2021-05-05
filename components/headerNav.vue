@@ -2,6 +2,7 @@
   <div>
     <template v-if="$store.state.user.login">
       <button @click="logout">ログアウト</button>
+      <router-link to="/search">検索</router-link>
       <router-link to="/blog">記事一覧</router-link>
       <router-link to="/category">カテゴリー</router-link>
     </template>
