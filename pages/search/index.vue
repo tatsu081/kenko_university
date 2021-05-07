@@ -1,10 +1,43 @@
 <template>
   <div>
     <div>
-    <search-form />
+      <v-form
+        @submit.prevent="getPosts"
+      >
+        <v-row
+          align="center"
+          style="width: 85%; margin: 50px auto 0;"
+        >
+          <v-col
+            cols="12"
+            sm="10"
+            md="8"
+          >
+            <v-text-field
+              v-model="query"
+              outlined
+              hide-details
+              placeholder="キーワードを入力"
+              autofocus
+            />
+          </v-col>
+          <v-col
+            cols="12"
+            sm="2"
+            md="4"
+          >
+            <v-btn
+              color="primary"
+              @click="getPosts"
+            >
+              検索する
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-form>
     </div>
     <div class="twoColumn__container">
-      <div v-if="contents.length">
+      <template v-if="contents.length">
         <ul class="blog__container"　style="padding:0;">
           <li
             v-for="content in contents" :key="content.id" class="blog__box">
@@ -22,10 +55,10 @@
             </nuxt-link>
           </li>
         </ul>
-      </div>
-      <div v-else>
-        検索に一致するものがありませんでした。
-      </div>
+      </template>
+      <template v-else>
+        検索に一致するものがありません。
+      </template>
       <div class="sidebar__container">
         <sidebar/>
       </div>
@@ -47,7 +80,8 @@ export default {
   computed: {
     isRequired() {
       return !!this.query && !/^\s+$/.test(this.query)
-    }
+    },
+
   },
   methods: {
   async getPosts() {
@@ -71,7 +105,7 @@ export default {
       const mm = new String(date.getMonth() + 1).padStart(2, "0");
       const dd = new String(date.getDate()).padStart(2, "0");
       return `${yyyy}-${mm}-${dd}`;
-    }
+    },
   },
   watch: {
     '$route.query.q': {

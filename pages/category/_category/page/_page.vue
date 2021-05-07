@@ -74,6 +74,11 @@ export default {
       const dd = new String(date.getDate()).padStart(2, "0");
       return `${yyyy}-${mm}-${dd}`;
     }
+  },
+  mounted() {
+    if (this.page * 1 === 1) {
+      this.$router.push("/category/" + this.$route.params.category);
+    }
   }
 }
 </script>

@@ -74,8 +74,6 @@ export default {
     }
   },
   mounted() {
-    console.log({ post: this.posts });
-    console.log({ pageNum: this.page * 1 });
     if (this.page * 1 === 1) {
       this.$router.push("/blog/");
     }

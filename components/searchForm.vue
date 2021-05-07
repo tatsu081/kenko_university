@@ -1,15 +1,38 @@
 <template>
   <div>
     <v-form
-      @submit.prevent="submit"
+      @submit.prevent="getPosts"
     >
-      <v-text-field
-        ref="searchForm"
-        v-model="query"
-        hide-details
-        placeholder="キーワードを入力"
-        dense
-      />
+      <v-row
+        align="center"
+        style="width: 85%; margin: 50px auto 0;"
+      >
+        <v-col
+          cols="12"
+          sm="10"
+          md="8"
+        >
+          <v-text-field
+            v-model="query"
+            outlined
+            hide-details
+            placeholder="キーワードを入力"
+            autofocus
+          />
+        </v-col>
+        <v-col
+          cols="12"
+          sm="2"
+          md="4"
+        >
+          <v-btn
+            color="primary"
+            @click="getPosts"
+          >
+            検索する
+          </v-btn>
+        </v-col>
+      </v-row>
     </v-form>
   </div>
 </template>
