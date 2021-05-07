@@ -1,6 +1,6 @@
 <template>
   <div class="twoColumn__container">
-    <div class="blog__container">
+    <div class="blog__container profile__container">
       <div v-for="content in contents" :key="content.id">
         <h1>プロフィール</h1>
         <div v-html="content.profile" class="content"></div>
@@ -33,12 +33,12 @@ export default {
   },
 }
 </script>
-
 <style lang="scss">
-.blog__container{
-  padding: 20px;
+.profile__container{
+  padding: 20px 10px;
   background: #fff;
   box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+
 }
 
 h1 {
@@ -51,14 +51,14 @@ h1 {
 
 h1:after {
   position: absolute;
-  content: " ";
+  content: "";
   display: block;
   border-bottom: solid 3px #54AD81;
   bottom: -3px;
   width: 20%;
 }
 
-.content{
+.content {
 
   margin: 50px 0;
 
@@ -79,13 +79,13 @@ h1:after {
     font-size: 18px;
   }
 
-  p{
+  p {
     margin: 20px 3%;
     font-size: 16px;
     line-height: 2em;
   }
 
-  img{
+  img {
     width: 90%;
     display: block;
     margin: auto;
@@ -98,7 +98,6 @@ h1:after {
     line-height: 1.5em;
     padding: 25px 0;
   }
-
 }
 
 </style>
