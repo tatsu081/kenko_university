@@ -1,8 +1,8 @@
 <template>
   <div class="twoColumn__container">
     <div class="blog__container">
-      <h1 class="title">{{ title }}</h1>
-        <div v-html="detail" class="detail"></div>
+      <h1>{{ title }}</h1>
+        <div v-html="detail" class="content"></div>
         <button onclick="window.history.back(); return false;">直前のページに戻る</button>
     </div>
     <div class="sidebar__container">
@@ -33,12 +33,11 @@ export default {
   background: #fff;
   box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
 
-
   h1 {
     border-bottom: solid 3px #c8e4d3;
     position: relative;
     margin: 25px 0 50px;
-    font-size: 36px;
+    font-size: 36px !important;
     font-weight: 500;
   }
 
