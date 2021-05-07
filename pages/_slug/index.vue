@@ -1,7 +1,7 @@
 <template>
   <div class="twoColumn__container">
     <div class="blog__container">
-      <h1>{{ title }}</h1>
+        <h1>{{ title }}</h1>
         <div v-html="detail" class="content"></div>
         <button onclick="window.history.back(); return false;">直前のページに戻る</button>
     </div>
@@ -92,6 +92,5 @@ export default {
     }
   }
 }
-
 
 </style>
