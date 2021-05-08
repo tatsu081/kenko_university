@@ -4,36 +4,7 @@
       <v-form
         @submit.prevent="getPosts"
       >
-        <v-row
-          align="center"
-          style="width: 85%; margin: 50px auto 0;"
-        >
-          <v-col
-            cols="12"
-            sm="10"
-            md="8"
-          >
-            <v-text-field
-              v-model="query"
-              outlined
-              hide-details
-              placeholder="キーワードを入力"
-              autofocus
-            />
-          </v-col>
-          <v-col
-            cols="12"
-            sm="2"
-            md="4"
-          >
-            <v-btn
-              color="primary"
-              @click="getPosts"
-            >
-              検索する
-            </v-btn>
-          </v-col>
-        </v-row>
+        <search-form/>
       </v-form>
     </div>
     <div class="twoColumn__container">
@@ -54,6 +25,14 @@
               </div>
             </nuxt-link>
           </li>
+          <v-layout v-if="length > 12" row wrap justify-end style="margin: 0">
+            <v-btn
+              :to="'/search?q=' + this.$route.query + '/page/2'"
+              color="secondary"
+              large
+              outlined
+            >次ページ ＞</v-btn>
+          </v-layout>
         </ul>
       </template>
       <template v-else>
@@ -87,6 +66,7 @@ export default {
   async getPosts() {
     // if文でメソッド内を囲む
     if (this.isRequired) {
+
       const limit = 12
       const { data } = await axios.get(
           // your-service-id部分は自分のサービスidに置き換えてください
@@ -97,6 +77,7 @@ export default {
       })
         console.log(data)
         this.contents = data.contents
+        this.length = data.totalCount
       }
     },
     formatDate(iso) {
@@ -116,9 +97,6 @@ export default {
       },
       immediate: true
     }
-  },
-  created() {
-    this.length = this.totalCount
   },
   components: {
     searchForm
