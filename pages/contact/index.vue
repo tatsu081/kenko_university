@@ -46,6 +46,7 @@ export default {
       }).then((res) => {
         return res;
       });
+      alert('送信完了しました。')
       console.log({ res });
     },
   },
