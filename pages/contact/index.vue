@@ -1,6 +1,6 @@
 <template>
   <v-container style="max-width: 600px">
-    <h1>LINE BOT TEST</h1>
+    <h1>お問い合わせ</h1>
     <v-text-field outlined label="name" v-model="name"></v-text-field>
     <v-text-field outlined label="mail" v-model="mail"></v-text-field>
     <v-textarea outlined label="message" v-model="message"></v-textarea>
