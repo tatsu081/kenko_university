@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-form
-      @submit.prevent="getPosts"
+      @submit.prevent="submit"
     >
       <v-row
         align="center"
@@ -27,7 +27,7 @@
         >
           <v-btn
             color="primary"
-            @click="getPosts"
+            @click="submit"
           >
             検索する
           </v-btn>
@@ -57,7 +57,7 @@ export default {
       if (this.validQuery) {
         this.$router.push({ path: '/search', query: { q: this.query } })
         this.query = ''
-        this.$refs.searchForm.blur()
+        // this.$refs.searchForm.blur()
       }
     }
   }
