@@ -46,6 +46,9 @@
 import axios from "axios";
 
 export default {
+  head: {
+    title: "ページ"
+  },
   // カテゴリーページ情報取得
   async asyncData({ params }) {
     const page = params.page ;

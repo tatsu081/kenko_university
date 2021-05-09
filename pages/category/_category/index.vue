@@ -39,6 +39,9 @@
 import axios from "axios";
 import sidebar from "@/components/sidebar";
 export default {
+  head: {
+    title: "カテゴリー毎のページ"
+  },
   // カテゴリーページ情報取得
   async asyncData({ params }) {
     const page = params.page || '1'

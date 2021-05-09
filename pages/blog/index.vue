@@ -39,6 +39,9 @@ import axios from 'axios'
 import sidebar from "@/components/sidebar";
 // import middleware from "@/.nuxt/middleware";
 export default {
+  head: {
+    title: "ブログ一覧"
+  },
   // middleware: "auth",
   data() {
   },
@@ -66,6 +69,9 @@ export default {
       const dd = new String(date.getDate()).padStart(2, "0");
       return `${yyyy}-${mm}-${dd}`;
     }
+  },
+  components: {
+    sidebar
   }
 }
 </script>

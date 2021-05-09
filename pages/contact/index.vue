@@ -16,6 +16,9 @@
 <script>
 import firebase from 'firebase'
 export default {
+  head: {
+    title: "お問い合わせ"
+  },
   async asyncData({ query }) {},
   created() {},
   mounted() {

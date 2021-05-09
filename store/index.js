@@ -29,12 +29,21 @@ export const actions = {
     commit('switchLogin')
   },
   login({ dispatch }, payload) {
-    firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
+      firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(user => {
         dispatch('checkLogin')
         this.$router.push('/blog')
       }).catch(function (error){
         alert('メールアドレスもしくはパスワードが違う可能性があります')
+    })
+  },
+  loginGoogle(dispatch) {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider)
+      .then(user => {
+        this.$router.push('/blog')
+      }).catch(function (error){
+      alert('もう一度ログイン認証してください')
     })
   },
   checkLogin ({ commit }) {

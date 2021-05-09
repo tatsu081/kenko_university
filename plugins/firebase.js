@@ -1,7 +1,5 @@
 /* eslint-disable*/
 import firebase from 'firebase'
-// import 'firebase/functions'
-import 'firebase/auth'
 
 const config = {
   apiKey: "AIzaSyB0KgyPSy9XMqwGCJ-_0fM4I72HbAE1i_E",
@@ -20,11 +18,3 @@ if (!firebase.apps.length) {
 }
 
 export default firebase
-
-// const functions = firebase.functions()
-
-// export default function (app, inject) {
-//   //inject('firestore', firestore) // this.$firestore
-//   //inject('auth', auth) // this.$auth
-//   inject('functions', functions)
-// }

@@ -32,6 +32,9 @@ export default {
       default: "#54AD81"
     }
   },
+  head: {
+  title: "カテゴリー"
+  },
   data() {
     return{
       categories: [

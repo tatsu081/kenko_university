@@ -45,7 +45,9 @@
 
 <script>
 export default {
-
+  head: {
+    title: "パスワードリセット"
+  },
   data () {
     return {
       email: '',

@@ -22,7 +22,54 @@ export default {
         headers: { 'X-API-KEY': process.env.API_KEY }
       }
     )
+    console.log(data)
     return data
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        // {
+        //   hid: "description",
+        //   name: "description",
+        //   content: this.content.outline
+        // },
+        {
+          hid: "og:site_name",
+          property: "og:site_name",
+          content: this.title + " - 健康大学"
+        },
+        { hid: "og:type", property: "og:type", content: "article" },
+        {
+          hid: "og:url",
+          property: "og:url",
+          content: "https://node-color-ink.studio/content/" + this.content
+        },
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: this.title
+        },
+        // {
+        //   hid: "og:description",
+        //   property: "og:description",
+        //   content: this.content.description
+        // },
+        //{ hid: 'og:image', property: 'og:image', content: this.content.image.fields.file.url },
+        {
+          hid: "twitter:card",
+          name: "twitter:card",
+          content: "summary_large_image"
+        },
+        { hid: "twitter:site", name: "twitter:site", content: "@futty_0123" }
+      ],
+      // link: [
+      //   {
+      //     rel: "canonical",
+      //     href: "https://node-color-ink.studio/content/" + this.content.slug
+      //   }
+      // ]
+    };
   },
 }
 </script>
