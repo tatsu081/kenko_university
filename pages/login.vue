@@ -9,6 +9,14 @@
         <v-card-title class="text-center pa-8">
           <h4 class="fill-width">ログイン</h4>
         </v-card-title>
+
+        <v-btn
+          color="#FFCB00"
+          @click="loginGoogle"
+        >
+          <v-icon>mdi-google</v-icon>
+        </v-btn>
+
         <v-divider> </v-divider>
         <div class="px-6 py-8">
           <div style="max-width:344px" class="mx-auto">
@@ -101,11 +109,17 @@
 </style>
 
 <script>
+import {mapActions} from "vuex";
+
 export default {
+  head: {
+    title: "ログイン"
+  },
   methods: {
     login () {
       this.$store.dispatch('login', {email: this.email, password: this.password})
-    }
+    },
+    ...mapActions(['loginGoogle']),
   },
   data () {
     return {

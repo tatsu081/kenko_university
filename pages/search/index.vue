@@ -49,6 +49,9 @@
 import axios from "axios";
 import searchForm from "@/components/searchForm";
 export default {
+  head: {
+    title: "検索"
+  },
   data() {
     return {
       query: '',

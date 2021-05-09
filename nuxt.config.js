@@ -3,21 +3,22 @@ require('dotenv').config();
 const { API_KEY } = process.env;
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false,
+  ssr: true,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+    titleTemplate: '%s - ' + '健康大学',
     title: '健康大学',
-    htmlAttrs: {
-      lang: 'ja'
-    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'og:image', property: 'og:image', content: '' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+    ],
+    script: [
+      { src: "https://platform.twitter.com/widgets.js", type: 'text/javascript' }
     ]
   },
 

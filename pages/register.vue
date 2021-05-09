@@ -59,6 +59,9 @@
 
 <script>
 export default {
+  head: {
+    title: "新規登録"
+  },
   data () {
     return {
       email: '',

@@ -45,6 +45,9 @@ import axios from "axios";
 import sidebar from "@/components/sidebar";
 
 export default {
+  head: {
+    title: "ブログ一覧ページ",
+  },
   async asyncData( { params } ) {
     const page = params.page ;
     const limit = 12 ;

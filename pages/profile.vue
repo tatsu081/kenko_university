@@ -16,6 +16,9 @@
 import sidebar from "@/components/sidebar";
 import axios from "axios";
 export default {
+  head: {
+    title: "プロフィール"
+  },
   components: {
     sidebar
   },

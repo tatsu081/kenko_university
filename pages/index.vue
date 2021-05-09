@@ -33,6 +33,9 @@
 import axios from 'axios'
 
 export default {
+  head: {
+    title: "ホーム"
+  },
   async asyncData( ) {
     const limit = 6
     const { data } = await axios.get(
