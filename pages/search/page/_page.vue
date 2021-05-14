@@ -48,9 +48,9 @@ export default {
   async asyncData( { params } ) {
     const page = params.page ;
     const limit = 12 ;
-    // 一覧のページング
+    // 検索ページのページング
     const {data} = await
-      axios.get(`https://kenko-university.microcms.io/api/v1/blog?q=${this.query}?limit=${limit}&offset=${(page - 1) * limit}`, {
+      axios.get(`https://kenko-university.microcms.io/api/v1/blog?q=${this.query}&limit=${limit}&offset=${(page - 1) * limit}`, {
         headers: {'X-API-KEY': process.env.API_KEY},
       })
     console.log(data)

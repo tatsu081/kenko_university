@@ -1,12 +1,28 @@
 <template>
-  <div class="twoColumn__container">
-    <div class="blog__container">
-        <h1>{{ title }}</h1>
+  <div>
+    <div class="blog__title">
+      <h1>{{ title }}</h1>
+      <div class="blog__title__date">
+        <v-icon
+          small
+        >mdi-calendar-clock</v-icon>
+        <span>{{ formatDate(createdAt) }}</span>
+      </div>
+    </div>
+    <div class="twoColumn__container">
+      <div class="blog__container">
+        <div class="blog__container__category">
+          <v-icon
+            small
+          >mdi-folder</v-icon>
+          <span>{{ category && category.name }}</span>
+        </div>
         <div v-html="detail" class="content"></div>
         <button onclick="window.history.back(); return false;">直前のページに戻る</button>
-    </div>
-    <div class="sidebar__container">
-      <sidebar/>
+      </div>
+      <div class="sidebar__container">
+        <sidebar/>
+      </div>
     </div>
   </div>
 </template>
@@ -24,6 +40,15 @@ export default {
     )
     console.log(data)
     return data
+  },
+  methods: {
+    formatDate(iso) {
+      const date = new Date(iso);
+      const yyyy = new String(date.getFullYear());
+      const mm = new String(date.getMonth() + 1).padStart(2, "0");
+      const dd = new String(date.getDate()).padStart(2, "0");
+      return `${yyyy}-${mm}-${dd}`;
+    }
   },
   head() {
     return {
@@ -80,21 +105,17 @@ export default {
   background: #fff;
   box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
 
-  h1 {
-    border-bottom: solid 3px #c8e4d3;
-    position: relative;
-    margin: 25px 0 50px;
-    font-size: 36px !important;
-    font-weight: 500;
-  }
+  &__category{
+    display: flex;
+    align-items: center;
+    color: #777777;
 
-  h1:after {
-    position: absolute;
-    content: " ";
-    display: block;
-    border-bottom: solid 3px #54AD81;
-    bottom: -3px;
-    width: 20%;
+    span{
+      vertical-align: middle;
+      margin-left: 10px;
+      //margin-top: 5px;
+      font-size: 14px;
+    }
   }
 
   .content {
@@ -104,15 +125,12 @@ export default {
     h2 {
       padding: 0.6em; /*文字周りの余白*/
       color: #333333; /*文字色*/
-      background: #c8e4d3; /*背景色*/
-      border-left: solid 5px #54AD81; /*左線（実線 太さ 色）*/
       margin: 50px 0 25px;
       font-size: 24px;
     }
 
     h3 {
-      color: #54AD81; /*文字色*/
-      /*線の種類（点線）2px 線色*/
+      color: #333333; /*文字色*/
       border-bottom: dashed 2px #54AD81;
       margin: 50px 3% 25px;
       font-size: 18px;
@@ -139,5 +157,29 @@ export default {
     }
   }
 }
+.blog__title{
+  width: 70%;
+  margin: 25px auto 50px;
+
+  h1 {
+    position: relative;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+
+  &__date{
+    margin-top: 10px;
+    text-align: center;
+
+    span{
+      font-size: 14px;
+      color: #777777;
+    }
+  }
+}
+
+
 
 </style>

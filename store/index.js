@@ -37,7 +37,7 @@ export const actions = {
         alert('メールアドレスもしくはパスワードが違う可能性があります')
     })
   },
-  loginGoogle(dispatch) {
+  loginGoogle({dispatch}) {
       const provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithPopup(provider)
       .then(user => {
