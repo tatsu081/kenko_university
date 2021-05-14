@@ -1,9 +1,12 @@
 <template>
   <div>
-    <div>
-      <v-form @submit.prevent="getPosts">
+    <div class="d-flex">
+      <!-- <v-form @submit.prevent="getPosts">
         <search-form />
-      </v-form>
+      </v-form> -->
+
+      <v-text-field outlined v-model="searchText"></v-text-field>
+      <v-btn @click="search">検索する</v-btn>
     </div>
     <div class="twoColumn__container">
       <template v-if="contents.length">
@@ -27,11 +30,7 @@
             </nuxt-link>
           </li>
           <v-layout v-if="length > 12" row wrap justify-end style="margin: 0">
-            <v-btn
-              :to="`/search/page/2?q=${$route.query.q}`"
-              color="secondary"
-              large
-              outlined
+            <v-btn color="secondary" large outlined @click="toNext"
               >次ページ ＞</v-btn
             >
           </v-layout>
@@ -56,6 +55,8 @@ export default {
     return {
       query: "",
       contents: [],
+      searchText: null,
+      page: 0,
     };
   },
   // 追加
@@ -88,6 +89,38 @@ export default {
       const mm = new String(date.getMonth() + 1).padStart(2, "0");
       const dd = new String(date.getDate()).padStart(2, "0");
       return `${yyyy}-${mm}-${dd}`;
+    },
+    async search() {
+      if (!this.searchText) return;
+      const { data } = await axios.get(
+        // your-service-id部分は自分のサービスidに置き換えてください
+        `https://kenko-university.microcms.io/api/v1/blog?q=${this.searchText}&limit=12`,
+        {
+          // your-api-key部分は自分のapi-keyに置き換えてください
+          headers: { "X-API-KEY": process.env.API_KEY },
+        }
+      );
+      this.contents = data.contents;
+      this.length = data.totalCount;
+      console.log("contents:", this.contents);
+      console.log("length:", this.length);
+    },
+    async toNext() {
+      this.page += 1;
+      const { data } = await axios.get(
+        // your-service-id部分は自分のサービスidに置き換えてください
+        `https://kenko-university.microcms.io/api/v1/blog?q=${
+          this.searchText
+        }&limit=12&offset=${this.page * 12}`,
+        {
+          // your-api-key部分は自分のapi-keyに置き換えてください
+          headers: { "X-API-KEY": process.env.API_KEY },
+        }
+      );
+      this.contents = data.contents;
+      this.length = data.totalCount - this.page * 12;
+      console.log("contents:", this.contents);
+      console.log("length:", this.length);
     },
   },
   watch: {
