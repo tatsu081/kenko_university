@@ -17,7 +17,7 @@
           <v-icon>mdi-google</v-icon>
         </v-btn>
 
-        <v-divider> </v-divider>
+        <v-divider/>
         <div class="px-6 py-8">
           <div style="max-width:344px" class="mx-auto">
             <div class="pt-6">
@@ -67,6 +67,44 @@
 
 </template>
 
+<script>
+import {mapActions} from "vuex";
+
+export default {
+  head: {
+    title: "ログイン"
+  },
+  methods: {
+    login () {
+      this.$store.dispatch('login', {email: this.email, password: this.password})
+    },
+    ...mapActions(['loginGoogle']),
+  },
+  data () {
+    return {
+      email: '',
+      emailRules: {
+        required: (value) =>
+          !!value || 'メールアドレスは必須です',
+        regex: (value) =>
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            value
+          ) || 'メールアドレスの形式が違います'
+      },
+      password: '',
+      passwordShow: false,
+      passwordRules: {
+        required: (value) =>
+          !!value || 'パスワードは必須です',
+        regex: (value) =>
+          /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\\d)[a-zA-Z\\d]{8,32}$/.test(value) || '半角英数字の6〜32文字以内で入力してください'
+      }
+    }
+  },
+
+}
+</script>
+
 <style>
 .fill-width {
   width:60%;
@@ -108,41 +146,4 @@
 }
 </style>
 
-<script>
-import {mapActions} from "vuex";
 
-export default {
-  head: {
-    title: "ログイン"
-  },
-  methods: {
-    login () {
-      this.$store.dispatch('login', {email: this.email, password: this.password})
-    },
-    ...mapActions(['loginGoogle']),
-  },
-  data () {
-    return {
-      email: '',
-      emailRules: {
-        required: (value) =>
-          !!value || 'メールアドレスは必須です',
-        regex: (value) =>
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-            value
-          ) || 'メールアドレスの形式が違います'
-      },
-      password: '',
-      passwordShow: false,
-      passwordRules: {
-        required: (value) =>
-          !!value || 'パスワードは必須です',
-        regex: (value) =>
-          /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{6,128}$/.test(value) ||
-          '半角英数字の6文字以上で入力してください'
-      }
-    }
-  },
-
-}
-</script>

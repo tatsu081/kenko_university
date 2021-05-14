@@ -27,7 +27,7 @@
           </li>
           <v-layout v-if="length > 12" row wrap justify-end style="margin: 0">
             <v-btn
-              :to="'/search?q=' + this.$route.query + '/page/2'"
+              :to="'/search?q=' + $route.query.q + `/page/2`"
               color="secondary"
               large
               outlined
