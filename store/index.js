@@ -29,11 +29,22 @@ export const actions = {
     commit('switchLogin')
   },
   login({ dispatch }, payload) {
-    firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
+      firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(user => {
         dispatch('checkLogin')
-        this.$router.push('/blog/1')
-      })
+        this.$router.push('/blog')
+      }).catch(function (error){
+        alert('メールアドレスもしくはパスワードが違う可能性があります')
+    })
+  },
+  loginGoogle({dispatch}) {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider)
+      .then(user => {
+        this.$router.push('/blog')
+      }).catch(function (error){
+      alert('もう一度ログイン認証してください')
+    })
   },
   checkLogin ({ commit }) {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -49,6 +60,7 @@ export const actions = {
     firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
       .then(user => {
         dispatch('checkLogin')
+        this.$router.push('/blog')
       })
   },
   logout ({  dispatch }) {
@@ -57,6 +69,14 @@ export const actions = {
         alert('ログアウトに成功しました！')
         this.$router.replace('/login')
       })
+  },
+  passReset (context, payload){
+
+    firebase.auth().sendPasswordResetEmail(payload.email).then(function() {
+      alert('メールを送信しました')
+    }).catch(function(error) {
+      alert(('メールの送信に失敗しました。もう一度ご確認ください。'))
+    });
   }
 }
 
