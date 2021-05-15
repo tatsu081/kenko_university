@@ -9,7 +9,15 @@
         <v-card-title class="text-center pa-8">
           <h4 class="fill-width">ログイン</h4>
         </v-card-title>
-        <v-divider> </v-divider>
+
+        <v-btn
+          color="#FFCB00"
+          @click="loginGoogle"
+        >
+          <v-icon>mdi-google</v-icon>
+        </v-btn>
+
+        <v-divider/>
         <div class="px-6 py-8">
           <div style="max-width:344px" class="mx-auto">
             <div class="pt-6">
@@ -17,7 +25,6 @@
                 <v-text-field
                   v-model="email"
                   :rules="[emailRules.required, emailRules.regex]"
-                  autofocus
                   dense
                   outlined
                   validate-on-blur
@@ -51,12 +58,51 @@
                   ログイン
                 </v-btn>
               </div>
+              <router-link to="/passReset">パスワードを忘れたはこちら</router-link>
             </div>
           </div>
         </div>
       </v-card>
 
 </template>
+
+<script>
+import {mapActions} from "vuex";
+
+export default {
+  head: {
+    title: "ログイン"
+  },
+  methods: {
+    login () {
+      this.$store.dispatch('login', {email: this.email, password: this.password})
+    },
+    ...mapActions(['loginGoogle']),
+  },
+  data () {
+    return {
+      email: '',
+      emailRules: {
+        required: (value) =>
+          !!value || 'メールアドレスは必須です',
+        regex: (value) =>
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            value
+          ) || 'メールアドレスの形式が違います'
+      },
+      password: '',
+      passwordShow: false,
+      passwordRules: {
+        required: (value) =>
+          !!value || 'パスワードは必須です',
+        regex: (value) =>
+          /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\\d)[a-zA-Z\\d]{8,32}$/.test(value) || '半角英数字の6〜32文字以内で入力してください'
+      }
+    }
+  },
+
+}
+</script>
 
 <style>
 .fill-width {
@@ -99,35 +145,4 @@
 }
 </style>
 
-<script>
-export default {
-  methods: {
-    login () {
-      this.$store.dispatch('login', {email: this.email, password: this.password})
-    }
-  },
-  data () {
-    return {
-      email: '',
-      emailRules: {
-        required: (value) =>
-          !!value || 'メールアドレスは必須です',
-        regex: (value) =>
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-            value
-          ) || 'メールアドレスの形式が違います'
-      },
-      password: '',
-      passwordShow: false,
-      passwordRules: {
-        required: (value) =>
-          !!value || 'パスワードは必須です',
-        regex: (value) =>
-          /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{6,128}$/.test(value) ||
-          '半角英数字の6文字以上で入力してください'
-      }
-    }
-  },
 
-}
-</script>

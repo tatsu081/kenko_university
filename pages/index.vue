@@ -1,19 +1,5 @@
 <template>
   <div>
-    <div>
-      <v-carousel
-        cycle
-        :show-arrows="false"
-      >
-        <v-carousel-item
-          v-for="content in contents"
-          :key="content.id"
-          :src="content.image.url"
-          :href="`/${content.id}`"
-        ></v-carousel-item>
-      </v-carousel>
-    </div>
-
     <div class="top__title">健康大学の記事</div>
     <ul class="blog__main__container">
       <li v-for="content in contents" :key="content.id">
@@ -33,14 +19,9 @@
 import axios from 'axios'
 
 export default {
-  data() {
-    return{
-      page: 1,
-      query: ''
-    }
+  head: {
+    title: "ホーム"
   },
-
-  // middleware: "auth",
   async asyncData( ) {
     const limit = 6
     const { data } = await axios.get(
@@ -54,31 +35,6 @@ export default {
     // console.log(data)
     return data
   },
-
-  async mounted() {
-    /**
-     ページ数をセット
-     */
-    await this.setPage()
-  },
-
-  methods: {
-    setPage() {
-      this.page = Number(this.$route.query.page) || 1
-    }
-  }
-  // mounted: function (){
-  //   // 1ページで見れる数(12) からページ数を決める
-  //   this.length = Math.ceil(this.totalCount/this.pageSize);
-  //   //受け取ったすべてのデータが格納されているlistsから、0からthis.pageSize(12)までをcontentsに格納する どこからどこまでを表示するか決める
-  //   this.content = this.contents.slice(0,this.pageSize)
-  // },
-  // methods: {
-  //   pageChange(pageNum){
-  //     this.contents = this.content.slice(this.pageSize * (pageNum - 1),this.pageSize * (pageNum))
-  //   }
-  // },
-
 }
 </script>
 
