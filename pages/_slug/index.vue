@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="blog__title">
-      <h1>{{ title }}</h1>
+      <h1>{{ content.title }}</h1>
       <div class="blog__title__date">
         <v-icon
           small
         >mdi-calendar-clock</v-icon>
-        <span>{{ formatDate(createdAt) }}</span>
+        <span>{{ formatDate(content.createdAt) }}</span>
       </div>
     </div>
     <div class="twoColumn__container">
@@ -15,7 +15,7 @@
           <v-icon
             small
           >mdi-folder</v-icon>
-          <span>{{ category && category.name }}</span>
+          <span>{{ content.category && content.category.name }}</span>
         </div>
         <div>
           <ul class="lists">
@@ -26,7 +26,7 @@
             </li>
           </ul>
         </div>
-        <div v-html="detail" class="content"></div>
+        <div v-html="content.detail" class="content"></div>
         <button onclick="window.history.back(); return false;">直前のページに戻る</button>
       </div>
       <div class="sidebar__container">
@@ -43,6 +43,7 @@ const VueScrollTo = require('vue-scrollto');
 export default {
   data(){
     return{
+      content: {},
       toc: [],
     }
   },
@@ -63,7 +64,7 @@ export default {
     }));
     console.log('目次', toc);
     console.log('記事データ', data);
-    return data;
+    return { content:data, toc };
   },
   methods: {
     formatDate(iso) {
@@ -76,7 +77,7 @@ export default {
   },
   head() {
     return {
-      title: this.title,
+      title: this.content.title,
       meta: [
         // {
         //   hid: "description",
@@ -86,18 +87,21 @@ export default {
         {
           hid: "og:site_name",
           property: "og:site_name",
-          content: this.title + " - 健康大学"
+          content: this.content.title + " - 健康大学"
         },
-        { hid: "og:type", property: "og:type", content: "article" },
+        { hid: "og:type",
+          property: "og:type",
+          content: "article"
+        },
         {
           hid: "og:url",
           property: "og:url",
-          content: "https://node-color-ink.studio/content/" + this.content
+          content: "https://node-color-ink.studio/content/" + this.content.id
         },
         {
           hid: "og:title",
           property: "og:title",
-          content: this.title
+          content: this.content.title
         },
         // {
         //   hid: "og:description",
@@ -203,7 +207,4 @@ export default {
     }
   }
 }
-
-
-
 </style>

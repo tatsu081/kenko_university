@@ -27,7 +27,7 @@
           </li>
           <v-layout v-if="length > 12" row wrap justify-end style="margin: 0">
             <v-btn
-              :to="'/search?q=' + $route.query.q + `/page/2`"
+              :to="`/search/page/2?q=${$route.query.q}`"
               color="secondary"
               large
               outlined
@@ -35,9 +35,7 @@
           </v-layout>
         </ul>
       </template>
-      <template v-else>
-        検索に一致するものがありません。
-      </template>
+      <template v-else>検索に一致するものがありません。</template>
       <div class="sidebar__container">
         <sidebar/>
       </div>
@@ -50,11 +48,11 @@ import axios from "axios";
 import searchForm from "@/components/searchForm";
 export default {
   head: {
-    title: "検索"
+    title: "検索",
   },
   data() {
     return {
-      query: '',
+      query: "",
       contents:[],
     }
   },
@@ -63,13 +61,11 @@ export default {
     isRequired() {
       return !!this.query && !/^\s+$/.test(this.query)
     },
-
   },
   methods: {
   async getPosts() {
     // if文でメソッド内を囲む
     if (this.isRequired) {
-
       const limit = 12
       const { data } = await axios.get(
           // your-service-id部分は自分のサービスidに置き換えてください
