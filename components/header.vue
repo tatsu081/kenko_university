@@ -106,7 +106,7 @@ export default {
     font-size: 16px;
   }
 }
-.nuxt-link-exact-active{
+.nuxt-link-exact-active.header__bottom__link{
   border-bottom: 3px solid #000;
   opacity: 1;
 }
