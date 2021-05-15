@@ -41,18 +41,12 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-     '@nuxtjs/dotenv',
-     'vue-scrollto/nuxt',
-
-      // Or if you have custom options...
-      ['vue-scrollto/nuxt', { duration: 300 }],
+     '@nuxtjs/dotenv'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    extend(config, { isDev, isClient }) {
-      config.resolve.alias["vue"] = "vue/dist/vue.common"
-    }
+
   },
 
   env: {
