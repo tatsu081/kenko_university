@@ -1,34 +1,97 @@
 <template>
   <header class="header">
     <div class="header__container">
-      <router-link to="/" class="header__logo">健康大学</router-link>
-      <div class="header__nav">
-        <nav-before></nav-before>
+      <div class="header__top">
+        <div class="header__top__left">
+          <router-link to="/" class="header__logo">ロゴ</router-link>
+        </div>
+        <div class="header__top__right">
+          <template v-if="$store.state.user.login">
+            <router-link to="/search"><v-icon medium>mdi-magnify</v-icon></router-link>
+            <button @click="logout">ログアウト</button>
+          </template>
+          <template v-else>
+            <router-link to="/login">ログイン</router-link>
+            <router-link to="/register">新規登録</router-link>
+          </template>
+        </div>
       </div>
+        <div v-if="$store.state.user.login" class="header__bottom" :class="{ 'fixed': scrollY > 80 }">
+          <router-link to="/blog" class="header__bottom__link">記事一覧</router-link>
+          <router-link to="/category" class="header__bottom__link">カテゴリー</router-link>
+          <router-link to="/profile" class="header__bottom__link">プロフィール</router-link>
+          <router-link to="/contact" class="header__bottom__link">お問い合わせ</router-link>
+        </div>
     </div>
   </header>
 </template>
 
 <script>
-import navBefore from "./headerNav";
+import {mapActions} from "vuex";
 export default {
-  components:{
-    navBefore
-  }
+  data() {
+    return {
+      // 座標を指定
+      scrollY: 0
+    }
+  },
+  methods: {
+    ...mapActions(['logout','checkLogin']),
+    handleScroll() {
+      this.scrollY = window.scrollY
+    },
+  },
+  created() {
+    this.$store.dispatch('checkLogin')
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll)
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .header{
-  height: 100px;
+  width: 100%;
+  background: #fff;
+  position: relative;
 
   &__container{
-    width: 90%;
+    width: 100%;
+    position: relative;
+  }
+
+  &__top{
+    width: 80%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
+    height: 80px;
+  }
+
+  &__bottom{
+    width: 100%;
+    padding-left: 10%;
+    height: 50px;
+    display: flex;
+    z-index: 100;
+    transition: all 0.3s;
+    background: #fff;
+
+    &__link{
+      font-weight: bold;
+      margin-right: 10px;
+      height: 100%;
+      line-height: 50px;
+      transition: all 0.3s;
+      transform: translateX(0);
+      opacity: 0.5;
+
+      &:hover{
+        opacity: 1;
+      }
+    }
   }
 
   &__logo{
@@ -41,6 +104,11 @@ export default {
   &__nav{
     font-size: 16px;
   }
+}
+.fixed{
+  position: fixed;
+  top: 0;
+  transition: all 0.3s;
 }
 
 </style>
