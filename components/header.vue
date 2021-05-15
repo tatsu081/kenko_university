@@ -7,7 +7,7 @@
         </div>
         <div class="header__top__right">
           <template v-if="$store.state.user.login">
-            <nuxt-link to="/search"><v-icon medium>mdi-magnify</v-icon></nuxt-link>
+            <router-link to="/search"><v-icon medium>mdi-magnify</v-icon></router-link>
             <button @click="logout">ログアウト</button>
           </template>
           <template v-else>
@@ -17,7 +17,6 @@
         </div>
       </div>
         <div v-if="$store.state.user.login" class="header__bottom" :class="{ 'fixed': scrollY > 80 }">
-          <router-link to="/" class="header__bottom__link" active-class="active-list">Home</router-link>
           <router-link to="/blog" class="header__bottom__link" active-class="active-list" exact>Blog</router-link>
           <router-link to="/category" class="header__bottom__link" active-class="active-list">Category</router-link>
           <router-link to="/profile" class="header__bottom__link" active-class="active-list">Profile</router-link>
@@ -93,7 +92,6 @@ export default {
       &:hover{
         opacity: 1;
       }
-
     }
   }
 
@@ -108,18 +106,14 @@ export default {
     font-size: 16px;
   }
 }
+.nuxt-link-exact-active{
+  border-bottom: 3px solid #000;
+  opacity: 1;
+}
 .fixed{
   position: fixed;
   top: 0;
   transition: all 0.3s;
-}
-//.nuxt-link-exact-active{
-//  border-bottom: 3px solid #000;
-//  opacity: 1;
-//}
-.nuxt-link-exact-active.header__bottom__link{
-  border-bottom: 3px solid #000;
-  opacity: 1;
 }
 
 </style>
