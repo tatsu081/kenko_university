@@ -1,19 +1,5 @@
 <template>
   <div>
-    <div>
-      <v-carousel
-        cycle
-        :show-arrows="false"
-      >
-        <v-carousel-item
-          v-for="content in contents"
-          :key="content.id"
-          :src="content.image.url"
-          :href="`/${content.id}`"
-        ></v-carousel-item>
-      </v-carousel>
-    </div>
-
     <div class="top__title">健康大学の記事</div>
     <ul class="blog__main__container">
       <li v-for="content in contents" :key="content.id">
