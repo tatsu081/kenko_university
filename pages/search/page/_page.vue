@@ -20,14 +20,14 @@
       <v-layout justify-space-between>
         <v-btn
           v-if="page > 1"
-          :to="`${page*1 - 1}`"
+          :to="`${page * 1 - 1}?q=${$route.query.q}`"
           color="secondary"
           large
           outlined
         >＜ 前ページ</v-btn>
         <v-btn
           v-if=" length > 12 && page < length/12"
-          :to="`${page*1 + 1}`"
+          :to="`${page * 1 + 1}?q=${$route.query.q}`"
           color="secondary"
           large
           outlined
@@ -45,12 +45,13 @@ import axios from "axios";
 import sidebar from "@/components/sidebar";
 
 export default {
-  async asyncData( { params } ) {
+  async asyncData( { params, query } ) {
     const page = params.page ;
     const limit = 12 ;
     // 検索ページのページング
     const {data} = await
-      axios.get(`https://kenko-university.microcms.io/api/v1/blog?q=${this.query}&limit=${limit}&offset=${(page - 1) * limit}`, {
+      axios.get(`https://kenko-university.microcms.io/api/v1/blog?q=${query.q}&limit=${limit}&offset=${(page - 1) *
+      limit}`, {
         headers: {'X-API-KEY': process.env.API_KEY},
       })
     console.log(data)
@@ -71,11 +72,6 @@ export default {
       const mm = new String(date.getMonth() + 1).padStart(2, "0");
       const dd = new String(date.getDate()).padStart(2, "0");
       return `${yyyy}-${mm}-${dd}`;
-    }
-  },
-  mounted() {
-    if (this.page * 1 === 1) {
-      this.$router.push("/search/");
     }
   },
 }

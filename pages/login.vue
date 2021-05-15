@@ -25,7 +25,6 @@
                 <v-text-field
                   v-model="email"
                   :rules="[emailRules.required, emailRules.regex]"
-                  autofocus
                   dense
                   outlined
                   validate-on-blur
