@@ -17,10 +17,10 @@
         </div>
       </div>
         <div v-if="$store.state.user.login" class="header__bottom" :class="{ 'fixed': scrollY > 80 }">
-          <router-link to="/blog" class="header__bottom__link">記事一覧</router-link>
-          <router-link to="/category" class="header__bottom__link">カテゴリー</router-link>
-          <router-link to="/profile" class="header__bottom__link">プロフィール</router-link>
-          <router-link to="/contact" class="header__bottom__link">お問い合わせ</router-link>
+          <router-link to="/blog" class="header__bottom__link" active-class="active-list" exact>Blog</router-link>
+          <router-link to="/category" class="header__bottom__link" active-class="active-list">Category</router-link>
+          <router-link to="/profile" class="header__bottom__link" active-class="active-list">Profile</router-link>
+          <router-link to="/contact" class="header__bottom__link" active-class="active-list">Contact</router-link>
         </div>
     </div>
   </header>
@@ -73,7 +73,7 @@ export default {
   &__bottom{
     width: 100%;
     padding-left: 10%;
-    height: 50px;
+    height: 40px;
     display: flex;
     z-index: 100;
     transition: all 0.3s;
@@ -81,12 +81,13 @@ export default {
 
     &__link{
       font-weight: bold;
-      margin-right: 10px;
+      margin-right: 15px;
       height: 100%;
-      line-height: 50px;
+      line-height: 40px;
       transition: all 0.3s;
       transform: translateX(0);
       opacity: 0.5;
+      letter-spacing: 1px;
 
       &:hover{
         opacity: 1;
@@ -104,6 +105,10 @@ export default {
   &__nav{
     font-size: 16px;
   }
+}
+.nuxt-link-exact-active{
+  border-bottom: 3px solid #000;
+  opacity: 1;
 }
 .fixed{
   position: fixed;
