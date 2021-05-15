@@ -17,6 +17,15 @@
           >mdi-folder</v-icon>
           <span>{{ category && category.name }}</span>
         </div>
+        <div>
+          <ul class="lists">
+            <li :class="`list ${item.name}`" v-for="item in toc" :key="item.id">
+              <n-link v-scroll-to="`#${item.id}`" to>
+                {{ item.text }}
+              </n-link>
+            </li>
+          </ul>
+        </div>
         <div v-html="detail" class="content"></div>
         <button onclick="window.history.back(); return false;">直前のページに戻る</button>
       </div>
@@ -29,17 +38,36 @@
 
 <script>
 import axios from 'axios'
+import tocList from "@/components/tocList";
+const VueScrollTo = require('vue-scrollto');
 
 export default {
+  data(){
+    return{
+      toc: [],
+    }
+  },
   async asyncData({ params }) {
-    const { data } = await axios.get(
+    const {data} = await axios.get(
       `https://kenko-university.microcms.io/api/v1/blog/${params.slug}`,
       {
-        headers: { 'X-API-KEY': process.env.API_KEY }
+        headers: {'X-API-KEY': process.env.API_KEY}
       }
     )
-    console.log(data)
-    return data
+    const cheerio = require('cheerio');
+    const $ = cheerio.load(data.detail);
+    const headings = $('h1, h2, h3').toArray();
+    const toc = headings.map(data => ({
+      text: data.children[0].data,
+      id: data.attribs.id,
+      name: data.name,
+    }));
+    console.log('目次', toc);
+    console.log('記事データ', data);
+    return {
+      data,
+      toc,
+    };
   },
   methods: {
     formatDate(iso) {
@@ -49,6 +77,9 @@ export default {
       const dd = new String(date.getDate()).padStart(2, "0");
       return `${yyyy}-${mm}-${dd}`;
     }
+  },
+  components:{
+    tocList,
   },
   head() {
     return {
@@ -97,6 +128,7 @@ export default {
     };
   },
 }
+
 </script>
 
 <style scoped lang="scss">
