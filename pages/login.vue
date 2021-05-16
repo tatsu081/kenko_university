@@ -4,20 +4,35 @@
         class="mx-auto fill-width"
         flat
         max-width="640"
+        style="margin: 50px auto; padding: 0 0 30px"
       >
 
         <v-card-title class="text-center pa-8">
           <h4 class="fill-width">ログイン</h4>
         </v-card-title>
 
-        <v-btn
-          color="#FFCB00"
-          @click="loginGoogle"
-        >
-          <v-icon>mdi-google</v-icon>
-        </v-btn>
+        <div class="googleButton__container">
+          <v-btn
+            class="fill-width text-capitalize caption"
+            height="50px"
+            width="100%"
+            max-width="344px"
+            outlined
+            style="border-color:#979797; padding: 0 12px"
+            @click="loginGoogle"
+          >
+            <img
+              class="button-logo-img mr-4"
+              src="https://madeby.google.com/static/images/google_g_logo.svg"
+              style="height:24px;"
+            />
+            Googleで登録
+          </v-btn>
+        </div>
 
-        <v-divider/>
+        <v-divider
+          class="auth-border"
+          style="margin: 30px auto 20px"/>
         <div class="px-6 py-8">
           <div style="max-width:344px" class="mx-auto">
             <div class="pt-6">
@@ -25,11 +40,10 @@
                 <v-text-field
                   v-model="email"
                   :rules="[emailRules.required, emailRules.regex]"
-                  dense
                   outlined
                   validate-on-blur
-                  height="48px"
-                  placeholder="メールアドレス"
+                  label="メールアドレス"
+                  style="padding:10px 0;"
                 ></v-text-field>
 
                 <v-text-field
@@ -37,12 +51,10 @@
                   :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
                   :rules="[passwordRules.required, passwordRules.regex]"
                   :type="passwordShow ? 'text' : 'password'"
-                  dense
                   outlined
                   validate-on-blur
-                  height="48px"
                   name="input-password"
-                  placeholder="パスワード"
+                  label="パスワード"
                   @click:append="passwordShow = !passwordShow"
                 ></v-text-field>
               </div>
@@ -58,7 +70,7 @@
                   ログイン
                 </v-btn>
               </div>
-              <router-link to="/passReset">パスワードを忘れたはこちら</router-link>
+              <router-link to="/passReset">パスワードを忘れた方はこちら</router-link>
             </div>
           </div>
         </div>
@@ -104,45 +116,22 @@ export default {
 }
 </script>
 
-<style>
-.fill-width {
-  width:60%;
-  margin: 0 auto;
-  text-align: center;
+<style lang="scss" scoped>
+.v-application .py-8 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.v-application .pt-6 {
+  padding-top: 0 !important;
 }
 .link-caption {
   text-decoration: none;
   color: #666 !important;
   font-size: .75rem;
 }
-.separator {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  height: 0;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #fff;
-  position: relative;
-}
-.middle_separator {
-  position: absolute;
-  padding: 0 16px;
-  color: #ccc;
-  background: #fff;
-  font-size: 11px;
-  text-shadow: 0 1px 0 #fff;
-  text-transform: uppercase;
-  top: -7px;
-  left: 30%;
-}
-.middle_separator {
-  color: #777;
-  font-size: 13px;
-  top: -9px;
-  left: 41%;
-}
-.v-card > *:last-child:not(.v-btn):not(.v-chip){
-  text-align: -webkit-center;
-}
+/*.v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot{*/
+/*  padding: 5px 10px !important;*/
+/*}*/
 </style>
 
 

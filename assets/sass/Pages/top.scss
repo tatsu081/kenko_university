@@ -1,0 +1,88 @@
+//タイトル
+.title {
+  margin-bottom: 30px;
+
+  &__mainTitle {
+    margin: 0 0 10px;
+    text-align: left;
+    font-size: $font-size_3l;
+    color: $color-main;
+  }
+
+  &__subTitle{
+    font-size: $font-size_m;
+    color: $color-right-font;
+  }
+}
+
+//メッセージ
+.message{
+
+  &__container{
+    width: 80%;
+    margin: 50px auto;
+  }
+}
+
+//Blog
+.topBlog{
+
+  &__container{
+    width: 75%;
+    max-width: 800px;
+    margin: 50px auto;
+  }
+
+  &__item{
+    width: 45%;
+    margin-bottom: 5%;
+
+    &:hover .topBlog__item__top img{
+      transform: scale(1.1);
+    }
+
+    &__top{
+      overflow: hidden;
+      width: 100%;
+      height: 250px;
+
+      img{
+        width: 100%;
+        height: 100%;
+        transition: ease 0.3s;
+      }
+
+    }
+
+    &__bottom{
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__title{
+      font-size: 16px;
+    }
+
+
+  }
+
+  &__list__container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0 !important;
+  }
+}
+
+.top__bigButton{
+  width: 50%;
+  max-width: 450px;
+  height: 50px;
+  color: #fff;
+
+  &__container{
+    text-align: center;
+  }
+}

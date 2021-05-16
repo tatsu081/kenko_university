@@ -62,7 +62,7 @@ export default {
   }
 
   &__top{
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -72,7 +72,7 @@ export default {
 
   &__bottom{
     width: 100%;
-    padding-left: 10%;
+    padding-left: 5%;
     height: 40px;
     display: flex;
     z-index: 100;
@@ -85,7 +85,6 @@ export default {
       height: 100%;
       line-height: 40px;
       transition: all 0.3s;
-      transform: translateX(0);
       opacity: 0.5;
       letter-spacing: 1px;
 
