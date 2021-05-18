@@ -3,10 +3,26 @@
     <section class="topBanner" id="topBanner">
       <div class="topBanner__container">
         <div class="topBanner__left">
-
+          <div class="topBanner__left__main">
+            タイトル
+          </div>
+          <div class="topBanner__left__sub">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </div>
+          <router-link to="/login">
+            <v-btn
+              color="#54AD81"
+              rounded
+              class="white--text"
+            >
+              login
+            </v-btn>
+          </router-link>
         </div>
         <div class="topBanner__right">
-
+          <img src="/topBanner_cloud_img.svg" class="topBanner__right__cloud cloud_1">
+          <img src="/topBanner_cloud_img.svg" class="topBanner__right__cloud cloud_2">
+          <img src="/topBanner_img.png" class="topBanner__right__Banner">
         </div>
       </div>
     </section>
@@ -17,11 +33,15 @@
           <h2 class="title__mainTitle">Message</h2>
           <div class="title__subTitle">メッセージ</div>
         </div>
-        <div class="message__left">
-
+        <div class="message__title">
+          タイトル
         </div>
-        <div class="message__right">
+        <div class="message__sub">
+          テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキス<br><br>
 
+          トテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br><br>
+
+          トテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br><br>
         </div>
       </div>
     </section>
@@ -61,12 +81,36 @@
       </div>
     </section>
 
+    <section class="bottomBanner" id="bottomBanner">
+      <div class="bottomBanner__container">
+        <div class="bottomBanner__left">
+          <div class="bottomBanner__left__main">
+            タイトル
+          </div>
+          <div class="bottomBanner__left__sub">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </div>
+          <router-link to="/login">
+            <v-btn
+              color="#54AD81"
+              rounded
+              class="white--text"
+            >
+              login
+            </v-btn>
+          </router-link>
+        </div>
+        <div class="bottomBanner__right">
+          <img src="/bottomBanner.png" class="bottomBanner__right__Banner">
+        </div>
+      </div>
+    </section>
+
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-
 export default {
   head: {
     title: "ホーム"
@@ -96,6 +140,4 @@ export default {
 }
 </script>
 
-<!--<style lang="scss">-->
-
-<!--</style>-->
+<!--styleに関してはtop.scssに記載-->

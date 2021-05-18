@@ -59,6 +59,7 @@ export default {
   &__container{
     width: 100%;
     position: relative;
+    border-bottom: 2px solid $color_border;
   }
 
   &__top{
@@ -68,6 +69,13 @@ export default {
     justify-content: space-between;
     align-items: center;
     height: 80px;
+
+    &__right{
+
+      a{
+        font-weight: normal;
+      }
+    }
   }
 
   &__bottom{
@@ -78,6 +86,12 @@ export default {
     z-index: 100;
     transition: all 0.3s;
     background: #fff;
+
+    &.fixed{
+    position: fixed;
+    top: 0;
+    transition: all 0.3s;
+  }
 
     &__link{
       font-weight: bold;
@@ -109,10 +123,6 @@ export default {
   border-bottom: 3px solid #000;
   opacity: 1;
 }
-.fixed{
-  position: fixed;
-  top: 0;
-  transition: all 0.3s;
-}
+
 
 </style>

@@ -14,13 +14,123 @@
     color: $color-right-font;
   }
 }
+.topBanner{
 
+  &__container{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &__left{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+
+    &__main{
+      font-size: $font-size_3l;
+    }
+
+    &__sub{
+      font-size: $font-size_m;
+      margin:15px 0 30px;
+    }
+
+  }
+
+  &__right{
+    width: 65%;
+    position: relative;
+
+    &__cloud{
+      width: 25%;
+      position: relative;
+    }
+
+    &__Banner{
+      width: 100%;
+      margin-top: 120px;
+    }
+  }
+}
+.cloud_1{
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  animation: cloud1 20s infinite linear;
+}
+.cloud_2{
+  position: absolute;
+  top: 0;
+  right: 140px;
+  animation: cloud2 20s infinite linear;
+}
+@keyframes cloud1 {
+  0% {
+    top: 10px;
+    left: 20px;
+  }
+  25% {
+    top: 15px;
+    left: 80px;
+  }
+  50% {
+    top: 10px;
+    left: 140px;
+  }
+  75% {
+    top: 15px;
+    left: 80px;
+  }
+  100% {
+    top: 10px;
+    left: 20px;
+  }
+}
+@keyframes cloud2 {
+  0% {
+    top: 0;
+    right: 140px;
+  }
+  25% {
+    top: 5px;
+    right: 80px;
+  }
+  50% {
+    top: 0;
+    right: 20px;
+  }
+  75% {
+    top: 5px;
+    right: 80px;
+  }
+  100% {
+    top: 0;
+    right: 140px;
+  }
+}
 //メッセージ
 .message{
+  background: $color-bg;
+  padding: 100px 0;
 
   &__container{
     width: 80%;
-    margin: 50px auto;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  &__title{
+    font-size: $font-size_xxl;
+    margin-bottom: 30px;
+  }
+
+  &__sub{
+    font-size: $font-size_m;
+    line-height: 1.6em;
   }
 }
 
@@ -44,12 +154,13 @@
     &__top{
       overflow: hidden;
       width: 100%;
-      height: 250px;
+      height: 200px;
 
       img{
         width: 100%;
         height: 100%;
         transition: ease 0.3s;
+        object-fit: cover;
       }
 
     }
@@ -76,6 +187,52 @@
   }
 }
 
+.bottomBanner{
+  background: #DEF7F3;
+
+
+  &__container{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &__left{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+
+    &__main{
+      font-size: $font-size_3l;
+      margin-bottom: 10px;
+    }
+
+    &__sub{
+      font-size: $font-size_m;
+      margin-bottom: 20px;
+    }
+
+  }
+
+  &__right{
+    width: 65%;
+    position: relative;
+
+    &__cloud{
+      width: 25%;
+      position: relative;
+    }
+
+    &__Banner{
+      width: 100%;
+      margin-top: 50px;
+    }
+  }
+}
+
 .top__bigButton{
   width: 50%;
   max-width: 450px;
@@ -86,3 +243,4 @@
     text-align: center;
   }
 }
+
