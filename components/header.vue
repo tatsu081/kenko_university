@@ -59,25 +59,39 @@ export default {
   &__container{
     width: 100%;
     position: relative;
+    border-bottom: 2px solid $color_border;
   }
 
   &__top{
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 80px;
+
+    &__right{
+
+      a{
+        font-weight: normal;
+      }
+    }
   }
 
   &__bottom{
     width: 100%;
-    padding-left: 10%;
+    padding-left: 5%;
     height: 40px;
     display: flex;
     z-index: 100;
     transition: all 0.3s;
     background: #fff;
+
+    &.fixed{
+    position: fixed;
+    top: 0;
+    transition: all 0.3s;
+  }
 
     &__link{
       font-weight: bold;
@@ -85,7 +99,6 @@ export default {
       height: 100%;
       line-height: 40px;
       transition: all 0.3s;
-      transform: translateX(0);
       opacity: 0.5;
       letter-spacing: 1px;
 
@@ -106,14 +119,10 @@ export default {
     font-size: 16px;
   }
 }
-.nuxt-link-exact-active{
+.nuxt-link-exact-active.header__bottom__link{
   border-bottom: 3px solid #000;
   opacity: 1;
 }
-.fixed{
-  position: fixed;
-  top: 0;
-  transition: all 0.3s;
-}
+
 
 </style>

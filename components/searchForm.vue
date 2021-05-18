@@ -16,7 +16,7 @@
             v-model="query"
             outlined
             hide-details
-            placeholder="キーワードを入力"
+            label="検索（キーワードを入力）"
             autofocus
           />
         </v-col>

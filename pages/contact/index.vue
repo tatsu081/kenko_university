@@ -1,12 +1,12 @@
 <template>
-  <v-container style="max-width: 600px">
-    <h1>お問い合わせ</h1>
-    <v-text-field outlined label="name" v-model="name"></v-text-field>
-    <v-text-field outlined label="mail" v-model="mail"></v-text-field>
-    <v-textarea outlined label="message" v-model="message"></v-textarea>
+  <v-container style="max-width: 600px; margin: 25px auto">
+    <h2 class="contact__title">お問い合わせ</h2>
+    <v-text-field outlined label="お名前" v-model="name"></v-text-field>
+    <v-text-field outlined label="メールアドレス" v-model="mail"></v-text-field>
+    <v-textarea outlined label="メッセージ" v-model="message"></v-textarea>
     <div class="d-flex justify-center flex-column">
       <v-btn large outlined width="200px" class="mx-auto" @click="onSubmit"
-      >send</v-btn
+      >送信</v-btn
       >
       <p class="text-center red--text" v-if="notFilled">Fill all fields!</p>
     </div>
@@ -57,5 +57,10 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.contact__title{
+  text-align: center;
+  font-size: 30px;
+  margin: 20px 0;
+}
 </style>
