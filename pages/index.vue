@@ -14,8 +14,10 @@
               color="#54AD81"
               rounded
               class="white--text"
+              style="text-transform: none"
+              width="100px"
             >
-              login
+              Login
             </v-btn>
           </router-link>
         </div>
@@ -53,14 +55,16 @@
           <div class="title__subTitle">ブログ</div>
         </div>
         <ul class="topBlog__list__container">
-          <li v-for="content in contents" :key="content.id" class="topBlog__item">
+          <li v-for="content in contents" :key="content.id" class="topBlog__item" :class="fontColor(content)">
             <nuxt-link :to="`/${content.id}`">
               <div class="topBlog__item__top">
                 <img :src="content.image.url" alt="健康大学">
               </div>
               <div class="topBlog__item__bottom">
-                <div class="topBlog__item__bottom__left">{{ content.category && content.category.name }}</div>
-                <div class="topBlog__item__bottom_right">{{formatDate(content.createdAt)}}</div>
+                <div class="topBlog__item__bottom__left">{{
+                    content.category && content.category.name
+                  }}</div>
+                <div class="topBlog__item__bottom__right">{{formatDate(content.createdAt)}}</div>
               </div>
               <p class="topBlog__item__title">{{ content.title }}</p>
             </nuxt-link>
@@ -72,9 +76,10 @@
               color="#54AD81"
               rounded
               class="white--text top__bigButton"
+              style="text-transform: none"
               large
             >
-              MORE
+              More
             </v-btn>
           </router-link>
         </div>
@@ -95,8 +100,10 @@
               color="#54AD81"
               rounded
               class="white--text"
+              style="text-transform: none"
+              width="100px"
             >
-              login
+              Login
             </v-btn>
           </router-link>
         </div>
@@ -112,6 +119,14 @@
 <script>
 import axios from 'axios'
 export default {
+  data () {
+    return {
+      classMeal: 'meal',
+      classExercise: 'exercise',
+      classSleep: 'sleep',
+      classOthers: 'others',
+    }
+  },
   head: {
     title: "ホーム"
   },
@@ -135,6 +150,18 @@ export default {
       const mm = new String(date.getMonth() + 1).padStart(2, "0");
       const dd = new String(date.getDate()).padStart(2, "0");
       return `${yyyy} . ${mm} . ${dd}`;
+    },
+    fontColor: function(content) {
+      if (content.category.id === "meal") {
+        return this.classMeal;
+      } else if(content.category.id === "exercise") {
+        return this.classExercise;
+      } else if(content.category.id === "sleep") {
+        return this.classSleep;
+      } else {
+        return this.classOthers;
+      }
+
     }
   },
 }

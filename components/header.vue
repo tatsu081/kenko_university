@@ -11,8 +11,28 @@
             <button @click="logout">ログアウト</button>
           </template>
           <template v-else>
-            <router-link to="/login">ログイン</router-link>
-            <router-link to="/register">新規登録</router-link>
+            <router-link to="/login">
+              <v-btn
+                color="#54AD81"
+                rounded
+                class="white--text"
+                style="text-transform: none"
+                width="100px"
+              >
+                Login
+              </v-btn>
+            </router-link>
+            <router-link to="/register">
+              <v-btn
+                color="#54AD81"
+                rounded
+                class="white--text"
+                style="text-transform: none"
+                width="100px"
+              >
+                Register
+              </v-btn>
+            </router-link>
           </template>
         </div>
       </div>
@@ -87,10 +107,12 @@ export default {
     transition: all 0.3s;
     background: #fff;
 
+
     &.fixed{
-    position: fixed;
-    top: 0;
-    transition: all 0.3s;
+      position: fixed;
+      top: 0;
+      border-bottom: 2px solid $color_border;
+      transition: all 0.3s;
   }
 
     &__link{
@@ -99,11 +121,11 @@ export default {
       height: 100%;
       line-height: 40px;
       transition: all 0.3s;
-      opacity: 0.5;
+      color: $color-light-font;
       letter-spacing: 1px;
 
       &:hover{
-        opacity: 1;
+        color: $color_b;
       }
     }
   }
@@ -120,9 +142,7 @@ export default {
   }
 }
 .nuxt-link-exact-active.header__bottom__link{
-  border-bottom: 3px solid #000;
-  opacity: 1;
+  border-bottom: 2px solid $color_b;
+  color:  $color_b;
 }
-
-
 </style>
