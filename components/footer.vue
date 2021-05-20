@@ -46,6 +46,10 @@ export default {
     width: 90%;
     margin: 0 auto;
     display: flex;
+
+    @include mq{
+      flex-direction: column;
+    }
   }
 
   &__nav{
@@ -53,9 +57,17 @@ export default {
     line-height: 2;
     width: 25%;
 
+    @include mq{
+      width: 100%;
+      margin-bottom: 25px;
+    }
 
     &__title{
       font-weight: bold;
+
+      @include mq{
+        border-bottom: 1px solid $color_border;
+      }
     }
 
     ul{
@@ -64,8 +76,11 @@ export default {
       li{
 
         a{
-          font-weight: normal;
-          font-size: $font-size_m;
+          font-weight: 300;
+
+          &:hover{
+            opacity: 0.7;
+          }
         }
       }
     }
