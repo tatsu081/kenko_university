@@ -22,8 +22,7 @@
           </router-link>
         </div>
         <div class="topBanner__right">
-          <img src="/topBanner_cloud_img.svg" class="topBanner__right__cloud cloud_1">
-          <img src="/topBanner_cloud_img.svg" class="topBanner__right__cloud cloud_2">
+          <img src="/topBanner_sun_img.png" class="topBanner__right__sun">
           <img src="/topBanner_img.png" class="topBanner__right__Banner">
         </div>
       </div>
