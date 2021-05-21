@@ -25,6 +25,7 @@
     @include mq{
       width: 90%;
       flex-direction: column;
+      padding-top: 50px;
     }
   }
 
@@ -161,6 +162,7 @@
 
     @include mq{
       width: 90%;
+      margin: 100px auto;
     }
   }
 
@@ -258,6 +260,7 @@
     @include mq{
       width: 90%;
       flex-direction: column;
+      margin: 50px auto 0;
     }
   }
 
@@ -308,6 +311,10 @@
   max-width: 450px;
   height: 50px;
   color: #fff;
+
+  @include mq(){
+    margin-top: 25px;
+  }
 
   &__container{
     text-align: center;

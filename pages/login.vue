@@ -1,80 +1,82 @@
 <template>
-      <v-card
-        :tile="$vuetify.breakpoint.sm || $vuetify.breakpoint.xs"
-        class="mx-auto fill-width"
-        flat
-        max-width="640"
-        style="margin: 50px auto; padding: 0 0 30px"
-      >
+  <div class="auth">
+    <v-card
+      :tile="$vuetify.breakpoint.sm || $vuetify.breakpoint.xs"
+      class="mx-auto fill-width"
+      flat
+      max-width="640"
+      style="margin:0 auto; padding-bottom: 30px"
+    >
 
-        <v-card-title class="text-center pa-8">
-          <h4 class="fill-width">ログイン</h4>
-        </v-card-title>
+      <v-card-title class="text-center pa-8">
+        <h4 class="fill-width">ログイン</h4>
+      </v-card-title>
 
-        <div class="googleButton__container">
-          <v-btn
-            class="fill-width text-capitalize caption"
-            height="50px"
-            width="100%"
-            max-width="344px"
-            outlined
-            style="border-color:#979797; padding: 0 12px"
-            @click="loginGoogle"
-          >
-            <img
-              class="button-logo-img mr-4"
-              src="https://madeby.google.com/static/images/google_g_logo.svg"
-              style="height:24px;"
-            />
-            Googleで登録
-          </v-btn>
-        </div>
+      <div class="googleButton__container">
+        <v-btn
+          class="fill-width text-capitalize caption"
+          height="50px"
+          width="100%"
+          max-width="344px"
+          outlined
+          style="border-color:#979797; padding: 0 12px"
+          @click="loginGoogle"
+        >
+          <img
+            class="button-logo-img mr-4"
+            src="https://madeby.google.com/static/images/google_g_logo.svg"
+            style="height:24px;"
+          />
+          Googleで登録
+        </v-btn>
+      </div>
 
-        <v-divider
-          class="auth-border"
-          style="margin: 30px auto 20px"/>
-        <div class="px-6 py-8">
-          <div style="max-width:344px" class="mx-auto">
-            <div class="pt-6">
-              <div>
-                <v-text-field
-                  v-model="email"
-                  :rules="[emailRules.required, emailRules.regex]"
-                  outlined
-                  validate-on-blur
-                  label="メールアドレス"
-                  style="padding:10px 0;"
-                ></v-text-field>
+      <v-divider
+        class="auth-border"
+        style="margin: 30px auto 20px"/>
+      <div class="px-6 py-8">
+        <div style="max-width:344px" class="mx-auto">
+          <div class="pt-6">
+            <div>
+              <v-text-field
+                v-model="email"
+                :rules="[emailRules.required, emailRules.regex]"
+                outlined
+                validate-on-blur
+                label="メールアドレス"
+                style="padding:10px 0;"
+              ></v-text-field>
 
-                <v-text-field
-                  v-model="password"
-                  :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
-                  :rules="[passwordRules.required, passwordRules.regex]"
-                  :type="passwordShow ? 'text' : 'password'"
-                  outlined
-                  validate-on-blur
-                  name="input-password"
-                  label="パスワード"
-                  @click:append="passwordShow = !passwordShow"
-                ></v-text-field>
-              </div>
-              <div class="login-btn pb-8">
-                <v-btn
-                  class="fill-width caption"
-                  color="#FFCB00"
-                  depressed
-                  height="48px"
-                  tile
-                  @click="login"
-                >
-                  ログイン
-                </v-btn>
-              </div>
-              <router-link to="/passReset">パスワードを忘れた方はこちら</router-link>
+              <v-text-field
+                v-model="password"
+                :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
+                :rules="[passwordRules.required, passwordRules.regex]"
+                :type="passwordShow ? 'text' : 'password'"
+                outlined
+                validate-on-blur
+                name="input-password"
+                label="パスワード"
+                @click:append="passwordShow = !passwordShow"
+              ></v-text-field>
             </div>
+            <div class="login-btn pb-8">
+              <v-btn
+                class="fill-width caption"
+                color="#FFCB00"
+                depressed
+                height="48px"
+                tile
+                @click="login"
+              >
+                ログイン
+              </v-btn>
+            </div>
+            <router-link to="/passReset">パスワードを忘れた方はこちら</router-link>
           </div>
         </div>
-      </v-card>
+      </div>
+    </v-card>
+  </div>
 
 </template>
 
