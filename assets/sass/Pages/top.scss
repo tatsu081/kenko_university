@@ -1,10 +1,10 @@
 //タイトル
 .title {
   margin-bottom: 30px;
+  text-align: left;
 
   &__mainTitle {
     margin: 0 0 10px;
-    text-align: left;
     font-size: $font-size_3l;
     color: $color-main;
   }
@@ -26,6 +26,7 @@
       width: 100%;
       flex-direction: column;
       padding-top: 50px;
+      text-align: center;
     }
   }
 
@@ -137,6 +138,7 @@
 
     @include mq{
       width: 90%;
+      text-align: center;
     }
   }
 
@@ -161,6 +163,7 @@
 
     @include mq{
       width: 90%;
+      margin: 50px auto;
     }
   }
 
@@ -247,6 +250,7 @@
 
 .bottomBanner{
   background: #DEF7F3;
+  padding-top: 50px;
 
   @include mq{
     padding-top: 50px;
@@ -262,6 +266,7 @@
       width: 90%;
       flex-direction: column;
       margin: 50px auto 0;
+      text-align: center;
     }
   }
 
@@ -310,6 +315,7 @@
 
   @include mq(){
     margin-top: 25px;
+    width: 100%;
   }
 
   &__container{
@@ -318,12 +324,13 @@
 }
 
 .smallButton{
-  width: 80px;
+  width: 100px !important;
   max-width: 450px;
-  height: 40px;
+  height: 40px !important;
   color: #fff;
 
   @include mq(){
+    width: 120px !important;
   }
 }
 

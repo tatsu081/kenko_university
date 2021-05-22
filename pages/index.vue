@@ -11,7 +11,7 @@
           </div>
           <router-link to="/login">
             <v-btn
-              color="#3BB6BD"
+              color="#54AD81"
               rounded
               class="white--text smallButton"
               style="text-transform: none"
@@ -67,7 +67,7 @@
         <div class="top__bigButton__container">
           <router-link to="/login">
             <v-btn
-              color="#3BB6BD"
+              color="#54AD81"
               rounded
               class="white--text top__bigButton"
               style="text-transform: none"
@@ -91,7 +91,7 @@
           </div>
           <router-link to="/login">
             <v-btn
-              color="#3BB6BD"
+              color="#54AD81"
               rounded
               class="white--text smallButton"
               style="text-transform: none"

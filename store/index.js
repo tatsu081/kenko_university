@@ -67,7 +67,7 @@ export const actions = {
     firebase.auth().signOut()
       .then(()=> {
         alert('ログアウトに成功しました！')
-        this.$router.replace('/login')
+        this.$router.push('/login')
       })
   },
   passReset (context, payload){
