@@ -50,6 +50,7 @@ export default {
   head: {
     title: "検索",
   },
+  middleware: "auth",
   data() {
     return {
       query: "",

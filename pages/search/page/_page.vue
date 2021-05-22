@@ -45,6 +45,7 @@ import axios from "axios";
 import sidebar from "@/components/sidebar";
 
 export default {
+  middleware: "auth",
   async asyncData( { params, query } ) {
     const page = params.page ;
     const limit = 12 ;

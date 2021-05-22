@@ -29,6 +29,7 @@ export default {
   head: {
     title: "プロフィール"
   },
+  middleware: "auth",
   components: {
     sidebar
   },

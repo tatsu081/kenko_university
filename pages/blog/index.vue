@@ -37,12 +37,11 @@
 <script>
 import axios from 'axios'
 import sidebar from "@/components/sidebar";
-// import middleware from "@/.nuxt/middleware";
 export default {
   head: {
     title: "ブログ一覧"
   },
-  // middleware: "auth",
+  middleware: "auth",
   data() {
   },
   async asyncData() {

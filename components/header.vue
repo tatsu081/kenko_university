@@ -153,4 +153,15 @@ export default {
   border-bottom: 2px solid $color_b;
   color:  $color_b;
 }
+.smallButton{
+  width: 100px !important;
+  max-width: 450px;
+  height: 40px;
+  color: #fff;
+
+  @include mq(){
+    width: 80px !important;
+    height: 50px;
+  }
+}
 </style>

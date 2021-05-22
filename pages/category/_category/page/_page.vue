@@ -49,6 +49,7 @@ export default {
   head: {
     title: "ページ"
   },
+  middleware: "auth",
   // カテゴリーページ情報取得
   async asyncData({ params }) {
     const page = params.page ;
