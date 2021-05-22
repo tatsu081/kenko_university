@@ -17,6 +17,12 @@
           >mdi-folder</v-icon>
           <span>{{ content.category && content.category.name }}</span>
         </div>
+        <div class="twitter">
+          　<a href="//twitter.com/share" class="twitter-share-button" :data-text="title"
+              :data-url="url" data-lang="ja">
+          Tweet
+        </a>
+        </div>
         <div>
           <ul class="lists">
             <li :class="`list ${item.name}`" v-for="item in toc" :key="item.id">
@@ -62,8 +68,8 @@ export default {
       id: data.attribs.id,
       name: data.name,
     }));
-    console.log('目次', toc);
-    console.log('記事データ', data);
+    // console.log('目次', toc);
+    // console.log('記事データ', data);
     return { content:data, toc };
   },
   methods: {
@@ -124,6 +130,14 @@ export default {
       // ]
     };
   },
+  computed: {
+    title(){
+      return `${this.content.title}`
+    },
+    url(){
+      return 'https://kenko-university.web.app/'+ `${this.content.id}`
+    }
+  }
 }
 </script>
 

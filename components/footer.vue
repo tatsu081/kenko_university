@@ -78,6 +78,7 @@ export default {
 
         a{
           font-weight: 300;
+          font-size: $font-size_m;
 
           &:hover{
             opacity: 0.7;

@@ -9,7 +9,7 @@
     </div>
     <div class="twoColumn__container">
       <template v-if="contents.length">
-        <ul class="blog__container"　style="padding:0;">
+        <ul class="blog__container" style="padding:0;">
           <li
             v-for="content in contents" :key="content.id" class="blog__box">
             <nuxt-link :to="`/${content.id}`" class="blog__inner">
