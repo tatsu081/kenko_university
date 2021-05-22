@@ -4,18 +4,17 @@
       <div class="topBanner__container">
         <div class="topBanner__left">
           <div class="topBanner__left__main">
-            タイトル
+            {{ top[0].TB_title }}
           </div>
           <div class="topBanner__left__sub">
-            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+            {{ top[0].TB_detail }}
           </div>
           <router-link to="/login">
             <v-btn
-              color="#54AD81"
+              color="#3BB6BD"
               rounded
-              class="white--text"
+              class="white--text smallButton"
               style="text-transform: none"
-              width="100px"
             >
               Login
             </v-btn>
@@ -35,14 +34,10 @@
           <div class="title__subTitle">メッセージ</div>
         </div>
         <div class="message__title">
-          タイトル
+          {{ top[0].M_title }}
         </div>
         <div class="message__sub">
-          テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキス<br><br>
-
-          トテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br><br>
-
-          トテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br><br>
+          {{ top[0].M_detail }}
         </div>
       </div>
     </section>
@@ -54,7 +49,7 @@
           <div class="title__subTitle">ブログ</div>
         </div>
         <ul class="topBlog__list__container">
-          <li v-for="content in contents" :key="content.id" class="topBlog__item" :class="fontColor(content)">
+          <li v-for="content in blog" :key="content.id" class="topBlog__item" :class="fontColor(content)">
             <nuxt-link :to="`/${content.id}`">
               <div class="topBlog__item__top">
                 <img :src="content.image.url" alt="健康大学">
@@ -72,7 +67,7 @@
         <div class="top__bigButton__container">
           <router-link to="/login">
             <v-btn
-              color="#54AD81"
+              color="#3BB6BD"
               rounded
               class="white--text top__bigButton"
               style="text-transform: none"
@@ -89,18 +84,17 @@
       <div class="bottomBanner__container">
         <div class="bottomBanner__left">
           <div class="bottomBanner__left__main">
-            タイトル
+            {{ top[0].BB_title }}
           </div>
           <div class="bottomBanner__left__sub">
-            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+            {{ top[0].BB_detail }}
           </div>
           <router-link to="/login">
             <v-btn
-              color="#54AD81"
+              color="#3BB6BD"
               rounded
-              class="white--text"
+              class="white--text smallButton"
               style="text-transform: none"
-              width="100px"
             >
               Login
             </v-btn>
@@ -124,23 +118,38 @@ export default {
       classExercise: 'exercise',
       classSleep: 'sleep',
       classOthers: 'others',
+      blog: [],
+      top: [],
     }
   },
   head: {
     title: "ホーム"
   },
-  async asyncData( ) {
-    const limit = 6
-    const { data } = await axios.get(
-      // your-service-id部分は自分のサービスidに置き換えてください
-      `https://kenko-university.microcms.io/api/v1/blog?orders=publishedAt&limit=${limit}`,
-      {
-        // your-api-key部分は自分のapi-keyに置き換えてください
-        headers: { 'X-API-KEY': process.env.API_KEY }
-      }
-  )
-    // console.log(data)
-    return data
+  async asyncData() {
+    const limit = 6;
+    const [blog ,top] = await Promise.all([
+      axios.get(
+        // your-service-id部分は自分のサービスidに置き換えてください
+        `https://kenko-university.microcms.io/api/v1/blog?limit=${limit}`,
+        {
+          // your-api-key部分は自分のapi-keyに置き換えてください
+          headers: { 'X-API-KEY': process.env.API_KEY }
+        }
+      ),
+      axios.get(
+        // your-service-id部分は自分のサービスidに置き換えてください
+        `https://kenko-university.microcms.io/api/v1/top`,
+        {
+          // your-api-key部分は自分のapi-keyに置き換えてください
+          headers: { 'X-API-KEY': process.env.API_KEY }
+        }
+      ),
+    ])
+    // console.log('top', top)
+    return {
+      blog: blog.data.contents,
+      top: top.data.contents,
+    }
   },
   methods: {
     formatDate(iso) {

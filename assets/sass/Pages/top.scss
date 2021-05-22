@@ -98,7 +98,7 @@
   }
   25% {
     top:5px;
-    left: 42.5%;
+    left: 40%;
   }
   40% {
     top: 30px;
@@ -106,7 +106,7 @@
   }
   50% {
     top: 80px;
-    left: 90%;
+    left: 85%;
   }
   60% {
     top: 30px;
@@ -114,7 +114,7 @@
   }
   75% {
     top: 5px;
-    left: 42.5%;
+    left: 40%;
   }
   90% {
     top: 30px;
@@ -157,11 +157,10 @@
   &__container{
     width: 75%;
     max-width: 800px;
-    margin: 50px auto;
+    margin: 100px auto;
 
     @include mq{
       width: 90%;
-      margin: 100px auto;
     }
   }
 
@@ -249,6 +248,9 @@
 .bottomBanner{
   background: #DEF7F3;
 
+  @include mq{
+    padding-top: 50px;
+  }
 
   &__container{
     display: flex;
@@ -282,7 +284,6 @@
       font-size: $font-size_m;
       margin:15px 0 30px;
     }
-
   }
 
   &__right{
@@ -305,6 +306,7 @@
   max-width: 450px;
   height: 50px;
   color: #fff;
+  margin-top: 25px;
 
   @include mq(){
     margin-top: 25px;
@@ -312,6 +314,16 @@
 
   &__container{
     text-align: center;
+  }
+}
+
+.smallButton{
+  width: 80px;
+  max-width: 450px;
+  height: 40px;
+  color: #fff;
+
+  @include mq(){
   }
 }
 
