@@ -18,12 +18,12 @@
 
   &__container{
     display: flex;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     position: relative;
 
     @include mq{
-      width: 90%;
+      width: 100%;
       flex-direction: column;
       padding-top: 50px;
     }
@@ -35,9 +35,11 @@
     flex-direction: column;
     justify-content: center;
     position: relative;
+    margin-left: 10%;
 
     @include mq{
-      width: 100%;
+      width: 90%;
+      margin: 0 auto;
     }
 
     &__main{
@@ -59,71 +61,68 @@
       width: 100%;
     }
 
-    &__cloud{
-      width: 25%;
-      position: relative;
+    &__sun{
+      width: 12.5%;
+      position: absolute;
+      top: 80px;
+      left: 5%;
+      animation: sun 50s infinite linear;
+
+      @include mq{
+        width: 15%;
+        top: 10px;
+        left: 65%;
+        animation: infinite;
+      }
     }
 
     &__Banner{
       width: 100%;
       margin-top: 120px;
+
+      @include mq{
+        width: 90%;
+        margin-left: 10%;
+      }
     }
   }
 }
-.cloud_1{
-  position: absolute;
-  top: -10px;
-  left: 20px;
-  animation: cloud1 20s infinite linear;
-}
-.cloud_2{
-  position: absolute;
-  top: 0;
-  right: 140px;
-  animation: cloud2 20s infinite linear;
-}
-@keyframes cloud1 {
+@keyframes sun {
   0% {
-    top: 10px;
-    left: 20px;
+    top: 80px;
+    left: 5%;
+  }
+  10% {
+    top: 30px;
+    left: 15%;
   }
   25% {
-    top: 15px;
-    left: 80px;
+    top:5px;
+    left: 40%;
+  }
+  40% {
+    top: 30px;
+    left: 70%;
   }
   50% {
-    top: 10px;
-    left: 140px;
+    top: 80px;
+    left: 85%;
   }
-  75% {
-    top: 15px;
-    left: 80px;
-  }
-  100% {
-    top: 10px;
-    left: 20px;
-  }
-}
-@keyframes cloud2 {
-  0% {
-    top: 0;
-    right: 140px;
-  }
-  25% {
-    top: 5px;
-    right: 80px;
-  }
-  50% {
-    top: 0;
-    right: 20px;
+  60% {
+    top: 30px;
+    left: 70%;
   }
   75% {
     top: 5px;
-    right: 80px;
+    left: 40%;
+  }
+  90% {
+    top: 30px;
+    left: 15%;
   }
   100% {
-    top: 0;
-    right: 140px;
+    top: 80px;
+    left: 5%;
   }
 }
 //メッセージ
@@ -158,11 +157,10 @@
   &__container{
     width: 75%;
     max-width: 800px;
-    margin: 50px auto;
+    margin: 100px auto;
 
     @include mq{
       width: 90%;
-      margin: 100px auto;
     }
   }
 
@@ -250,6 +248,9 @@
 .bottomBanner{
   background: #DEF7F3;
 
+  @include mq{
+    padding-top: 50px;
+  }
 
   &__container{
     display: flex;
@@ -283,7 +284,6 @@
       font-size: $font-size_m;
       margin:15px 0 30px;
     }
-
   }
 
   &__right{
@@ -292,11 +292,6 @@
 
     @include mq{
       width: 100%;
-    }
-
-    &__cloud{
-      width: 25%;
-      position: relative;
     }
 
     &__Banner{
@@ -311,6 +306,7 @@
   max-width: 450px;
   height: 50px;
   color: #fff;
+  margin-top: 25px;
 
   @include mq(){
     margin-top: 25px;
@@ -318,6 +314,16 @@
 
   &__container{
     text-align: center;
+  }
+}
+
+.smallButton{
+  width: 80px;
+  max-width: 450px;
+  height: 40px;
+  color: #fff;
+
+  @include mq(){
   }
 }
 

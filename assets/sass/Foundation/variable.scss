@@ -13,11 +13,10 @@ $color_youtube: #cd201f;
 $color_line: #00b900;
 $color_orange: #FF9900;
 $color_border: #F6F7FC; //headerのborder-bottom
-$color_meal: #EBB95A;
-$color_exercise: #DA83A3;
-$color_sleep: #3BB6BD;
-$color_others: #00618C;
-
+$color_meal: #EBB95A; // 食事
+$color_exercise: #DA83A3; //運動
+$color_sleep: #3BB6BD; //睡眠
+$color_others: #00618C; //その他
 
 $font-size_s: 12px;
 $font-size_m: 14px;
@@ -30,7 +29,7 @@ $font-size_3l: 40px;
 $site-width: 980px;
 
 $breakpoints: (
-  'sm': 'screen and (max-width: 500px)',
+  'sm': 'screen and (max-width: 600px)',
   'md': 'screen and (max-width: 768px)',
   'lg': 'screen and (max-width: 1024px)',
   'xl': 'screen and (max-width: 1200px)',
@@ -72,7 +71,7 @@ body {
 }
 
 a{
-  color:$color_default;
+  color:$color_b;
   font-weight:bold;
   text-decoration:none;
   cursor: pointer;

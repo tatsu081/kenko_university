@@ -40,7 +40,8 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-  padding: 50px 0;
+  padding: 25px 0;
+  border-top: 2px solid #F6F7FC;
 
   &__container {
     width: 90%;

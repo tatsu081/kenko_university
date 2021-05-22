@@ -7,28 +7,36 @@
         </div>
         <div class="header__top__right">
           <template v-if="$store.state.user.login">
-            <router-link to="/search"><v-icon medium>mdi-magnify</v-icon></router-link>
-            <button @click="logout">ログアウト</button>
+            <router-link to="/search">
+              <v-icon medium>mdi-magnify</v-icon>
+            </router-link>
+            <v-btn
+              color="#54AD81"
+              rounded
+              class="white--text smallButton"
+              style="text-transform: none; margin-left: 10px;"
+              @click="logout"
+            >
+              Logout
+            </v-btn>
           </template>
           <template v-else>
             <router-link to="/login">
               <v-btn
                 color="#54AD81"
                 rounded
-                class="white--text"
+                class="white--text smallButton"
                 style="text-transform: none"
-                width="100px"
               >
                 Login
               </v-btn>
             </router-link>
             <router-link to="/register">
               <v-btn
-                color="#54AD81"
+                color="#00618C"
                 rounded
-                class="white--text"
+                class="white--text smallButton"
                 style="text-transform: none"
-                width="100px"
               >
                 Register
               </v-btn>
