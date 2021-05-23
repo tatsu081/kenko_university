@@ -1,5 +1,13 @@
 <template>
-
+  <router-link :to="'/category/' + content.id">
+    <div class="category__top">
+      <v-icon v-text="content.icon" :color="color"></v-icon>
+      <p v-text="content.name"></p>
+    </div>
+    <div class="category__bottom">
+      <p v-text="content.description"></p>
+    </div>
+  </router-link>
 </template>
 
 <script>
