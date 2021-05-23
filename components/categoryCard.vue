@@ -26,34 +26,31 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.categoryList p {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 1em;
+.category{
+  padding: 20px !important;
+
+  &__top{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    p{
+      margin:0 30px 0 !important;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333333;
+    }
+  }
+
+  &__bottom{
+    top: 10px;
+
+    p{
+      font-size: 14px;
+      color: #787878;
+      margin-bottom: 0 !important;
+    }
+  }
 }
-.categoryList p:before {
-  content: "";
-  position: absolute;
-  bottom: -15px;
-  display: inline-block;
-  width: 60px;
-  height: 5px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  background-color: #54AD81;
-  border-radius: 2px;
-}
-hr{
-  margin: 0 !important;
-}
-.v-list--nav .v-list-item{
-  padding: 0 20px !important;
-}
-.v-list{
-  padding: 0;
-}
-.v-list--nav{
-  padding: 0;
-}
+
 </style>
