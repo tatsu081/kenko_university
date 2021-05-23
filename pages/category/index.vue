@@ -3,15 +3,7 @@
     <div class="blog__container">
         <ul>
           <li v-for="content in contents" :key="content.id" class="category blog__box">
-            <router-link :to="'/category/' + content.id">
-              <div class="category__top">
-                <v-icon v-text="content.icon" :color="color"></v-icon>
-                <p v-text="content.name"></p>
-              </div>
-              <div class="category__bottom">
-                <p v-text="content.description"></p>
-              </div>
-            </router-link>
+            <category-list :content="content" />
           </li>
         </ul>
     </div>
@@ -23,6 +15,7 @@
 
 <script>
 import axios from 'axios'
+import categoryList from "~/components/categoryList";
 export default {
   // middleware: "auth",
   head: {
@@ -45,6 +38,9 @@ export default {
     console.log(data)
     return data
   },
+  components:{
+    categoryList
+  }
 }
 </script>
 
