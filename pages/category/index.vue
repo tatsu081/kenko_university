@@ -15,7 +15,7 @@
 
 <script>
 import axios from 'axios'
-import categoryCard from "~/components/categoryCard";
+import categoryCard from "~/components/Organisms/Cards/CategoryCard";
 export default {
   middleware: "auth",
   head: {

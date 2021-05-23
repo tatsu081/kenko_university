@@ -25,7 +25,7 @@
 <script>
 import axios from 'axios'
 import sidebar from "@/components/sidebar";
-import blogCard from "~/components/blogCard";
+import blogCard from "~/components/Organisms/Cards/BlogCard";
 export default {
   head: {
     title: "ブログ一覧"
