@@ -7,12 +7,40 @@
         </div>
         <div class="header__top__right">
           <template v-if="$store.state.user.login">
-            <router-link to="/search"><v-icon medium>mdi-magnify</v-icon></router-link>
-            <button @click="logout">ログアウト</button>
+            <router-link to="/search">
+              <v-icon medium>mdi-magnify</v-icon>
+            </router-link>
+            <v-btn
+              color="#54AD81"
+              rounded
+              class="white--text smallButton"
+              style="text-transform: none; margin-left: 10px;"
+              @click="logout"
+            >
+              Logout
+            </v-btn>
           </template>
           <template v-else>
-            <router-link to="/login">ログイン</router-link>
-            <router-link to="/register">新規登録</router-link>
+            <router-link to="/login">
+              <v-btn
+                color="#54AD81"
+                rounded
+                class="white--text smallButton"
+                style="text-transform: none"
+              >
+                Login
+              </v-btn>
+            </router-link>
+            <router-link to="/register">
+              <v-btn
+                color="#00618C"
+                rounded
+                class="white--text smallButton"
+                style="text-transform: none"
+              >
+                Register
+              </v-btn>
+            </router-link>
           </template>
         </div>
       </div>
@@ -59,25 +87,41 @@ export default {
   &__container{
     width: 100%;
     position: relative;
+    border-bottom: 2px solid $color_border;
   }
 
   &__top{
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 80px;
+
+    &__right{
+
+      a{
+        font-weight: normal;
+      }
+    }
   }
 
   &__bottom{
     width: 100%;
-    padding-left: 10%;
+    padding-left: 5%;
     height: 40px;
     display: flex;
     z-index: 100;
     transition: all 0.3s;
     background: #fff;
+
+
+    &.fixed{
+      position: fixed;
+      top: 0;
+      border-bottom: 2px solid $color_border;
+      transition: all 0.3s;
+  }
 
     &__link{
       font-weight: bold;
@@ -85,12 +129,11 @@ export default {
       height: 100%;
       line-height: 40px;
       transition: all 0.3s;
-      transform: translateX(0);
-      opacity: 0.5;
+      color: $color-light-font;
       letter-spacing: 1px;
 
       &:hover{
-        opacity: 1;
+        color: $color_b;
       }
     }
   }
@@ -106,14 +149,19 @@ export default {
     font-size: 16px;
   }
 }
-.nuxt-link-exact-active{
-  border-bottom: 3px solid #000;
-  opacity: 1;
+.nuxt-link-exact-active.header__bottom__link{
+  border-bottom: 2px solid $color_b;
+  color:  $color_b;
 }
-.fixed{
-  position: fixed;
-  top: 0;
-  transition: all 0.3s;
-}
+.smallButton{
+  width: 100px !important;
+  max-width: 450px;
+  height: 40px;
+  color: #fff;
 
+  @include mq(){
+    width: 80px !important;
+    height: 50px;
+  }
+}
 </style>
