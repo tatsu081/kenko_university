@@ -4,19 +4,7 @@
       <ul class="blog__container"　style="padding:0;">
         <li
           v-for="content in contents" :key="content.id" class="blog__box">
-          <nuxt-link :to="`/${content.id}`" class="blog__inner">
-            <div class="blog__left">
-              <img :src="content.image.url" alt="健康大学">
-            </div>
-            <div class="blog__right">
-              <p>
-                <span class="blog__right__category">{{ content.category && content.category.name }}</span>
-                <span class="blog__right__date">作成日 : {{formatDate(content.createdAt)}}</span>
-              </p>
-              <h2 class="blog__right__title">{{ content.title }}</h2>
-              <p></p>
-            </div>
-          </nuxt-link>
+          <blog-card :content="content"></blog-card>
         </li>
         <v-layout v-if="length > 12" row wrap justify-end style="margin: 0">
           <v-btn
@@ -37,6 +25,7 @@
 <script>
 import axios from 'axios'
 import sidebar from "@/components/sidebar";
+import blogCard from "~/components/blogCard";
 export default {
   head: {
     title: "ブログ一覧"
@@ -70,7 +59,8 @@ export default {
     }
   },
   components: {
-    sidebar
+    sidebar,
+    blogCard,
   }
 }
 </script>
