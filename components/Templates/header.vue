@@ -44,6 +44,8 @@
           </template>
         </div>
       </div>
+
+        <!-- ナビゲーション -->
         <div v-if="$store.state.user.login" class="header__bottom" :class="{ 'fixed': scrollY > 80 }">
           <router-link to="/blog" class="header__bottom__link" active-class="active-list" exact>Blog</router-link>
           <router-link to="/category" class="header__bottom__link" active-class="active-list">Category</router-link>

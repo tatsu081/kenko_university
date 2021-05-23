@@ -9,7 +9,6 @@
         <span class="blog__right__date">作成日 : {{formatDate(content.createdAt)}}</span>
       </p>
       <h2 class="blog__right__title">{{ content.title }}</h2>
-      <p></p>
     </div>
   </nuxt-link>
 </template>
