@@ -49,15 +49,6 @@ export default {
   created() {
     this.length = this.totalCount
   },
-  methods: {
-    formatDate(iso) {
-      const date = new Date(iso);
-      const yyyy = new String(date.getFullYear());
-      const mm = new String(date.getMonth() + 1).padStart(2, "0");
-      const dd = new String(date.getDate()).padStart(2, "0");
-      return `${yyyy}-${mm}-${dd}`;
-    }
-  },
   components: {
     sidebar,
     blogCard,
@@ -88,23 +79,6 @@ export default {
 .blog__main__container li p{
   font-size: 16px;
   text-align: center;
-  color: black;
-}
-//swiper
-.swiper__container{
-  width: 100%;
-  position: relative;
-}
-.swiper__container img{
-  width: 100%;
-  height: auto;
-}
-.swiper__container h2{
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
-  font-size: 50px;
   color: black;
 }
 .pagination__conteiner{

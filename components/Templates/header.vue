@@ -47,10 +47,10 @@
 
         <!-- ナビゲーション -->
         <div v-if="$store.state.user.login" class="header__bottom" :class="{ 'fixed': scrollY > 80 }">
-          <router-link to="/blog" class="header__bottom__link" active-class="active-list" exact>Blog</router-link>
-          <router-link to="/category" class="header__bottom__link" active-class="active-list">Category</router-link>
-          <router-link to="/profile" class="header__bottom__link" active-class="active-list">Profile</router-link>
-          <router-link to="/contact" class="header__bottom__link" active-class="active-list">Contact</router-link>
+          <router-link to="/blog" class="header__bottom__link" active-class="router-link-active">Blog</router-link>
+          <router-link to="/category" class="header__bottom__link" active-class="router-link-active">Category</router-link>
+          <router-link to="/profile" class="header__bottom__link" active-class="router-link-active">Profile</router-link>
+          <router-link to="/contact" class="header__bottom__link" active-class="router-link-active">Contact</router-link>
         </div>
     </div>
   </header>
@@ -165,7 +165,7 @@ export default {
     font-size: 16px;
   }
 }
-.nuxt-link-exact-active.header__bottom__link{
+.router-link-active.header__bottom__link{
   border-bottom: 2px solid $color_b;
   color:  $color_b;
 }
