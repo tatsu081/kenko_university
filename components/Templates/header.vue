@@ -3,7 +3,7 @@
     <div class="header__container">
       <div class="header__top">
         <div class="header__top__left">
-          <router-link to="/" class="header__logo">ロゴ</router-link>
+          <router-link to="/" class="header__logo"><img src="/logo.png" alt="健康大学"></router-link>
         </div>
         <div class="header__top__right">
           <template v-if="$store.state.user.login">
@@ -99,6 +99,20 @@ export default {
     justify-content: space-between;
     align-items: center;
     height: 80px;
+
+    &__left{
+      width: 15%;
+
+      @include mq{
+        width: 35%;
+      }
+
+      img{
+        width: 100%;
+        max-width: 150px;
+        height: auto;
+      }
+    }
 
     &__right{
 

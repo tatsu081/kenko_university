@@ -17,7 +17,7 @@ export default {
       { hid: 'og:image', property: 'og:image', content: '' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
     script: [
       { src: "https://platform.twitter.com/widgets.js", type: 'text/javascript' }
