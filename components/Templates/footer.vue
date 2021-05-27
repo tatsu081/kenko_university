@@ -17,7 +17,7 @@
       <div class="footer__nav">
         <div class="footer__nav__title">Legal</div>
         <ul>
-          <li><nuxt-link to="">利用規約</nuxt-link></li>
+          <li><nuxt-link to="/privacy">利用規約</nuxt-link></li>
         </ul>
       </div>
 
