@@ -69,8 +69,6 @@ export default {
       border-bottom: dashed 2px #777777;
       margin: 25px 3% 25px;
       font-size: 18px;
-      //display: inline-block;
-
     }
 
     p {
@@ -105,7 +103,6 @@ export default {
   }
 
   &__date{
-    //margin-top: 10px;
     text-align: center;
 
     span{
