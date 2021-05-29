@@ -83,7 +83,7 @@ export default {
   },
   components: {
     BlogCard,
-    searchForm
+    searchForm,
   }
 }
 </script>

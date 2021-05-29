@@ -1,7 +1,7 @@
 <template>
-  <div class="opening" :class="{ 'ready' : loading }" v-if="loading">
-    <div class="logo_01" :class="{ 'ready' : loading }"><img src="/animation_logo.png"></div>
-    <div class="logo_02" :class="{ 'ready' : loading }"><img src="/animation_text.svg"></div>
+  <div class="opening" :class="{ active: isActive }" v-if="isLoading">
+    <div class="logo_02" :class="{ 'ready' : isLoading }"><img src="/animation_text.svg"></div>
+    <div class="logo_01" :class="{ 'ready' : isLoading }"><img src="/animation_logo.png"></div>
   </div>
 </template>
 
@@ -13,12 +13,13 @@ export default {
   mixins:[delayMixin],
   computed: {
     ...mapGetters({
-      isLoading: 'opening/isLoading'
+      isLoading: 'isLoading'
     })
   },
   data() {
     return {
       loading: true,
+      isActive: false,
     }
   },
   watch: {
@@ -28,15 +29,20 @@ export default {
       }
     }
   },
-  mounted() {
-    window.addEventListener('load', async () => {
-      await this.$delay(5000) // PromiseでsetTimeOut返すプラグインです
-      this.endLoding()
-    })
+  async mounted() {
+    // window.addEventListener('load', async () => {
+    await this.$delay(9000) // PromiseでsetTimeOut返すプラグインです
+    this.opening()
+    await this.$delay(500) // PromiseでsetTimeOut返すプラグインです
+    this.endLoading()
+    // })
   },
   methods: {
+    opening(){
+      this.isActive = !this.isActive
+    },
     ...mapActions({
-      endLoding: 'opening/endLoding'
+      endLoading: 'endLoading'
     }),
   },
 }
@@ -51,14 +57,15 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  transform: translateX(0);
+  //transform: translateX(0);
   z-index: 99999;
   animation-name: gradient;
   animation-duration: 4s;
   animation-iteration-count: infinite;
 
-  .ready{
-    transform: translateX(100%);
+  &.active{
+    opacity: 0;
+    transition: ease-in-out 0.5s;
   }
 }
 
@@ -73,6 +80,9 @@ export default {
   margin: 0 auto;
 }
 
+
+
+
 .logo_01 img{
   width: 100%;
   height: 100%;
@@ -80,8 +90,8 @@ export default {
 
 .logo_01.ready{
   animation-name: opening_01;
-  animation-duration: 4.5s;
-  animation-delay: 1s;
+  animation-duration: 5s;
+  animation-delay: 5s;
 }
 
 .logo_02{
@@ -97,9 +107,9 @@ export default {
 
 .logo_02.ready{
   animation-name: opening_02;
-  animation-duration: 5s;
+  animation-duration: 4.5s;
   width: 45%;
-  animation-delay: 5s;
+  animation-delay: 1s;
 }
 
 .logo_02 img{
@@ -144,8 +154,8 @@ export default {
     transform: translateY(-50%);
   }
   100%{
-    opacity: 0;
-    transform: translateY(-100%);
+    opacity: 1;
+    transform: scale(50);
   }
 }
 //
@@ -178,8 +188,8 @@ export default {
     transform: translateY(-50%);
   }
   100%{
-    opacity: 1;
-    transform: scale(50);
+    opacity: 0;
+    transform: translateY(-100%);
   }
 }
 </style>

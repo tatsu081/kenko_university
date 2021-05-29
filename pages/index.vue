@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div>
+      <Loading />
+    </div>
     <section class="topBanner" id="topBanner">
       <div class="topBanner__container">
         <div class="topBanner__left">
@@ -111,6 +114,8 @@
 
 <script>
 import axios from 'axios'
+import Loading from "@/components/loading";
+
 export default {
   data () {
     return {
@@ -121,6 +126,9 @@ export default {
       blog: [],
       top: [],
     }
+  },
+  components: {
+    Loading,
   },
   head: {
     title: "ホーム"
@@ -169,7 +177,6 @@ export default {
       } else {
         return this.classOthers;
       }
-
     }
   },
 }
