@@ -1,4 +1,5 @@
 import firebase from '~/plugins/firebase'
+import mixin from '~/plugins/mixin'
 
 export const state = () => ({
   user: {
