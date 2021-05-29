@@ -5,7 +5,7 @@ const { API_KEY } = process.env;
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  mode: 'universal',
+  ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -17,7 +17,7 @@ export default {
       { hid: 'og:image', property: 'og:image', content: '' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
     script: [
       { src: "https://platform.twitter.com/widgets.js", type: 'text/javascript' }

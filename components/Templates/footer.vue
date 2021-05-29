@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="footer__container">
       <div class="footer__nav footer_img">
-        ロゴ
+        <img src="/logo.png" alt="健康大学">
       </div>
       <div class="footer__nav">
         <div class="footer__nav__title">About</div>
@@ -17,7 +17,7 @@
       <div class="footer__nav">
         <div class="footer__nav__title">Legal</div>
         <ul>
-          <li><nuxt-link to="">利用規約</nuxt-link></li>
+          <li><nuxt-link to="/privacy">利用規約</nuxt-link></li>
         </ul>
       </div>
 
@@ -63,8 +63,14 @@ export default {
       margin-bottom: 25px;
     }
 
+    img{
+      width: 150px;
+      height: auto;
+    }
+
     &__title{
       font-weight: bold;
+      color: $color_b;
 
       @include mq{
         border-bottom: 1px solid $color_border;
@@ -79,6 +85,8 @@ export default {
         a{
           font-weight: 300;
           font-size: $font-size_m;
+          color: $color_b;
+          transition: all 0.3s;
 
           &:hover{
             opacity: 0.7;

@@ -1,6 +1,12 @@
+import firebase from "firebase";
+
 export default function ({ store, redirect }) {
   // ユーザーが認証されていない場合
-  if (!store.state.user.login) {
-    return redirect('/login')
-  }
+  firebase.auth().onAuthStateChanged(user => {
+    if (!user) {
+      return redirect('/login')
+    } else {
+      // ユーザーはログインしていません。
+    }
+  })
 }

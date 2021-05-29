@@ -3,7 +3,7 @@
     <div class="header__container">
       <div class="header__top">
         <div class="header__top__left">
-          <router-link to="/" class="header__logo">ロゴ</router-link>
+          <router-link to="/" class="header__logo"><img src="/logo.png" alt="健康大学"></router-link>
         </div>
         <div class="header__top__right">
           <template v-if="$store.state.user.login">
@@ -44,11 +44,13 @@
           </template>
         </div>
       </div>
+
+        <!-- ナビゲーション -->
         <div v-if="$store.state.user.login" class="header__bottom" :class="{ 'fixed': scrollY > 80 }">
-          <router-link to="/blog" class="header__bottom__link" active-class="active-list" exact>Blog</router-link>
-          <router-link to="/category" class="header__bottom__link" active-class="active-list">Category</router-link>
-          <router-link to="/profile" class="header__bottom__link" active-class="active-list">Profile</router-link>
-          <router-link to="/contact" class="header__bottom__link" active-class="active-list">Contact</router-link>
+          <router-link to="/blog" class="header__bottom__link" active-class="router-link-active">Blog</router-link>
+          <router-link to="/category" class="header__bottom__link" active-class="router-link-active">Category</router-link>
+          <router-link to="/profile" class="header__bottom__link" active-class="router-link-active">Profile</router-link>
+          <router-link to="/contact" class="header__bottom__link" active-class="router-link-active">Contact</router-link>
         </div>
     </div>
   </header>
@@ -97,6 +99,20 @@ export default {
     justify-content: space-between;
     align-items: center;
     height: 80px;
+
+    &__left{
+      width: 15%;
+
+      @include mq{
+        width: 35%;
+      }
+
+      img{
+        width: 100%;
+        max-width: 150px;
+        height: auto;
+      }
+    }
 
     &__right{
 
@@ -149,7 +165,7 @@ export default {
     font-size: 16px;
   }
 }
-.nuxt-link-exact-active.header__bottom__link{
+.router-link-active.header__bottom__link{
   border-bottom: 2px solid $color_b;
   color:  $color_b;
 }
