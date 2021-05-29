@@ -1,13 +1,12 @@
 import firebase from '~/plugins/firebase'
-import mixin from '~/plugins/mixin'
 
 export const state = () => ({
   user: {
     uid: '',
     email: '',
     login: false,
-    loading: true,
   },
+  loading: true,
 })
 
 export const getters = {
@@ -88,7 +87,7 @@ export const actions = {
     });
   },
   endLoading({ commit }) {
-    commit('endLoding')
+    commit('endLoading')
   }
 }
 
