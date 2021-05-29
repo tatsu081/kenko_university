@@ -6,8 +6,8 @@ export const state = () => ({
     uid: '',
     email: '',
     login: false,
-    loading: true,
   },
+  loading: true,
 })
 
 export const getters = {
@@ -15,14 +15,14 @@ export const getters = {
 }
 
 export const mutations = {
-  getData (state, payload) {
+  getData(state, payload) {
     state.user.uid = payload.uid
     state.user.email = payload.email
   },
-  switchLogin (state, login) {
+  switchLogin(state, login) {
     state.user.login = true
   },
-  deleteLogin (state){
+  deleteLogin(state) {
     state.user.login = false
   },
   endLoading(state) {
@@ -31,31 +31,31 @@ export const mutations = {
 }
 
 export const actions = {
-  deleteLogin ({ commit }){
+  deleteLogin({ commit }) {
     commit('deleteLogin')
   },
   switchLogin(state, login) {
     commit('switchLogin')
   },
   login({ dispatch }, payload) {
-      firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
+    firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(user => {
         dispatch('checkLogin')
         this.$router.push('/blog')
-      }).catch(function (error){
+      }).catch(function (error) {
         alert('メールアドレスもしくはパスワードが違う可能性があります')
-    })
+      })
   },
-  loginGoogle({dispatch}) {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth().signInWithPopup(provider)
+  loginGoogle({ dispatch }) {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider)
       .then(user => {
         this.$router.push('/blog')
-      }).catch(function (error){
-      alert('もう一度ログイン認証してください')
-    })
+      }).catch(function (error) {
+        alert('もう一度ログイン認証してください')
+      })
   },
-  checkLogin ({ commit }) {
+  checkLogin({ commit }) {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         commit('getData', { uid: user.uid, email: user.email })
@@ -65,30 +65,30 @@ export const actions = {
       }
     })
   },
-  register ({ dispatch, commit }, payload) {
+  register({ dispatch, commit }, payload) {
     firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
       .then(user => {
         dispatch('checkLogin')
         this.$router.push('/blog')
       })
   },
-  logout ({  dispatch }) {
+  logout({ dispatch }) {
     firebase.auth().signOut()
-      .then(()=> {
+      .then(() => {
         alert('ログアウトに成功しました！')
         this.$router.push('/login')
       })
   },
-  passReset (context, payload){
+  passReset(context, payload) {
 
-    firebase.auth().sendPasswordResetEmail(payload.email).then(function() {
+    firebase.auth().sendPasswordResetEmail(payload.email).then(function () {
       alert('メールを送信しました')
-    }).catch(function(error) {
+    }).catch(function (error) {
       alert(('メールの送信に失敗しました。もう一度ご確認ください。'))
     });
   },
   endLoading({ commit }) {
-    commit('endLoding')
+    commit('endLoading')
   }
 }
 
