@@ -22,20 +22,11 @@ export default {
       isActive: false,
     }
   },
-  watch: {
-    isLoading: async function(next, prev) {
-      if (!next && prev) {
-
-      }
-    }
-  },
   async mounted() {
-    // window.addEventListener('load', async () => {
-    await this.$delay(9000) // PromiseでsetTimeOut返すプラグインです
+    await this.$delay(8000) // PromiseでsetTimeOut返すプラグインです
     this.opening()
     await this.$delay(500) // PromiseでsetTimeOut返すプラグインです
     this.endLoading()
-    // })
   },
   methods: {
     opening(){
@@ -78,20 +69,22 @@ export default {
   width: 20%;
   height: auto;
   margin: 0 auto;
-}
 
+  @include mq{
+    left: 25%;
+    width: 50%;
+  }
 
+  &.ready{
+    animation-name: opening_01;
+    animation-duration: 4.5s;
+    animation-delay: 4.5s;
+  }
 
-
-.logo_01 img{
-  width: 100%;
-  height: 100%;
-}
-
-.logo_01.ready{
-  animation-name: opening_01;
-  animation-duration: 5s;
-  animation-delay: 5s;
+  img{
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .logo_02{
@@ -103,28 +96,31 @@ export default {
   width: 0;
   height: auto;
   margin: 0 auto;
-}
 
-.logo_02.ready{
-  animation-name: opening_02;
-  animation-duration: 4.5s;
-  width: 45%;
-  animation-delay: 1s;
-}
+  @include mq{
+    left: 10%;
+    width: 80%;
+  }
 
-.logo_02 img{
-  width: 100%;
-  height: 100%;
+  &.ready{
+    animation-name: opening_02;
+    animation-duration: 4s;
+    width: 45%;
+    animation-delay: 1s;
+  }
+
+  img{
+    width: 100%;
+    height: 100%;
+  }
 }
 
 @media screen and (max-width: 640px){
   .logo_01{
-    left: 25%;
-    width: 50%;
+
   }
   .logo_02{
-    left: 10%;
-    width: 80%;
+
   }
 }
 

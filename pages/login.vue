@@ -71,6 +71,7 @@
                 ログイン
               </v-btn>
             </div>
+            <router-link to="/register" >初めての方はこちら</router-link><br><br>
             <router-link to="/passReset">パスワードを忘れた方はこちら</router-link>
           </div>
         </div>

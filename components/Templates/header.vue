@@ -31,16 +31,6 @@
                 Login
               </v-btn>
             </router-link>
-            <router-link to="/register">
-              <v-btn
-                color="#00618C"
-                rounded
-                class="white--text smallButton"
-                style="text-transform: none"
-              >
-                Register
-              </v-btn>
-            </router-link>
           </template>
         </div>
       </div>
@@ -57,7 +47,7 @@
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
