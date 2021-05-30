@@ -93,34 +93,23 @@ export default {
   top: 50%;
   left: 27.5%;
   transform: translateY(-50%);
-  width: 0;
+  width: 50%;
   height: auto;
-  margin: 0 auto;
 
   @include mq{
-    left: 10%;
-    width: 80%;
+    left: 5%;
+    width: 90%;
   }
 
   &.ready{
     animation-name: opening_02;
     animation-duration: 4s;
-    width: 45%;
     animation-delay: 1s;
   }
 
   img{
     width: 100%;
     height: 100%;
-  }
-}
-
-@media screen and (max-width: 640px){
-  .logo_01{
-
-  }
-  .logo_02{
-
   }
 }
 

@@ -24,8 +24,8 @@
       <div class="footer__nav">
         <div class="footer__nav__title">Links</div>
         <ul>
-          <li><nuxt-link to="">Twitter</nuxt-link></li>
-          <li><nuxt-link to="">Instagram</nuxt-link></li>
+          <li><nuxt-link to="https://twitter.com/futty_0123" target="_blank">Twitter</nuxt-link></li>
+          <li><nuxt-link to="https://www.instagram.com/kenko_happy_0227/?hl=ja">Instagram</nuxt-link></li>
         </ul>
       </div>
     </div>
@@ -66,6 +66,10 @@ export default {
     img{
       width: 150px;
       height: auto;
+
+      @include mq{
+        width: 120px;
+      }
     }
 
     &__title{
