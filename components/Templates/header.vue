@@ -98,9 +98,12 @@ export default {
       }
 
       img{
-        width: 100%;
-        max-width: 150px;
+        width: 150px;
         height: auto;
+
+        @include mq{
+          width: 120px;
+        }
       }
     }
 
