@@ -58,32 +58,27 @@ export default {
 </script>
 <style lang="scss">
 .profile__container{
-  padding: 20px 10px;
-  background: #fff;
-  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
 
   .content {
 
-    margin: 50px 0;
+    margin: 0 0 50px;
 
     h2 {
-      padding: 0.6em; /*文字周りの余白*/
       color: #333333; /*文字色*/
-      margin: 50px 0 25px;
+      margin:  50px 0;
       font-size: 24px;
     }
 
     h3 {
       color: #333333; /*文字色*/
       border-bottom: dashed 2px #777777;
-      margin: 25px 3% 25px;
+      margin: 25px 0;
       font-size: 18px;
       //display: inline-block;
 
     }
 
     p {
-      margin: 20px 3%;
       font-size: 16px;
       line-height: 2em;
     }
@@ -96,10 +91,10 @@ export default {
 
     blockquote {
       border-left: solid 3px #bdbdbd; /*左線（実線 太さ 色）*/
-      margin: 0 5%;
+      margin: 0;
       background-color: #f5f5f5;
-      line-height: 1.5em;
-      padding: 25px 0;
+      line-height: 2em;
+      padding: 25px 10px;
     }
   }
 }

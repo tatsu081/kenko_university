@@ -49,7 +49,10 @@ export default {
   },
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
+.twoColumn__container{
+  margin: 10% auto;
+}
 .privacy__container{
   background: #fff;
 

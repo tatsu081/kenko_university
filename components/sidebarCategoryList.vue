@@ -3,7 +3,7 @@
     <v-list>
       <v-list-item to="/category/">
         <v-list-item-content>
-          <v-list-item-title class="title categoryList" style="text-align: center">
+          <v-list-item-title class="categoryList" style="text-align: center">
             <p>Category</p>
           </v-list-item-title>
         </v-list-item-content>
@@ -55,11 +55,11 @@ export default {
           id: "sleep",
           icon: "mdi-sleep"
         },
-        {
-          title: "禁欲",
-          id: "abstinence",
-          icon: "mdi-corn-off"
-        },
+        // {
+        //   title: "禁欲",
+        //   id: "abstinence",
+        //   icon: "mdi-corn-off"
+        // },
         {
           title: "マインド",
           id: "mind",

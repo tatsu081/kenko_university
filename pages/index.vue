@@ -1,17 +1,12 @@
 <template>
   <div>
-    <div>
-      <Loading />
-    </div>
     <section class="topBanner" id="topBanner">
       <div class="topBanner__container">
         <div class="topBanner__left">
           <div class="topBanner__left__main">
             {{ top[0].TB_title }}
           </div>
-          <div class="topBanner__left__sub">
-            {{ top[0].TB_detail }}
-          </div>
+          <div class="topBanner__left__sub" v-html="top[0].TB_detail"></div>
           <router-link to="/login">
             <v-btn
               color="#54AD81"
@@ -39,9 +34,7 @@
         <div class="message__title">
           {{ top[0].M_title }}
         </div>
-        <div class="message__sub">
-          {{ top[0].M_detail }}
-        </div>
+        <div class="message__sub" v-html="top[0].M_detail"></div>
       </div>
     </section>
 
@@ -89,9 +82,7 @@
           <div class="bottomBanner__left__main">
             {{ top[0].BB_title }}
           </div>
-          <div class="bottomBanner__left__sub">
-            {{ top[0].BB_detail }}
-          </div>
+          <div class="bottomBanner__left__sub" v-html="top[0].BB_detail"></div>
           <router-link to="/login">
             <v-btn
               color="#54AD81"
@@ -114,7 +105,6 @@
 
 <script>
 import axios from 'axios'
-import Loading from "@/components/loading";
 
 export default {
   data () {
@@ -126,9 +116,6 @@ export default {
       blog: [],
       top: [],
     }
-  },
-  components: {
-    Loading,
   },
   head: {
     title: "ホーム"
@@ -181,5 +168,15 @@ export default {
   },
 }
 </script>
+
+<style>
+
+/*// ==============================*/
+/*// フォント*/
+/*// ==============================*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500&display=swap');
+
+
+</style>
 
 <!--styleに関してはtop.scssに記載-->

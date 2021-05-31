@@ -18,8 +18,7 @@
           <span>{{ content.category && content.category.name }}</span>
         </div>
         <div class="twitter">
-          　<a href="//twitter.com/share" class="twitter-share-button" :data-text="title"
-              :data-url="url" data-lang="ja">
+          　<a href="//twitter.com/share" class="twitter-share-button" :data-text="title" :data-url="url" data-lang="ja">
           Tweet
         </a>
         </div>
