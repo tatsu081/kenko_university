@@ -5,7 +5,7 @@ const { API_KEY } = process.env;
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  mode: 'universal',
+  ssr: true,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -14,7 +14,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'og:image', property: 'og:image', content: 'https://kenko-university.web.app/static/ogp.jpg' },
+      // { hid: 'og:image', property: 'og:image', content: 'https://kenko-university.web.app/static/ogp.jpg' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -31,7 +31,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/persistedState.js'}
+    // { src: '~/plugins/persistedState.js'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -51,6 +51,23 @@ export default {
 
     '@nuxtjs/style-resources'
   ],
+
+  generate: {
+    async routes() {
+      const limit = 12
+      const pages = await axios
+        .get('https://kenko-university.microcms.io/api/v1/blog?limit=${limit}', {
+          headers: { 'X-API-KEY': process.env.API_KEY }
+        })
+        .then((res) =>
+          res.data.contents.map((content) => ({
+            route: `/${content.id}`,
+            payload: content
+          }))
+        )
+      return pages
+    }
+  },
 
   styleResources: {
     scss: [

@@ -31,8 +31,6 @@ export default {
     title: "ブログ一覧"
   },
   middleware: "auth",
-  data() {
-  },
   async asyncData() {
     const limit = 12
     const { data } = await axios.get(
@@ -88,5 +86,4 @@ export default {
   display: flex;
   justify-content: center;
 }
-
 </style>
