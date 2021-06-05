@@ -90,5 +90,3 @@ export const actions = {
     commit('endLoading')
   }
 }
-
-

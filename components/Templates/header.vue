@@ -52,7 +52,8 @@ export default {
   data() {
     return {
       // 座標を指定
-      scrollY: 0
+      scrollY: 0,
+      data: '',
     }
   },
   methods: {
