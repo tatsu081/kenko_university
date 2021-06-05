@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <no-ssr>
+    <client-only>
     <div class="header__container">
       <div class="header__top">
         <div class="header__top__left">
@@ -45,7 +45,7 @@
           <router-link to="/contact" class="header__bottom__link" active-class="router-link-active">Contact</router-link>
         </div>
     </div>
-    </no-ssr>
+    </client-only>
   </header>
 </template>
 

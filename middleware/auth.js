@@ -5,8 +5,6 @@ export default function ({ store, redirect }) {
   firebase.auth().onAuthStateChanged(user => {
     if (!store.state.user.login) {
       return redirect('/login')
-    } else {
-      // ユーザーはログインしていません。
     }
   })
 }
