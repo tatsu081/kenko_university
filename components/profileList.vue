@@ -5,7 +5,7 @@
     <v-list>
       <v-list-item to="/profile/">
         <v-list-item-content>
-          <v-list-item-title class="title categoryList" style="text-align: center">
+          <v-list-item-title class="categoryList" style="text-align: center">
             <p>Profile</p>
           </v-list-item-title>
         </v-list-item-content>
@@ -40,11 +40,6 @@
       </v-col>
     </v-row>
     <v-divider />
-
-    <v-layout row wrap>
-      <v-spacer />
-      <v-btn text large to="/profile/" style="margin-right: 15px; color: #54AD81;">プロフィール詳細 ＞</v-btn>
-    </v-layout>
   </v-card>
 </template>
 

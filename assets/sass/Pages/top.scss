@@ -7,11 +7,13 @@
     margin: 0 0 10px;
     font-size: $font-size_3l;
     color: $color-main;
+    font-family: 'Noto Sans JP', sans-serif;
   }
 
   &__subTitle{
     font-size: $font-size_m;
     color: $color-light-font;
+    font-family: 'Noto Sans JP', sans-serif;
   }
 }
 .topBanner{
@@ -36,6 +38,7 @@
     justify-content: center;
     position: relative;
     margin-left: 10%;
+    font-family: 'Noto Sans JP', sans-serif;
 
     @include mq{
       width: 90%;
@@ -43,12 +46,13 @@
     }
 
     &__main{
-      font-size: $font-size_3l;
+      font-size: $font-size_xxl;
+      font-weight: 500;
     }
 
     &__sub{
-      font-size: $font-size_m;
       margin:15px 0 30px;
+      font-weight: 300;
     }
 
   }
@@ -143,11 +147,13 @@
   &__title{
     font-size: $font-size_xxl;
     margin-bottom: 30px;
+    font-family: 'Noto Sans JP', sans-serif;
   }
 
   &__sub{
-    font-size: $font-size_m;
+    font-weight: 300;
     line-height: 1.6em;
+    font-family: 'Noto Sans JP', sans-serif;
   }
 }
 
@@ -279,11 +285,13 @@
     }
 
     &__main{
-      font-size: $font-size_3l;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: $font-size_xxl;
     }
 
     &__sub{
-      font-size: $font-size_m;
+      font-weight: 300;
+      font-family: 'Noto Sans JP', sans-serif;
       margin:15px 0 30px;
     }
   }

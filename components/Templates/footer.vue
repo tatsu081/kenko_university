@@ -24,8 +24,12 @@
       <div class="footer__nav">
         <div class="footer__nav__title">Links</div>
         <ul>
-          <li><nuxt-link to="https://twitter.com/futty_0123" target="_blank">Twitter</nuxt-link></li>
-          <li><nuxt-link to="https://www.instagram.com/kenko_happy_0227/?hl=ja">Instagram</nuxt-link></li>
+          <li>
+            <a href="https://twitter.com/futty_0123" target="_blank">Twitter</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/kenko_happy_0227/?hl=ja" target="_blank">Instagram</a>
+          </li>
         </ul>
       </div>
     </div>

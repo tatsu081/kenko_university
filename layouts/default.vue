@@ -1,21 +1,27 @@
 <template>
   <v-app>
-    <Header />
-    <main>
-      <Nuxt />
-    </main>
-    <Footer />
+    <div v-if="$store.state.loading">
+      <Loading />
+    </div>
+    <div v-else>
+      <Header />
+      <main>
+        <Nuxt />
+      </main>
+      <Footer />
+    </div>
   </v-app>
 </template>
-
 <script>
 import Header from "../components/Templates/header";
 import Footer from "../components/Templates/footer";
 export default {
   components: {
     Header,
-    Footer,
+    Footer
+  },
+  data() {
+    return {};
   }
-}
+};
 </script>
-
