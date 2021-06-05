@@ -1,6 +1,6 @@
 <template>
     <div class="twoColumn__container">
-      <ul class="blog__container" style="padding:0;">
+      <ul class="blog__container"　style="padding:0;">
         <li
           v-for="content in contents" :key="content.id" class="blog__box">
           <blog-card :content="content" />
@@ -64,3 +64,7 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+
+</style>

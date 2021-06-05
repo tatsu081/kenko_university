@@ -29,6 +29,7 @@ export default {
   head: {
     title: "プロフィール"
   },
+  middleware: "auth",
   components: {
     sidebar
   },
@@ -55,7 +56,7 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .profile__container{
 
   .content {

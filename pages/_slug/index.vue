@@ -17,9 +17,13 @@
           >mdi-folder</v-icon>
           <span>{{ content.category && content.category.name }}</span>
         </div>
+        <div class="twitter">
+          　<a href="//twitter.com/share" class="twitter-share-button" :data-text="title" :data-url="url" data-lang="ja">
+          Tweet
+        </a>
+        </div>
         <div>
-          <ul class="toc-lists">
-            <div class="toc-lists__title">目次</div>
+          <ul class="lists">
             <li :class="`list ${item.name}`" v-for="item in toc" :key="item.id">
               <n-link v-scroll-to="`#${item.id}`" to>
                 {{ item.text }}
@@ -28,16 +32,6 @@
           </ul>
         </div>
         <div v-html="content.detail" class="content"></div>
-        <div class="twitter">
-          　<a href="//twitter.com/share"
-              target="_blank"
-              class="twitter-share-button"
-              :data-text="title"
-              :data-url="url"
-              data-lang="ja">
-          Tweet
-        </a>
-        </div>
         <button onclick="window.history.back(); return false;">直前のページに戻る</button>
       </div>
       <div class="sidebar__container">
@@ -73,8 +67,8 @@ export default {
       id: data.attribs.id,
       name: data.name,
     }));
-    console.log('目次', toc);
-    console.log('記事データ', data);
+    // console.log('目次', toc);
+    // console.log('記事データ', data);
     return { content:data, toc };
   },
   methods: {
@@ -90,19 +84,49 @@ export default {
     return {
       title: this.content.title,
       meta: [
-        { hid: "description", name: "description", content: this.content.description },
-        { hid: "og:type", property: "og:type", content: "article" },
-        { hid: "og:url", property: "og:url", content: "https://kenko-university.web.app/" + this.content.id },
-        { hid: "og:title", property: "og:title", content: this.content.title},
-        { hid: "og:description", property: "og:description", content: this.content.description },
-        { hid: 'og:image', property: 'og:image', content: this.content.image.url },
-        { hid: "twitter:card", name: "twitter:card", content: "summary_large_image" },
-        { hid: "twitter:site", name: "twitter:site", content: "@futty_0123" },
-        { hid: "twitter:creator", name: "twitter:creator", content: "@futty_0123" },
+        // {
+        //   hid: "description",
+        //   name: "description",
+        //   content: this.content.outline
+        // },
+        {
+          hid: "og:site_name",
+          property: "og:site_name",
+          content: this.content.title + " - 健康大学"
+        },
+        { hid: "og:type",
+          property: "og:type",
+          content: "article"
+        },
+        {
+          hid: "og:url",
+          property: "og:url",
+          content: "https://node-color-ink.studio/content/" + this.content.id
+        },
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: this.content.title
+        },
+        // {
+        //   hid: "og:description",
+        //   property: "og:description",
+        //   content: this.content.description
+        // },
+        //{ hid: 'og:image', property: 'og:image', content: this.content.image.fields.file.url },
+        {
+          hid: "twitter:card",
+          name: "twitter:card",
+          content: "summary_large_image"
+        },
+        { hid: "twitter:site", name: "twitter:site", content: "@futty_0123" }
       ],
-      link: [
-        { rel: "canonical", href: "https://kenko-university.web.app/" + this.content.id }
-      ]
+      // link: [
+      //   {
+      //     rel: "canonical",
+      //     href: "https://node-color-ink.studio/content/" + this.content.slug
+      //   }
+      // ]
     };
   },
   computed: {
@@ -112,13 +136,15 @@ export default {
     url(){
       return 'https://kenko-university.web.app/'+ `${this.content.id}`
     }
-  },
+  }
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .blog__container{
+  padding: 20px 10px;
   background: #fff;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
 
   &__category{
     display: flex;
@@ -134,44 +160,44 @@ export default {
   }
 
   .content {
+
     margin: 50px 0;
 
     h2 {
+      padding: 0.6em; /*文字周りの余白*/
       color: #333333; /*文字色*/
-      margin:  50px 0;
+      margin: 50px 0 25px;
       font-size: 24px;
     }
 
     h3 {
       color: #333333; /*文字色*/
-      border-bottom: dashed 2px #777777;
-      margin: 25px 0;
+      border-bottom: dashed 2px #54AD81;
+      margin: 50px 3% 25px;
       font-size: 18px;
-      //display: inline-block;
-
     }
 
     p {
+      margin: 20px 3%;
       font-size: 16px;
       line-height: 2em;
     }
 
     img {
-      width: 100%;
+      width: 90%;
       display: block;
       margin: auto;
     }
 
     blockquote {
       border-left: solid 3px #bdbdbd; /*左線（実線 太さ 色）*/
-      margin: 0;
+      margin: 0 5%;
       background-color: #f5f5f5;
-      line-height: 2em;
-      padding: 25px 10px;
+      line-height: 1.5em;
+      padding: 25px 0;
     }
   }
 }
-
 .blog__title{
   width: 70%;
   margin: 25px auto 50px;
@@ -191,38 +217,6 @@ export default {
     span{
       font-size: 14px;
       color: #777777;
-    }
-  }
-}
-
-.toc-lists{
-  border-top: 2px solid #54AD81;
-  border-bottom: 2px solid #54AD81;
-  width: 100%;
-  padding: 40px 60px !important;
-
-  &__title {
-    margin-bottom: 20px;
-    font-size: $font-size_xl;
-  }
-
-
-  .list.h2 {
-    margin-bottom: 15px;
-
-    a{
-      color: rgba(0, 0, 0, 0.87) !important;
-      font-size: $font-size_l;
-
-    }
-  }
-
-  .list.h3{
-    padding-left: 15px;
-
-    a{
-      color: rgba(0, 0, 0, 0.87) !important;
-      line-height: 2em;
     }
   }
 }

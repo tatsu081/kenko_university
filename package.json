@@ -16,11 +16,9 @@
     "firebase": "^8.4.1",
     "firebase-functions": "^3.14.1",
     "firebase-tools": "^9.10.2",
-    "js-cookie": "^2.2.1",
     "nuxt": "^2.15.3",
     "v-runtime-template": "^1.10.0",
-    "vue-scrollto": "^2.20.0",
-    "vuex-persistedstate": "^4.0.0-beta.3"
+    "vue-scrollto": "^2.20.0"
   },
   "devDependencies": {
     "@nuxtjs/style-resources": "^1.0.0",

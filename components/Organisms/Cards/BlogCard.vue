@@ -9,7 +9,6 @@
         <span class="blog__right__date">{{formatDate(content.createdAt)}}</span>
       </p>
       <h2 class="blog__right__title">{{ content.title }}</h2>
-      <p class="blog__right__description">{{ content.description }}</p>
     </div>
   </nuxt-link>
 </template>
