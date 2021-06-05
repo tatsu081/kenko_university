@@ -1,32 +1,33 @@
 <template>
-  <v-card>
-    <v-list>
-      <v-list-item to="/category/">
-        <v-list-item-content>
-          <v-list-item-title class="categoryList" style="text-align: center">
-            <p>Category</p>
-          </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
-    <v-list nav>
-      <v-list-item-group :color="color">
-        <div v-for="(category, index) in categories" :key="index">
-          <v-divider />
-          <v-list-item :to="'/category/' + category.id">
-            <v-list-item-icon>
-              <v-icon :color="color" v-text="category.icon" style="margin-left: 20px"></v-icon>
-            </v-list-item-icon>
+  <no-ssr>
+    <v-card>
+      <v-list>
+        <v-list-item to="/category/">
+          <v-list-item-content>
+            <v-list-item-title class="categoryList" style="text-align: center">
+              <p>Category</p>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+      <v-list nav>
+        <v-list-item-group :color="color">
+          <div v-for="(category, index) in categories" :key="index">
+            <v-divider />
+            <v-list-item :to="'/category/' + category.id">
+              <v-list-item-icon>
+                <v-icon :color="color" v-text="category.icon" style="margin-left: 20px"></v-icon>
+              </v-list-item-icon>
 
-            <v-list-item-content>
-              <v-list-item-title v-text="category.title"></v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </div>
-      </v-list-item-group>
-    </v-list>
-  </v-card>
-
+              <v-list-item-content>
+                <v-list-item-title v-text="category.title"></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </div>
+        </v-list-item-group>
+      </v-list>
+    </v-card>
+  </no-ssr>
 </template>
 
 <script>

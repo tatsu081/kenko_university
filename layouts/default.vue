@@ -1,15 +1,15 @@
 <template>
   <v-app>
-    <div v-if="$store.state.loading">
-      <Loading />
-    </div>
-    <div v-else>
+<!--    <div v-if="$store.state.loading">-->
+<!--      <Loading />-->
+<!--    </div>-->
+<!--    <div v-else>-->
       <Header />
       <main>
         <Nuxt />
       </main>
       <Footer />
-    </div>
+<!--    </div>-->
   </v-app>
 </template>
 <script>
