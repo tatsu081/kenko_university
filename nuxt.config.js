@@ -5,7 +5,7 @@ const { API_KEY } = process.env;
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false,
+  mode: 'universal',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -14,7 +14,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'og:image', property: 'og:image', content: '' },
+      { hid: 'og:image', property: 'og:image', content: 'https://kenko-university.web.app/static/ogp.jpg' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -31,6 +31,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/persistedState.js'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

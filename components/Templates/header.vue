@@ -1,5 +1,6 @@
 <template>
   <header class="header">
+    <no-ssr>
     <div class="header__container">
       <div class="header__top">
         <div class="header__top__left">
@@ -35,7 +36,8 @@
         </div>
       </div>
 
-        <!-- ナビゲーション -->
+
+  <!-- ナビゲーション -->
         <div v-if="$store.state.user.login" class="header__bottom" :class="{ 'fixed': scrollY > 80 }">
           <router-link to="/blog" class="header__bottom__link" active-class="router-link-active">Blog</router-link>
           <router-link to="/category" class="header__bottom__link" active-class="router-link-active">Category</router-link>
@@ -43,6 +45,7 @@
           <router-link to="/contact" class="header__bottom__link" active-class="router-link-active">Contact</router-link>
         </div>
     </div>
+    </no-ssr>
   </header>
 </template>
 
