@@ -17,7 +17,11 @@
 import firebase from 'firebase'
 export default {
   head: {
-    title: "お問い合わせ"
+    title: "お問い合わせ",
+    meta: [
+      { hid: "og:title", property: "og:title", content: 'お問い合わせ'},
+      { hid: "og:description", property: "og:description", content: '自己紹介です。'},
+    ]
   },
   async asyncData({ query }) {},
   created() {},

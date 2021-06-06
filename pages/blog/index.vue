@@ -28,7 +28,7 @@ import sidebar from "@/components/sidebar";
 import blogCard from "~/components/Organisms/Cards/BlogCard";
 export default {
   head: {
-    title: "ブログ一覧"
+    title: "ブログ一覧",
   },
   middleware: "auth",
   async asyncData() {

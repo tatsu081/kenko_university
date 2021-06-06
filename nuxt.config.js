@@ -5,7 +5,7 @@ const { API_KEY } = process.env;
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: true,
+  mode: 'universal',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -14,7 +14,14 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      // { hid: 'og:image', property: 'og:image', content: 'https://kenko-university.web.app/static/ogp.jpg' },
+      { hid: 'description', name: 'description', content: '健康大学の学習コンテンツ' },
+      { hid: 'og:site_name', property: 'og:site_name', content: '健康大学' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://kenko-university.web.app/' },
+      { hid: 'og:title', property: 'og:title', content: '健康大学' },
+      { hid: 'og:description', property: 'og:description', content: '健康大学の学習コンテンツ' },
+      { hid: 'og:image', property: 'og:image', content: 'https://kenko-university.web.app/ogp.jpg' },
+      {　hid: "twitter:card", name: "twitter:card", content: "summary_large_image"　},
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -49,7 +56,15 @@ export default {
     'vue-scrollto/nuxt',
     ['vue-scrollto/nuxt', { duration: 300 }],
 
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+
+    [
+      '@nuxtjs/google-gtag',
+      {
+        id: 'G-ZB1CGWD9WN', //あなたのGoogleアナリティクスのプロパティID
+        debug: true //本番環境以外でもGAを有効にしたい場合はtrueに。
+      }
+    ]
   ],
 
   generate: {

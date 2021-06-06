@@ -21,7 +21,11 @@ import sidebar from "@/components/sidebar";
 import axios from "axios";
 export default {
   head: {
-    title: "プライバシーポリシー"
+    title: "プライバシーポリシー",
+    meta: [
+      { hid: "og:title", property: "og:title", content: 'プライバシーポリシー'},
+      { hid: "og:description", property: "og:description", content: 'プライバシーポリシー'},
+    ]
   },
   components: {
     sidebar

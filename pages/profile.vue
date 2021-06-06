@@ -27,7 +27,11 @@ import sidebar from "@/components/sidebar";
 import axios from "axios";
 export default {
   head: {
-    title: "プロフィール"
+    title: "プロフィール",
+    meta: [
+      { hid: "og:title", property: "og:title", content: 'プロフィール'},
+      { hid: "og:description", property: "og:description", content: '自己紹介です。'},
+    ]
   },
   middleware: "auth",
   components: {
