@@ -26,10 +26,11 @@
           md="4"
         >
           <v-btn
-            color="primary"
+            color="#54AD81"
+            class="white--text"
             @click="submit"
           >
-            検索する
+            検索
           </v-btn>
         </v-col>
       </v-row>

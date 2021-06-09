@@ -27,7 +27,11 @@ import sidebar from "@/components/sidebar";
 import axios from "axios";
 export default {
   head: {
-    title: "プロフィール"
+    title: "プロフィール",
+    meta: [
+      { hid: "og:title", property: "og:title", content: 'プロフィール'},
+      { hid: "og:description", property: "og:description", content: '自己紹介です。'},
+    ]
   },
   middleware: "auth",
   components: {
@@ -72,7 +76,7 @@ export default {
     h3 {
       color: #333333; /*文字色*/
       border-bottom: dashed 2px #777777;
-      margin: 25px 0;
+      margin: 25px 3%;
       font-size: 18px;
       //display: inline-block;
 
@@ -91,7 +95,7 @@ export default {
 
     blockquote {
       border-left: solid 3px #bdbdbd; /*左線（実線 太さ 色）*/
-      margin: 0;
+      margin: 0 3%;
       background-color: #f5f5f5;
       line-height: 2em;
       padding: 25px 10px;

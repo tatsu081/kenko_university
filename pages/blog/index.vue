@@ -28,7 +28,16 @@ import sidebar from "@/components/sidebar";
 import blogCard from "~/components/Organisms/Cards/BlogCard";
 export default {
   head: {
-    title: "ブログ一覧"
+    title: "ブログ一覧",
+    meta: [
+      { hid: 'description', name: 'description', content: '健康大学の学習コンテンツ' },
+      { hid: 'og:site_name', property: 'og:site_name', content: '健康大学' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://kenko-university.web.app/' },
+      { hid: 'og:title', property: 'og:title', content: '健康大学' },
+      { hid: 'og:description', property: 'og:description', content: '健康大学の学習コンテンツ' },
+      { hid: 'og:image', property: 'og:image', content: 'https://kenko-university.web.app/ogp.jpg' },
+    ]
   },
   middleware: "auth",
   async asyncData() {
