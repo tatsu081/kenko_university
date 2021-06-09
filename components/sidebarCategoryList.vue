@@ -108,4 +108,10 @@ hr{
 .v-list--nav{
   padding: 0;
 }
+.categoryList p{
+  font-weight: bold !important;
+}
+.v-list-item__content{
+  font-weight: normal;
+}
 </style>

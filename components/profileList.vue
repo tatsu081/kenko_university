@@ -36,6 +36,15 @@
           >
             <v-icon>mdi-twitter</v-icon>
           </v-btn>
+          <v-btn
+            color="#D93177"
+            href="https://www.instagram.com/kenko_happy_0227/?hl=ja"
+            target="_blank"
+            rel="noopener noreferrer"
+            icon
+          >
+            <v-icon>mdi-instagram</v-icon>
+          </v-btn>
         </div>
       </v-col>
     </v-row>

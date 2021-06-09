@@ -84,14 +84,14 @@ export default {
     return {
       title: this.content.title,
       meta: [
-        { hid: "description", name: "description", content: this.content.description},
-        { hid: "og:site_name", property: "og:site_name", content: this.content.title + " - 健康大学"},
+        { hid: 'description', name: 'description', content: this.content.description },
         { hid: "og:type", property: "og:type", content: "article"},
         { hid: "og:url", property: "og:url", content: "https://kenko-university.web.app/" + this.content.id},
-        { hid: "og:title", property: "og:title", content: this.content.title},
         { hid: "og:description", property: "og:description", content: this.content.description},
         { hid: 'og:image', property: 'og:image', content: this.content.image.url },
-        { hid: "twitter:site", name: "twitter:site", content: "@futty_0123" }
+        { hid: "og:title", property: "og:title", content: this.content.title},
+        { hid: "og:site_name", property: "og:site_name", content: this.content.title + " - 健康大学"},
+
       ],
       link: [
         { rel: "canonical", href: "https://kenko-university.web.app/" + this.content.id }
@@ -132,15 +132,15 @@ export default {
     margin: 50px 0;
 
     h2 {
-      padding: 0.6em; /*文字周りの余白*/
+      padding: 0.3em; /*文字周りの余白*/
       color: #333333; /*文字色*/
       margin: 50px 0 25px;
       font-size: 24px;
+      border-left: 5px solid #777777;
     }
 
     h3 {
       color: #333333; /*文字色*/
-      border-bottom: dashed 2px #54AD81;
       margin: 50px 3% 25px;
       font-size: 18px;
     }
@@ -160,7 +160,8 @@ export default {
       border-left: solid 3px #bdbdbd; /*左線（実線 太さ 色）*/
       background-color: #f5f5f5;
       line-height: 2.5em;
-      padding: 25px 0 25px 10px;
+      padding: 25px 20px 25px;
+      margin-left: 3%;
     }
   }
 }
