@@ -200,7 +200,6 @@ export default {
   &__item {
 
     a{
-      color: $color-main;
       line-height: 3em;
       transition: ease-in-out 0.3s;
 
@@ -212,6 +211,7 @@ export default {
 
   .h2 {
     padding-left: 30px;
+    color: $color-main;
 
     &:before{
       font-size: 10px;
@@ -223,6 +223,7 @@ export default {
   .h3{
     padding-left: 50px;
     font-size: $font-size_m;
+    color: $color-main;
 
     &:before{
       font-size: 10px;
