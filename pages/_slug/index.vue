@@ -17,14 +17,11 @@
           >mdi-folder</v-icon>
           <span>{{ content.category && content.category.name }}</span>
         </div>
-        <div class="twitter">
-          　<a href="//twitter.com/share" class="twitter-share-button" :data-text="title" :data-url="url" data-lang="ja">
-          Tweet
-        </a>
-        </div>
+
         <div>
-          <ul class="lists">
-            <li :class="`list ${item.name}`" v-for="item in toc" :key="item.id">
+          <ul class="list">
+            <p>目次</p>
+            <li :class="`list__item ${item.name}`" v-for="item in toc" :key="item.id">
               <n-link v-scroll-to="`#${item.id}`" to>
                 {{ item.text }}
               </n-link>
@@ -32,6 +29,11 @@
           </ul>
         </div>
         <div v-html="content.detail" class="content"></div>
+        <div class="twitter">
+          　<a href="//twitter.com/share" class="twitter-share-button" :data-text="title" :data-url="url" data-lang="ja">
+          Tweet
+        </a>
+        </div>
         <button onclick="window.history.back(); return false;">直前のページに戻る</button>
       </div>
       <div class="sidebar__container">
@@ -91,7 +93,6 @@ export default {
         { hid: 'og:image', property: 'og:image', content: this.content.image.url },
         { hid: "og:title", property: "og:title", content: this.content.title},
         { hid: "og:site_name", property: "og:site_name", content: this.content.title + " - 健康大学"},
-
       ],
       link: [
         { rel: "canonical", href: "https://kenko-university.web.app/" + this.content.id }
@@ -186,5 +187,49 @@ export default {
       color: #777777;
     }
   }
+}
+
+.list{
+  margin-top: 30px;
+  padding: 30px 0;
+  border-top: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
+  background-color: $color_bg;
+
+
+  &__item {
+
+    a{
+      color: $color-main;
+      line-height: 3em;
+      transition: ease-in-out 0.3s;
+
+      &:hover{
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .h2 {
+    padding-left: 30px;
+
+    &:before{
+      font-size: 10px;
+      content: "⚫︎";
+      vertical-align: middle;
+    }
+  }
+
+  .h3{
+    padding-left: 50px;
+    font-size: $font-size_m;
+
+    &:before{
+      font-size: 10px;
+      content: "⚪︎︎";
+      vertical-align: middle;
+    }
+  }
+
 }
 </style>
