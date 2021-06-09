@@ -132,7 +132,6 @@ export default {
       { hid: 'og:url', property: 'og:url', content: 'https://kenko-university.web.app/' },
       { hid: 'og:title', property: 'og:title', content: '健康大学' },
       { hid: 'og:description', property: 'og:description', content: '健康大学の学習コンテンツ' },
-      { hid: "twitter:card", name: "twitter:card", content: "summary_large_image"　},
     ],
   },
   async asyncData() {

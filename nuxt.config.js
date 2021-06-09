@@ -14,6 +14,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: "twitter:card", name: "twitter:card", content: "summary_large_image"　},
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -50,22 +51,21 @@ export default {
     '@nuxtjs/style-resources'
   ],
 
-  // generate: {
-  //   async routes() {
-  //     const limit = 12
-  //     const pages = await axios
-  //       .get('https://kenko-university.microcms.io/api/v1/blog?limit=${limit}', {
-  //         headers: { 'X-API-KEY': process.env.API_KEY }
-  //       })
-  //       .then((res) =>
-  //         res.data.contents.map((content) => ({
-  //           route: `/${content.id}`,
-  //           payload: content
-  //         }))
-  //       )
-  //     return pages
-  //   }
-  // },
+  generate: {
+    async routes() {
+      const pages = await axios
+        .get('https://kenko-university.microcms.io/api/v1/blog', {
+          headers: { 'X-API-KEY': process.env.API_KEY }
+        })
+        .then((res) =>
+          res.data.contents.map((content) => ({
+            route: `/${content.id}`,
+            payload: content
+          }))
+        )
+      return pages
+    }
+  },
 
   styleResources: {
     scss: [
