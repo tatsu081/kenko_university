@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import categoryList from "@/components/categoryList";
+import categoryList from "~/components/sidebarCategoryList";
 import profileList from "@/components/profileList";
 export default {
   components:{

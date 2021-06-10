@@ -1,17 +1,22 @@
 <template>
   <v-app>
-    <Header />
-    <main>
-      <Nuxt />
-    </main>
+      <Header />
+      <main>
+        <Nuxt />
+      </main>
+      <Footer />
   </v-app>
 </template>
-
 <script>
-import Header from "../components/header";
+import Header from "../components/Templates/header";
+import Footer from "../components/Templates/footer";
 export default {
   components: {
     Header,
+    Footer
+  },
+  data() {
+    return {};
   }
-}
+};
 </script>
