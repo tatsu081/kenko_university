@@ -43,5 +43,8 @@ export default {
 .category {
   padding: 20px !important;
 }
+.v-application ul, .v-application ol{
+  padding: 0 !important;
+}
 
 </style>
