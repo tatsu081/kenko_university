@@ -47,7 +47,12 @@
 
     &__main{
       font-size: $font-size_xxl;
+      font-family: 'Noto Sans JP', sans-serif;
       font-weight: 500;
+
+      @include mq(){
+        font-size: $font-size_xl;
+      }
     }
 
     &__sub{
@@ -149,6 +154,10 @@
     font-size: $font-size_xxl;
     margin-bottom: 30px;
     font-family: 'Noto Sans JP', sans-serif;
+
+    @include mq(){
+      font-size: $font-size_xl;
+    }
   }
 
   &__sub{
@@ -288,6 +297,10 @@
     &__main{
       font-family: 'Noto Sans JP', sans-serif;
       font-size: $font-size_xxl;
+
+      @include mq(){
+        font-size: $font-size_xl;
+      }
     }
 
     &__sub{
