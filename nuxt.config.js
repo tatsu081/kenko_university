@@ -48,8 +48,14 @@ export default {
     'vue-scrollto/nuxt',
     ['vue-scrollto/nuxt', { duration: 300 }],
 
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+
+    '@nuxtjs/google-gtag',
   ],
+  'google-gtag': {
+    id: 'G-ZB1CGWD9WN',
+    debug: true, // Enable to track in dev mode.
+  },
 
   generate: {
     async routes() {
