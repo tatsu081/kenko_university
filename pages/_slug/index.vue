@@ -34,7 +34,13 @@
           Tweet
         </a>
         </div>
-        <button onclick="window.history.back(); return false;">直前のページに戻る</button>
+        <v-btn
+          onclick="window.history.back(); return false;"
+          color="secondary"
+          large
+          outlined
+          style="margin-top: 20px"
+        >＜ 直前のページに戻る</v-btn>
       </div>
       <div class="sidebar__container">
         <sidebar/>
@@ -99,6 +105,11 @@ export default {
       ]
     };
   },
+  mounted() {
+    window.addEventListener('beforeunload', () => {
+      this.title()
+    })
+  },
   computed: {
     title(){
       return `${this.content.title}`
@@ -112,7 +123,6 @@ export default {
 
 <style lang="scss">
 .blog__container{
-  padding: 20px 10px;
   background: #fff;
 
   &__category{
@@ -196,6 +206,10 @@ export default {
   border-bottom: 1px solid $color-border;
   background-color: $color_bg;
 
+  p{
+    font-size: $font-size_l;
+  }
+
 
   &__item {
 
@@ -211,7 +225,10 @@ export default {
 
   .h2 {
     padding-left: 30px;
-    color: $color-main;
+
+    a{
+      color: $color-main;
+    }
 
     &:before{
       font-size: 10px;
@@ -223,7 +240,10 @@ export default {
   .h3{
     padding-left: 50px;
     font-size: $font-size_m;
-    color: $color-main;
+
+    a{
+      color: $color-main;
+    }
 
     &:before{
       font-size: 10px;

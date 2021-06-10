@@ -103,6 +103,6 @@ export default {
   font-size: 9pt;
 }
 .v-list{
-  padding: 0 0 8px;
+  padding: 0 !important;
 }
 </style>
