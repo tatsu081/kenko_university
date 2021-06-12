@@ -30,9 +30,9 @@
         </div>
         <div v-html="content.detail" class="content"></div>
         <div class="twitter">
-          　<a href="//twitter.com/share" class="twitter-share-button" :data-text="title" :data-url="url" data-lang="ja">
+          <a href="//twitter.com/share" class="twitter-share-button" :data-text="title" :data-url="url" data-lang="ja">
           Tweet
-        </a>
+          </a>
         </div>
         <v-btn
           onclick="window.history.back(); return false;"
@@ -251,6 +251,5 @@ export default {
       vertical-align: middle;
     }
   }
-
 }
 </style>
