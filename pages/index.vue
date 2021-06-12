@@ -1,6 +1,5 @@
 <template>
   <div>
-      <Loading />
       <section class="topBanner" id="topBanner">
         <div class="topBanner__container">
           <div class="topBanner__left">

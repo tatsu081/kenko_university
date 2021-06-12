@@ -68,37 +68,36 @@ export default {
     margin: 0 0 50px;
 
     h2 {
+      padding: 0.3em; /*文字周りの余白*/
       color: #333333; /*文字色*/
-      margin:  50px 0;
+      margin: 50px 0 25px;
       font-size: 24px;
+      border-left: 5px solid #777777;
     }
 
     h3 {
       color: #333333; /*文字色*/
-      border-bottom: dashed 2px #777777;
-      margin: 25px 3%;
+      margin: 50px 3% 25px;
       font-size: 18px;
-      //display: inline-block;
-
     }
 
     p {
+      margin: 20px 3%;
       font-size: 16px;
       line-height: 2em;
     }
 
     img {
-      width: 90%;
+      width: 100%;
       display: block;
-      margin: auto;
     }
 
     blockquote {
       border-left: solid 3px #bdbdbd; /*左線（実線 太さ 色）*/
-      margin: 0 3%;
       background-color: #f5f5f5;
-      line-height: 2em;
-      padding: 25px 10px;
+      line-height: 2.5em;
+      padding: 25px 20px 25px;
+      margin-left: 3%;
     }
   }
 }
