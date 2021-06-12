@@ -18,6 +18,7 @@
             hide-details
             label="検索（キーワードを入力）"
             autofocus
+            validate-on-blur
           />
         </v-col>
         <v-col

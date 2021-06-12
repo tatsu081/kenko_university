@@ -7,14 +7,33 @@
         確認しだい、記入いただいたメールアドレスに返信いたします。<br>
       （ <a href="https://twitter.com/futty_0123" target="_blank">Twitter</a>のDM、<a href="https://www.instagram.com/kenko_happy_0227/?hl=ja" target="_blank">Instagram</a>のDMでもメッセージを受け付けています。)
       </p>
-      <v-text-field outlined label="お名前" v-model="name"></v-text-field>
-      <v-text-field outlined label="メールアドレス" v-model="mail"></v-text-field>
-      <v-textarea outlined label="メッセージ" v-model="message"></v-textarea>
+      <v-text-field
+        outlined
+        label="お名前"
+        :rules="[required]"
+        v-model="name">
+      </v-text-field>
+
+      <v-text-field
+        outlined
+        label="メールアドレス"
+        v-model="email"
+        :rules="[emailRules.required, emailRules.regex]"
+        validate-on-blur
+      ></v-text-field>
+
+      <v-textarea
+        outlined
+        label="メッセージ"
+        :rules="[required]"
+        v-model="message"
+      ></v-textarea>
+
       <div class="d-flex justify-center flex-column">
         <v-btn large outlined width="200px" class="mx-auto" @click="onSubmit"
         >送信</v-btn
         >
-        <p class="text-center red--text" v-if="notFilled">Fill all fields!</p>
+        <p class="text-center red--text" v-if="notFilled">全て入力してください</p>
       </div>
     </v-container>
   </div>
@@ -29,9 +48,18 @@ export default {
   data() {
     return {
       name: null,
-      mail: null,
+      email: null,
       message: null,
       notFilled: false,
+      emailRules: {
+        required: (value) =>
+          !!value || 'メールアドレスは必須です',
+        regex: (value) =>
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            value
+          ) || 'メールアドレスの形式が違います'
+      },
+      required: value => !!value || "必ず入力してください",
     };
   },
   methods: {
