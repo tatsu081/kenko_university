@@ -1,9 +1,6 @@
 <template>
   <div>
-    <template v-if="$store.state.loading">
       <Loading />
-    </template>
-
       <section class="topBanner" id="topBanner">
         <div class="topBanner__container">
           <div class="topBanner__left">

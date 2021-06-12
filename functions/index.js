@@ -33,5 +33,4 @@ exports.sendMessage = functions.https.onCall((data, context) => {
       console.log(err)
     });
   return null
-
 })

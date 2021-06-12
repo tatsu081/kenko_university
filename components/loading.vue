@@ -1,5 +1,5 @@
 <template>
-  <div class="opening" :class="{ active: isActive }" v-if="isLoading">
+  <div class="opening" :class="{ active: isActive }" v-show="isLoading">
     <div class="logo_02" :class="{ 'ready' : isLoading }"><img src="/animation_text.svg"></div>
     <div class="logo_01" :class="{ 'ready' : isLoading }"><img src="/animation_logo.png"></div>
   </div>
@@ -57,6 +57,7 @@ export default {
   &.active{
     opacity: 0;
     transition: ease-in-out 0.5s;
+    z-index: -1000;
   }
 }
 
