@@ -1,10 +1,19 @@
 import firebase from "firebase";
+import Cookies from "universal-cookie";
 
-export default function ({ store, redirect }) {
-  // ユーザーが認証されていない場合
+export default ({ req, route, redirect }) => {
+
+  const cookies = req ? new Cookies(req.headers.cookie) : new Cookies();
+  const userList = cookies.get("kenko-university");
+
+  console.log(userList)
+
   firebase.auth().onAuthStateChanged(user => {
-    if (!store.state.user.login) {
+    if (!userList.user.login) {
       return redirect('/login')
+    }else{
+      return false;
     }
   })
-}
+};
+

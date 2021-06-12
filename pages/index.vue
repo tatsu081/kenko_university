@@ -178,7 +178,7 @@ export default {
       } else {
         return this.classOthers;
       }
-    }
+    },
   },
 }
 </script>

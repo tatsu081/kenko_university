@@ -30,7 +30,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    // { src: '~/plugins/persistedState.js'}
+    { src: '~/plugins/persistedState.js'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -47,6 +47,8 @@ export default {
 
     'vue-scrollto/nuxt',
     ['vue-scrollto/nuxt', { duration: 300 }],
+
+    ['cookie-universal-nuxt', { parseJSON: false }],
 
     '@nuxtjs/style-resources',
 
