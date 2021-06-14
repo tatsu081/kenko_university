@@ -106,9 +106,9 @@ export default {
     };
   },
   mounted() {
-    window.addEventListener('beforeunload', () => {
-      this.title()
-    })
+    if (twttr) {
+      twttr.widgets.load();
+    }
   },
   computed: {
     title(){
