@@ -19,7 +19,6 @@
       <sidebar/>
       </div>
     </div>
-
   </div>
 </template>
 
