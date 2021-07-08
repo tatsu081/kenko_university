@@ -10,9 +10,7 @@
       <v-card-title class="text-center pa-8">
         <h4 class="fill-width">パスワード再設定</h4>
       </v-card-title>
-      <v-divider
-        class="auth-border"
-        style="margin: 0 auto"/>
+      <auth-border />
       <div class="px-6 py-8">
         <div style="max-width:344px" class="mx-auto">
           <div class="pt-6">
@@ -21,17 +19,10 @@
               @change="changeEmail"
             />
             <div class="login-btn pb-8">
-              <v-btn
-                class="fill-width caption"
-                color="#FFCB00"
-                depressed
-                height="48px"
-                tile
-                style="margin-top: 20px"
+              <auth-button
                 @click="passReset"
-              >
-                送信
-              </v-btn>
+                title="送信"
+              />
             </div>
           </div>
         </div>
@@ -44,8 +35,10 @@
 
 <script>
 import EmailInput from "@/components/Molecules/Inputs/EmailInput";
+import AuthButton from "@/components/Atoms/Buttons/authButton";
+import AuthBorder from "@/components/Atoms/border/auth-border";
 export default {
-  components: {EmailInput},
+  components: {AuthBorder, AuthButton, EmailInput},
   head: {
     title: "パスワードリセット"
   },
