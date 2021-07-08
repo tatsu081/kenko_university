@@ -7,20 +7,17 @@
           <blog-card :content="content" />
         </li>
         <v-layout v-if="length > 12" justify-space-between>
-          <v-btn
+          <pagination-button
             v-if="page > 1"
             :to="`${page*1 - 1}`"
-            color="secondary"
-            large
-            outlined
-          >＜ 前ページ</v-btn>
-          <v-btn justyfy-flex-end
+            title="＜ 前ページ"
+          />
+          <pagination-button
+            justyfy-flex-end
             v-if=" length > 12 && page < length/12"
             :to="`${page*1 + 1}`"
-            color="secondary"
-            large
-            outlined
-          >次ページ ＞</v-btn>
+            title="次ページ ＞"
+          />
         </v-layout>
       </ul>
       <div class="sidebar__container">
@@ -33,9 +30,11 @@
 <script>
 import axios from "axios";
 import BlogCard from "~/components/Organisms/Cards/BlogCard";
+import PaginationButton from "@/components/Atoms/Buttons/paginationButton";
+import Sidebar from "@/components/sidebar";
 
 export default {
-  components: {BlogCard},
+  components: {Sidebar, PaginationButton, BlogCard},
   head: {
     title: "ページ"
   },

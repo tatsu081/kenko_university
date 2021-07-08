@@ -8,14 +8,9 @@
             </div>
             <div class="topBanner__left__sub" v-html="top[0].TB_detail"></div>
             <router-link to="/login">
-              <v-btn
-                color="#54AD81"
-                rounded
-                class="white--text smallButton"
-                style="text-transform: none"
-              >
-                Login
-              </v-btn>
+              <login-button
+                title="Login"
+              />
             </router-link>
           </div>
           <div class="topBanner__right">
@@ -46,31 +41,12 @@
           </div>
           <ul class="topBlog__list__container">
             <li v-for="content in blog" :key="content.id" class="topBlog__item" :class="fontColor(content)">
-              <nuxt-link :to="`/${content.id}`">
-                <div class="topBlog__item__top">
-                  <img :src="content.image.url" alt="健康大学">
-                </div>
-                <div class="topBlog__item__bottom">
-                  <div class="topBlog__item__bottom__left">{{
-                      content.category && content.category.name
-                    }}</div>
-                  <div class="topBlog__item__bottom__right">{{formatDate(content.createdAt)}}</div>
-                </div>
-                <p class="topBlog__item__title">{{ content.title }}</p>
-              </nuxt-link>
+              <top-blog-card :content="content" />
             </li>
           </ul>
           <div class="top__bigButton__container">
             <router-link to="/login">
-              <v-btn
-                color="#54AD81"
-                rounded
-                class="white--text top__bigButton"
-                style="text-transform: none"
-                large
-              >
-                More
-              </v-btn>
+              <more-button />
             </router-link>
           </div>
         </div>
@@ -84,14 +60,9 @@
             </div>
             <div class="bottomBanner__left__sub" v-html="top[0].BB_detail"></div>
             <router-link to="/login">
-              <v-btn
-                color="#54AD81"
-                rounded
-                class="white--text smallButton"
-                style="text-transform: none"
-              >
-                Login
-              </v-btn>
+              <login-button
+                title="Login"
+              />
             </router-link>
           </div>
           <div class="bottomBanner__right">
@@ -106,8 +77,12 @@
 
 <script>
 import axios from 'axios'
+import LoginButton from "@/components/Atoms/Buttons/loginButton";
+import MoreButton from "@/components/Atoms/Buttons/moreButton";
+import TopBlogCard from "@/components/Organisms/Cards/topBlogCard";
 
 export default {
+  components: {TopBlogCard, MoreButton, LoginButton},
   data () {
     return {
       classMeal: 'meal',

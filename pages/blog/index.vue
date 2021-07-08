@@ -4,15 +4,13 @@
       <ul class="blog__container"　style="padding:0;">
         <li
           v-for="content in contents" :key="content.id" class="blog__box">
-          <blog-card :content="content"></blog-card>
+          <blog-card :content="content"/>
         </li>
         <v-layout v-if="length > 12" row wrap justify-end style="margin: 0">
-          <v-btn
+          <pagination-button
             :to="'/blog/page/2'"
-            color="secondary"
-            large
-            outlined
-          >次ページ ＞</v-btn>
+            title="次ページ ＞"
+          />
         </v-layout>
       </ul>
       <div class="sidebar__container">
@@ -26,6 +24,7 @@
 import axios from 'axios'
 import sidebar from "@/components/sidebar";
 import blogCard from "~/components/Organisms/Cards/BlogCard";
+import PaginationButton from "@/components/Atoms/Buttons/paginationButton";
 export default {
   head: {
     title: "ブログ一覧",
@@ -57,6 +56,7 @@ export default {
     this.length = this.totalCount
   },
   components: {
+    PaginationButton,
     sidebar,
     blogCard,
   }

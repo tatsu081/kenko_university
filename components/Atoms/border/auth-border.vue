@@ -6,7 +6,6 @@
 
 <script>
 export default {
-name: "auth-border"
 }
 </script>
 

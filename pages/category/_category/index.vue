@@ -7,12 +7,10 @@
           <blog-card :content="content" />
         </li>
         <v-layout v-if="length > 12" row wrap justify-end style="margin: 0">
-          <v-btn
+          <pagination-button
             :to="'/category/' + this.$route.params.category + '/page/2'"
-            color="secondary"
-            large
-            outlined
-          >次ページ ＞</v-btn>
+            title="次ページ ＞"
+          />
         </v-layout>
       </ul>
       <div class="sidebar__container">
@@ -26,6 +24,7 @@
 import axios from "axios";
 import sidebar from "@/components/sidebar";
 import BlogCard from "~/components/Organisms/Cards/BlogCard";
+import PaginationButton from "@/components/Atoms/Buttons/paginationButton";
 export default {
   head: {
     title: "カテゴリー毎のページ"
@@ -51,6 +50,7 @@ export default {
     this.length = this.totalCount
   },
   components:{
+    PaginationButton,
     sidebar,
     BlogCard
   },

@@ -11,26 +11,16 @@
             <router-link to="/search">
               <v-icon medium>mdi-magnify</v-icon>
             </router-link>
-            <v-btn
-              color="#54AD81"
-              rounded
-              class="white--text smallButton"
-              style="text-transform: none; margin-left: 10px;"
+            <login-button
+              title="Logout"
               @click="logout"
-            >
-              Logout
-            </v-btn>
+            />
           </template>
           <template v-else>
             <router-link to="/login">
-              <v-btn
-                color="#54AD81"
-                rounded
-                class="white--text smallButton"
-                style="text-transform: none"
-              >
-                Login
-              </v-btn>
+              <login-button
+                title="Login"
+              />
             </router-link>
           </template>
         </div>
@@ -51,7 +41,9 @@
 
 <script>
 import { mapActions } from "vuex";
+import LoginButton from "@/components/Atoms/Buttons/loginButton";
 export default {
+  components: {LoginButton},
   data() {
     return {
       // 座標を指定
