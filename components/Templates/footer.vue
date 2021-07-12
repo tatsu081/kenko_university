@@ -24,9 +24,9 @@
       <div class="footer__nav">
         <div class="footer__nav__title">Links</div>
         <ul>
-          <li>
-            <a href="https://twitter.com/futty_0123" target="_blank">Twitter</a>
-          </li>
+<!--          <li>-->
+<!--            <a href="https://twitter.com/futty_0123" target="_blank">Twitter</a>-->
+<!--          </li>-->
           <li>
             <a href="https://www.instagram.com/kenko_happy_0227/?hl=ja" target="_blank">Instagram</a>
           </li>
