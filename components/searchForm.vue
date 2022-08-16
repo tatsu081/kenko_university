@@ -16,8 +16,9 @@
             v-model="query"
             outlined
             hide-details
-            placeholder="キーワードを入力"
+            label="検索（キーワードを入力）"
             autofocus
+            validate-on-blur
           />
         </v-col>
         <v-col
@@ -26,10 +27,11 @@
           md="4"
         >
           <v-btn
-            color="primary"
+            color="#54AD81"
+            class="white--text"
             @click="submit"
           >
-            検索する
+            検索
           </v-btn>
         </v-col>
       </v-row>

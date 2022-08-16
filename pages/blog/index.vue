@@ -4,27 +4,13 @@
       <ul class="blog__container"　style="padding:0;">
         <li
           v-for="content in contents" :key="content.id" class="blog__box">
-          <nuxt-link :to="`/${content.id}`" class="blog__inner">
-            <div class="blog__left">
-              <img :src="content.image.url" alt="健康大学">
-            </div>
-            <div class="blog__right">
-              <p>
-                <span class="blog__right__category">{{ content.category && content.category.name }}</span>
-                <span class="blog__right__date">作成日 : {{formatDate(content.createdAt)}}</span>
-              </p>
-              <h2 class="blog__right__title">{{ content.title }}</h2>
-              <p></p>
-            </div>
-          </nuxt-link>
+          <blog-card :content="content"/>
         </li>
         <v-layout v-if="length > 12" row wrap justify-end style="margin: 0">
-          <v-btn
+          <pagination-button
             :to="'/blog/page/2'"
-            color="secondary"
-            large
-            outlined
-          >次ページ ＞</v-btn>
+            title="次ページ ＞"
+          />
         </v-layout>
       </ul>
       <div class="sidebar__container">
@@ -37,14 +23,22 @@
 <script>
 import axios from 'axios'
 import sidebar from "@/components/sidebar";
-// import middleware from "@/.nuxt/middleware";
+import blogCard from "~/components/Organisms/Cards/BlogCard";
+import PaginationButton from "@/components/Atoms/Buttons/paginationButton";
 export default {
   head: {
-    title: "ブログ一覧"
+    title: "ブログ一覧",
+    meta: [
+      { hid: 'description', name: 'description', content: '健康大学の学習コンテンツ' },
+      { hid: 'og:site_name', property: 'og:site_name', content: '健康大学' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://kenko-university.web.app/' },
+      { hid: 'og:title', property: 'og:title', content: '健康大学' },
+      { hid: 'og:description', property: 'og:description', content: '健康大学の学習コンテンツ' },
+      { hid: 'og:image', property: 'og:image', content: 'https://kenko-university.web.app/ogp.jpg' },
+    ]
   },
-  // middleware: "auth",
-  data() {
-  },
+  middleware: "auth",
   async asyncData() {
     const limit = 12
     const { data } = await axios.get(
@@ -61,17 +55,10 @@ export default {
   created() {
     this.length = this.totalCount
   },
-  methods: {
-    formatDate(iso) {
-      const date = new Date(iso);
-      const yyyy = new String(date.getFullYear());
-      const mm = new String(date.getMonth() + 1).padStart(2, "0");
-      const dd = new String(date.getDate()).padStart(2, "0");
-      return `${yyyy}-${mm}-${dd}`;
-    }
-  },
   components: {
-    sidebar
+    PaginationButton,
+    sidebar,
+    blogCard,
   }
 }
 </script>
@@ -101,23 +88,6 @@ export default {
   text-align: center;
   color: black;
 }
-//swiper
-.swiper__container{
-  width: 100%;
-  position: relative;
-}
-.swiper__container img{
-  width: 100%;
-  height: auto;
-}
-.swiper__container h2{
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
-  font-size: 50px;
-  color: black;
-}
 .pagination__conteiner{
   text-align: center;
 }
@@ -125,5 +95,4 @@ export default {
   display: flex;
   justify-content: center;
 }
-
 </style>

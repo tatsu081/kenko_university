@@ -17,9 +17,11 @@
           >mdi-folder</v-icon>
           <span>{{ content.category && content.category.name }}</span>
         </div>
+
         <div>
-          <ul class="lists">
-            <li :class="`list ${item.name}`" v-for="item in toc" :key="item.id">
+          <ul class="list">
+            <p>目次</p>
+            <li :class="`list__item ${item.name}`" v-for="item in toc" :key="item.id">
               <n-link v-scroll-to="`#${item.id}`" to>
                 {{ item.text }}
               </n-link>
@@ -27,7 +29,18 @@
           </ul>
         </div>
         <div v-html="content.detail" class="content"></div>
-        <button onclick="window.history.back(); return false;">直前のページに戻る</button>
+        <div class="twitter">
+          <a href="//twitter.com/share" class="twitter-share-button" :data-text="title" :data-url="url" data-lang="ja">
+          Tweet
+          </a>
+        </div>
+        <v-btn
+          onclick="window.history.back(); return false;"
+          color="secondary"
+          large
+          outlined
+          style="margin-top: 20px"
+        >＜ 直前のページに戻る</v-btn>
       </div>
       <div class="sidebar__container">
         <sidebar/>
@@ -62,8 +75,8 @@ export default {
       id: data.attribs.id,
       name: data.name,
     }));
-    console.log('目次', toc);
-    console.log('記事データ', data);
+    // console.log('目次', toc);
+    // console.log('記事データ', data);
     return { content:data, toc };
   },
   methods: {
@@ -79,59 +92,38 @@ export default {
     return {
       title: this.content.title,
       meta: [
-        // {
-        //   hid: "description",
-        //   name: "description",
-        //   content: this.content.outline
-        // },
-        {
-          hid: "og:site_name",
-          property: "og:site_name",
-          content: this.content.title + " - 健康大学"
-        },
-        { hid: "og:type",
-          property: "og:type",
-          content: "article"
-        },
-        {
-          hid: "og:url",
-          property: "og:url",
-          content: "https://node-color-ink.studio/content/" + this.content.id
-        },
-        {
-          hid: "og:title",
-          property: "og:title",
-          content: this.content.title
-        },
-        // {
-        //   hid: "og:description",
-        //   property: "og:description",
-        //   content: this.content.description
-        // },
-        //{ hid: 'og:image', property: 'og:image', content: this.content.image.fields.file.url },
-        {
-          hid: "twitter:card",
-          name: "twitter:card",
-          content: "summary_large_image"
-        },
-        { hid: "twitter:site", name: "twitter:site", content: "@futty_0123" }
+        { hid: 'description', name: 'description', content: this.content.description },
+        { hid: "og:type", property: "og:type", content: "article"},
+        { hid: "og:url", property: "og:url", content: "https://kenko-university.web.app/" + this.content.id},
+        { hid: "og:description", property: "og:description", content: this.content.description},
+        { hid: 'og:image', property: 'og:image', content: this.content.image.url },
+        { hid: "og:title", property: "og:title", content: this.content.title},
+        { hid: "og:site_name", property: "og:site_name", content: this.content.title + " - 健康大学"},
       ],
-      // link: [
-      //   {
-      //     rel: "canonical",
-      //     href: "https://node-color-ink.studio/content/" + this.content.slug
-      //   }
-      // ]
+      link: [
+        { rel: "canonical", href: "https://kenko-university.web.app/" + this.content.id }
+      ]
     };
   },
+  mounted() {
+    if (twttr) {
+      twttr.widgets.load();
+    }
+  },
+  computed: {
+    title(){
+      return `${this.content.title}`
+    },
+    url(){
+      return 'https://kenko-university.web.app/'+ `${this.content.id}`
+    }
+  }
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .blog__container{
-  padding: 20px 10px;
   background: #fff;
-  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
 
   &__category{
     display: flex;
@@ -151,15 +143,15 @@ export default {
     margin: 50px 0;
 
     h2 {
-      padding: 0.6em; /*文字周りの余白*/
+      padding: 0.3em; /*文字周りの余白*/
       color: #333333; /*文字色*/
       margin: 50px 0 25px;
       font-size: 24px;
+      border-left: 5px solid #777777;
     }
 
     h3 {
       color: #333333; /*文字色*/
-      border-bottom: dashed 2px #54AD81;
       margin: 50px 3% 25px;
       font-size: 18px;
     }
@@ -171,17 +163,16 @@ export default {
     }
 
     img {
-      width: 90%;
+      width: 100%;
       display: block;
-      margin: auto;
     }
 
     blockquote {
       border-left: solid 3px #bdbdbd; /*左線（実線 太さ 色）*/
-      margin: 0 5%;
       background-color: #f5f5f5;
-      line-height: 1.5em;
-      padding: 25px 0;
+      line-height: 2.5em;
+      padding: 25px 20px 25px;
+      margin-left: 3%;
     }
   }
 }
@@ -204,6 +195,60 @@ export default {
     span{
       font-size: 14px;
       color: #777777;
+    }
+  }
+}
+
+.list{
+  margin-top: 30px;
+  padding: 30px 0;
+  border-top: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
+  background-color: $color_bg;
+
+  p{
+    font-size: $font-size_l;
+  }
+
+
+  &__item {
+
+    a{
+      line-height: 3em;
+      transition: ease-in-out 0.3s;
+
+      &:hover{
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .h2 {
+    padding-left: 30px;
+
+    a{
+      color: $color-main;
+    }
+
+    &:before{
+      font-size: 10px;
+      content: "⚫︎";
+      vertical-align: middle;
+    }
+  }
+
+  .h3{
+    padding-left: 50px;
+    font-size: $font-size_m;
+
+    a{
+      color: $color-main;
+    }
+
+    &:before{
+      font-size: 10px;
+      content: "⚪︎︎";
+      vertical-align: middle;
     }
   }
 }

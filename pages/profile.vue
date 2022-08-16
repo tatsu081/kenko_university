@@ -27,8 +27,13 @@ import sidebar from "@/components/sidebar";
 import axios from "axios";
 export default {
   head: {
-    title: "プロフィール"
+    title: "プロフィール",
+    meta: [
+      { hid: "og:title", property: "og:title", content: 'プロフィール'},
+      { hid: "og:description", property: "og:description", content: '自己紹介です。'},
+    ]
   },
+  middleware: "auth",
   components: {
     sidebar
   },
@@ -57,28 +62,23 @@ export default {
 </script>
 <style lang="scss">
 .profile__container{
-  padding: 20px 10px;
-  background: #fff;
-  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
 
   .content {
 
-    margin: 50px 0;
+    margin: 0 0 50px;
 
     h2 {
-      padding: 0.6em; /*文字周りの余白*/
+      padding: 0.3em; /*文字周りの余白*/
       color: #333333; /*文字色*/
       margin: 50px 0 25px;
       font-size: 24px;
+      border-left: 5px solid #777777;
     }
 
     h3 {
       color: #333333; /*文字色*/
-      border-bottom: dashed 2px #777777;
-      margin: 25px 3% 25px;
+      margin: 50px 3% 25px;
       font-size: 18px;
-      //display: inline-block;
-
     }
 
     p {
@@ -88,17 +88,16 @@ export default {
     }
 
     img {
-      width: 90%;
+      width: 100%;
       display: block;
-      margin: auto;
     }
 
     blockquote {
       border-left: solid 3px #bdbdbd; /*左線（実線 太さ 色）*/
-      margin: 0 5%;
       background-color: #f5f5f5;
-      line-height: 1.5em;
-      padding: 25px 0;
+      line-height: 2.5em;
+      padding: 25px 20px 25px;
+      margin-left: 3%;
     }
   }
 }

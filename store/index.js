@@ -6,7 +6,12 @@ export const state = () => ({
     email: '',
     login: false,
   },
+  loading: true,
 })
+
+export const getters = {
+  isLoading: state => state.loading
+}
 
 export const mutations = {
   getData (state, payload) {
@@ -18,6 +23,9 @@ export const mutations = {
   },
   deleteLogin (state){
     state.user.login = false
+  },
+  endLoading(state) {
+    state.loading = false
   }
 }
 
@@ -67,7 +75,7 @@ export const actions = {
     firebase.auth().signOut()
       .then(()=> {
         alert('ログアウトに成功しました！')
-        this.$router.replace('/login')
+        this.$router.push('/login')
       })
   },
   passReset (context, payload){
@@ -77,6 +85,9 @@ export const actions = {
     }).catch(function(error) {
       alert(('メールの送信に失敗しました。もう一度ご確認ください。'))
     });
+  },
+  endLoading({ commit }) {
+    commit('endLoading')
   }
 }
 

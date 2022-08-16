@@ -1,11 +1,19 @@
-export default function ({ store, redirect, route }) {
-  const user = sessionStorage.getItem('user');
-  if (user) {
-    return Promise.resolve()
-  } else {
-    window.location.href = '/'
-    return new Promise((resolve) => {
-      // 完全にレンダリングされたらリダイレクト
-    })
-  }
-}
+import firebase from "firebase";
+import Cookies from "universal-cookie";
+
+export default ({ req, route, redirect }) => {
+
+  const cookies = req ? new Cookies(req.headers.cookie) : new Cookies();
+  const userList = cookies.get("kenko-university");
+
+  console.log(userList)
+
+  firebase.auth().onAuthStateChanged(user => {
+    if (!userList.user.login) {
+      return redirect('/login')
+    }else{
+      return false;
+    }
+  })
+};
+
